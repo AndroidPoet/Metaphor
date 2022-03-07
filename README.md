@@ -79,6 +79,58 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
 
 
 
+
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157047014-2cf69797-090f-41a3-97e9-a1aeda55307a.gif" width="32%"/>
+
+</p>
+
+## How to use In Fragments
+
+
+```kotlin
+		
+//start fragment 
+
+metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside on onCreate
+
+//destination fragment		
+
+metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate
+
+
+```
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157047720-d6dcb0ab-3fe4-4078-84f3-f3be70cbb0f4.gif" width="32%"/>
+
+</p>
+
+## How to use in views
+
+
+```kotlin
+
+     metaphorSharedAxisTransformationBetweenViews(
+        binding.root,
+        binding.img,
+        binding.img,
+        Metaphor.SharedX,
+        true
+      )
+
+```
+
+
+
+
+
+
+
+
+
+
 ## Find this library useful? :heart:
 Support it by joining __[stargazers](https://github.com/androidpoet/metaphor/stargazers)__ for this repository. :star:
 
