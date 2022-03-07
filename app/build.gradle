@@ -68,7 +68,7 @@ dependencies {
   implementation "androidx.core:core-ktx:$versions.ktx"
   implementation "androidx.appcompat:appcompat:$versions.androidxAppcompat"
   implementation "com.google.android.material:material:$versions.googleMaterial"
-  implementation project(':metaphor')
+  implementation project(":metaphor")
   implementation "com.github.bumptech.glide:glide:$versions.glide"
   implementation "com.airbnb.android:lottie:$versions.lottieVersion"
   implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"

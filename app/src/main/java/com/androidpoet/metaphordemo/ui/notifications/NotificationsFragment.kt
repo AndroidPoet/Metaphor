@@ -1,22 +1,3 @@
-/*
- *
- *  * Copyright (C) 2022 androidpoet
- *  *
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *
- *  * http://www.apache.org/licenses/LICENSE-2.0
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License.
- *
- *
- */
-
 
 package com.androidpoet.metaphordemo.ui.notifications
 
@@ -27,18 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.androidpoet.metaphor.Metaphor
-import com.androidpoet.metaphor.metaphorHideWithMaterialFade
+import com.androidpoet.metaphor.metaphorHideViewWithMaterialFade
+import com.androidpoet.metaphor.metaphorMaterialFadeInFragment
 import com.androidpoet.metaphor.metaphorMaterialFadeThroughBetweenViews
-import com.androidpoet.metaphor.metaphorMaterialFadeThroughInFragment
 import com.androidpoet.metaphor.metaphorSharedAxisTransformationBetweenViews
 import com.androidpoet.metaphor.metaphorShowViewWithMaterialFade
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentNotificationsBinding
 import com.bumptech.glide.Glide
-import java.util.*
-
+import java.util.Random
 
 class NotificationsFragment : Fragment() {
 
@@ -64,7 +43,7 @@ class NotificationsFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
-    metaphorMaterialFadeThroughInFragment()
+    metaphorMaterialFadeInFragment().duration = 200L
   }
 
   override fun onCreateView(
@@ -72,18 +51,12 @@ class NotificationsFragment : Fragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    val notificationsViewModel =
-      ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
     _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-
-
-
     return root
   }
-
 
   @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -128,7 +101,6 @@ class NotificationsFragment : Fragment() {
       )
     }
 
-
     binding.materialFadeThrough.setOnClickListener {
       binding.img2.visibility = View.GONE
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img2)
@@ -142,11 +114,9 @@ class NotificationsFragment : Fragment() {
         metaphorShowViewWithMaterialFade(binding.root, binding.img3)
       } else if (binding.img3.visibility == View.VISIBLE) {
         binding.materialFade.text = "Material Fade Through(Show)"
-        metaphorHideWithMaterialFade(binding.root, binding.img3)
+        metaphorHideViewWithMaterialFade(binding.root, binding.img3)
       }
     }
-
-
   }
 
   override fun onDestroyView() {
