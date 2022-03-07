@@ -25,6 +25,13 @@ dependencies {
     implementation("io.github.androidpoet:metaphor:1.0.4")
 }
 ```
+Metaphor provides support for all four motion patterns
+defined in the Material spec.
+
+1.  [Container transform](#container-transform)
+2.  [Shared axis](#shared-axis)
+3.  [Fade through](#fade-through)
+4.  [Fade](#fade)
 
 
 ## How to use In Fragments
