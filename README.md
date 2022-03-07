@@ -126,6 +126,86 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate
 
 
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157048740-76908bb0-0937-4a33-9759-894d389a46b1.gif" width="32%"/>
+
+</p>
+
+## Fade through How to use In Fragments
+
+
+```kotlin
+		
+//start fragment 
+
+metaphorMaterialFadeThroughInFragment()// inside on onCreate
+
+//destination fragment		
+
+metaphorMaterialFadeThroughInFragment()// inside onCreate
+
+
+```
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157049004-82bd3875-f0a6-4853-98f4-ad2d166d1259.gif" width="32%"/>
+
+</p>
+
+## Fade through How to use in views
+
+
+```kotlin
+
+    metaphorMaterialFadeThroughBetweenViews(
+  root: CoordinatorLayout,
+  startView: View,
+  endView: View
+)
+
+```
+
+
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157048740-76908bb0-0937-4a33-9759-894d389a46b1.gif" width="32%"/>
+
+</p>
+
+## Fade  How to use In Fragments
+
+
+```kotlin
+		
+//start fragment 
+
+metaphorMaterialFadeInFragment()// inside on onCreate
+
+//destination fragment		
+
+metaphorMaterialFadeInFragment()// inside onCreate
+
+
+```
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157049004-82bd3875-f0a6-4853-98f4-ad2d166d1259.gif" width="32%"/>
+
+</p>
+
+## Fade  How to use in views
+
+
+```kotlin
+
+  //ShowView
+   metaphorShowViewWithMaterialFade(root: CoordinatorLayout, view: View)
+
+//Hide View
+
+metaphorHideViewWithMaterialFade(root: CoordinatorLayout, view: View)
+
+```
 
 
 
