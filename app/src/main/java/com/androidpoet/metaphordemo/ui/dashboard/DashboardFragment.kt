@@ -1,22 +1,3 @@
-/*
- *
- *  * Copyright (C) 2022 androidpoet
- *  *
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *
- *  * http://www.apache.org/licenses/LICENSE-2.0
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License.
- *
- *
- */
-
 
 package com.androidpoet.metaphordemo.ui.dashboard
 
@@ -27,22 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.androidpoet.metaphor.Metaphor
 import com.androidpoet.metaphor.metaphorMaterialFadeInFragment
 import com.androidpoet.metaphor.metaphorMaterialFadeThroughBetweenViews
-import com.androidpoet.metaphor.metaphorMaterialFadeThroughInFragment
-import com.androidpoet.metaphor.metaphorMaterialSharedAxisInFragment
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentDashboardBinding
 import com.androidpoet.metaphordemo.ui.home.ArtistGridListAdapter
 import com.androidpoet.metaphordemo.ui.home.ArtistLinearListAdapter
-import com.androidpoet.metaphordemo.ui.home.ArtistListFragmentDirections
 import com.androidpoet.metaphordemo.ui.home.SampleResponse
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
@@ -58,15 +34,11 @@ class DashboardFragment : Fragment() {
   private lateinit var artistGridListAdapter: ArtistGridListAdapter
   private lateinit var artistLinearListAdapter: ArtistLinearListAdapter
 
-
   private var isGrid: Boolean = true
-
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    metaphorMaterialFadeInFragment().apply {
-
-    }
+    metaphorMaterialFadeInFragment().duration = 200L
     artistGridListAdapter = ArtistGridListAdapter(requireContext(), Glide.with(requireContext()))
     artistLinearListAdapter =
       ArtistLinearListAdapter(requireContext(), Glide.with(requireContext()))
@@ -99,8 +71,6 @@ class DashboardFragment : Fragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-    val dashboardViewModel =
-      ViewModelProvider(this).get(DashboardViewModel::class.java)
 
     _binding = FragmentDashboardBinding.inflate(inflater, container, false)
     val root: View = viewBinding.root
@@ -137,8 +107,6 @@ class DashboardFragment : Fragment() {
         loadRecyclerView(isGrid)
       }
     }
-
-
   }
 
   fun loadRecyclerView(isGrid: Boolean) {
@@ -163,13 +131,13 @@ class DashboardFragment : Fragment() {
         }
       }
     }
-
   }
 
   override fun onDestroyView() {
     super.onDestroyView()
     _binding = null
   }
+
   private fun sampleResponse(): List<SampleResponse> {
     val response = resources.openRawResource(R.raw.list).bufferedReader()
       .use { it.readText() }

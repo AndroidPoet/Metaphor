@@ -1,22 +1,3 @@
-/*
- *
- *  * Copyright (C) 2022 androidpoet
- *  *
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *
- *  * http://www.apache.org/licenses/LICENSE-2.0
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License.
- *
- *
- */
-
 
 package com.androidpoet.metaphordemo.ui.home
 
@@ -30,9 +11,10 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.androidpoet.metaphor.Metaphor
 import com.androidpoet.metaphor.metaphorDestinationFragmentMaterialContainerTransform
-
 import com.androidpoet.metaphor.metaphorMaterialContainerTransformViewIntoAnotherView
+import com.androidpoet.metaphor.metaphorMaterialSharedAxisInFragment
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentArtistDetailBinding
 import com.bumptech.glide.Glide
@@ -67,11 +49,9 @@ class ArtistDetailFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-
     /** This is the method to perform MaterialContainerTransform which we need to call inside onViewCreated
      * it is important to call this method inside onViewCreated */
     metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())
-
 
     viewBinding.toolBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24); // your drawable
     viewBinding.toolBar.setNavigationOnClickListener(
@@ -97,6 +77,11 @@ class ArtistDetailFragment : Fragment() {
         viewBinding.fabDetail
       )
     }
+
+    metaphorMaterialSharedAxisInFragment(
+      Metaphor.SharedX,
+      true
+    )
 
     // load image with palette
     Glide.with(requireContext())
