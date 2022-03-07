@@ -80,8 +80,6 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
 
 
 
-
-
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157048740-76908bb0-0937-4a33-9759-894d389a46b1.gif" width="32%"/>
 
@@ -104,7 +102,7 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate
 ```
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157047720-d6dcb0ab-3fe4-4078-84f3-f3be70cbb0f4.gif" width="32%"/>
+<img src="https://user-images.githubusercontent.com/13647384/157049004-82bd3875-f0a6-4853-98f4-ad2d166d1259.gif" width="32%"/>
 
 </p>
 
