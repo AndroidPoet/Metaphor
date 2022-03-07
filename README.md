@@ -168,7 +168,7 @@ metaphorMaterialFadeThroughInFragment()// inside onCreate
 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157048740-76908bb0-0937-4a33-9759-894d389a46b1.gif" width="32%"/>
+<img src="https://user-images.githubusercontent.com/13647384/157051144-645ebfed-a388-4c5c-a43d-d7c2f647ffbd.gif" width="32%"/>
 
 </p>
 
@@ -215,7 +215,7 @@ Support it by joining __[stargazers](https://github.com/androidpoet/metaphor/sta
 
 # License
 ```xml
-Copyright 2019 skydoves (Jaewoong Eum)
+Copyright 2019 AndroidPoet (Ranbir Singh)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
