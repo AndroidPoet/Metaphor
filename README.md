@@ -148,7 +148,7 @@ metaphorMaterialFadeThroughInFragment()// inside onCreate
 ```
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157049004-82bd3875-f0a6-4853-98f4-ad2d166d1259.gif" width="32%"/>
+<img src="https://user-images.githubusercontent.com/13647384/157051396-9eaa6437-5c86-4fd8-abba-00b0ebafac55.gif" width="32%"/>
 
 </p>
 
@@ -164,6 +164,7 @@ metaphorMaterialFadeThroughInFragment()// inside onCreate
 )
 
 ```
+
 
 
 

@@ -110,10 +110,10 @@ class NotificationsFragment : Fragment() {
     binding.materialFade.setOnClickListener {
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img3)
       if (binding.img3.visibility == View.INVISIBLE) {
-        binding.materialFade.text = "Material Fade Through(Hide)"
+        binding.materialFade.text = "Material Fade (Hide)"
         metaphorShowViewWithMaterialFade(binding.root, binding.img3)
       } else if (binding.img3.visibility == View.VISIBLE) {
-        binding.materialFade.text = "Material Fade Through(Show)"
+        binding.materialFade.text = "Material Fade (Show)"
         metaphorHideViewWithMaterialFade(binding.root, binding.img3)
       }
     }
