@@ -40,7 +40,7 @@ defined in the Material spec.
 
 </p>
 
-## How to use In Fragments
+## Container transform How to use In Fragments
 
 
 ```kotlin
@@ -64,7 +64,7 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
 
 </p>
 
-## How to use in views
+## Container transform How to use in views
 
 
 ```kotlin
@@ -86,7 +86,7 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
 
 </p>
 
-## How to use In Fragments
+## Shared axis How to use In Fragments
 
 
 ```kotlin
@@ -107,7 +107,7 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate
 
 </p>
 
-## How to use in views
+## Shared axis How to use in views
 
 
 ```kotlin
