@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+<!--
+  ~ /*
+  ~  * Copyright (C) 2022 androidpoet
+  ~  *
+  ~  * Licensed under the Apache License, Version 2.0 (the "License");
+  ~  * you may not use this file except in compliance with the License.
+  ~  * You may obtain a copy of the License at
+  ~  *
+  ~  * http://www.apache.org/licenses/LICENSE-2.0
+  ~  *
+  ~  * Unless required by applicable law or agreed to in writing, software
+  ~  * distributed under the License is distributed on an "AS IS" BASIS,
+  ~  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~  * See the License for the specific language governing permissions and
+  ~  * limitations under the License.
+  ~  */
+  ~
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+      android:fitsSystemWindows="true"
+        android:background="?android:attr/colorBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+          android:fitsSystemWindows="true">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/artistImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+              android:fitsSystemWindows="true"
+                app:layout_constraintBottom_toTopOf="@+id/divider"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@android:color/transparent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navigationIcon="@drawable/ic_arrow_back" />
+
+            <Space
+                android:id="@+id/divider"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#fafafa"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.65" />
+
+            <View
+                android:id="@+id/background"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/play_panel_size"
+                android:background="@color/colorPrimary"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/track_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="@string/track_author"
+                android:textColor="#fafafa"
+                android:textSize="45sp"
+                app:layout_constraintHorizontal_bias="0.316"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/background" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/controls_panel"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/color_dot_first"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/bottom_background"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/prev"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/play_pause"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.35"
+                    app:srcCompat="@drawable/ic_fast_rewind" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/play_pause"
+                    app:layout_constraintLeft_toRightOf="@+id/play_pause"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/play_pause"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_fast_forward" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/play_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/prev"
+                    app:layout_constraintLeft_toRightOf="@+id/prev"
+                    app:layout_constraintRight_toLeftOf="@+id/next"
+                    app:layout_constraintTop_toTopOf="@+id/prev"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:srcCompat="@drawable/ic_pause" />
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/seekbar"
+                    android:layout_width="@dimen/seek_bar_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginRight="10dp"
+                    android:max="100"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/empty"
+                    android:thumb="@drawable/shape_thumb"
+                    app:layout_constraintHorizontal_bias="0.506"
+                    app:layout_constraintLeft_toRightOf="@+id/imageView"
+                    app:layout_constraintRight_toLeftOf="@+id/imageView2"
+                    app:layout_constraintTop_toBottomOf="@+id/play_pause" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/seekbar"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/seekbar"
+                    app:layout_constraintTop_toTopOf="@+id/seekbar"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_volume_medium" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/seekbar"
+                    app:layout_constraintLeft_toRightOf="@+id/seekbar"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/seekbar"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:srcCompat="@drawable/ic_volume_high" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@color/color_dot_first"
+                app:fabSize="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.669"
+                app:srcCompat="@drawable/ic_outline_play_arrow_24" />
+
+
+
+            <View
+                android:id="@+id/bottom_background"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/background"
+                app:layout_constraintVertical_bias="0" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/sound_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:layout_marginLeft="@dimen/spacing_huge"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_background"
+                app:layout_constraintVertical_bias="0.5"
+                app:srcCompat="@drawable/ic_volume_bottom" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/song_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:layout_marginLeft="@dimen/spacing_huge"
+                android:text="1"
+                android:textColor="#9e9e9e"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sound_play"
+                app:layout_constraintLeft_toRightOf="@+id/sound_play"
+                app:layout_constraintTop_toTopOf="@+id/sound_play" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/track_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_huge"
+                android:layout_marginLeft="32dp"
+                android:text="One Day"
+                android:textColor="#212121"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/song_number"
+                app:layout_constraintLeft_toRightOf="@+id/song_number"
+                app:layout_constraintTop_toTopOf="@+id/song_number" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_huge"
+                android:layout_marginRight="@dimen/spacing_huge"
+                android:text="4:15"
+                android:textColor="#9e9e9e"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_background"
+                app:layout_constraintVertical_bias="0.48" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
