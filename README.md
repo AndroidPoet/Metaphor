@@ -190,7 +190,7 @@ metaphorMaterialFadeInFragment()// inside onCreate
 ```
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157049004-82bd3875-f0a6-4853-98f4-ad2d166d1259.gif" width="32%"/>
+<img src="https://user-images.githubusercontent.com/13647384/157052869-9e124cef-0b3e-416b-a577-9d515e76d428.gif" width="32%"/>
 
 </p>
 
@@ -207,6 +207,7 @@ metaphorMaterialFadeInFragment()// inside onCreate
 metaphorHideViewWithMaterialFade(root: CoordinatorLayout, view: View)
 
 ```
+
 
 
 
