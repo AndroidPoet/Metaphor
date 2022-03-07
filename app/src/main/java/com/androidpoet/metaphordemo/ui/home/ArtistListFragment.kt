@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidpoet.metaphor.Metaphor
 import com.androidpoet.metaphor.metaphorMaterialFadeThroughBetweenViews
 import com.androidpoet.metaphor.metaphorMaterialSharedAxisInFragment
+import com.androidpoet.metaphor.metaphorStartFragmentMaterialContainerTransform
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentListBinding
 import com.bumptech.glide.Glide
@@ -80,7 +81,7 @@ class ArtistListFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     /**this method is used for MaterialContainerTransform it add some delay to load animation basically it will wait for recyclerview to be drawn   */
-    // metaphorStartFragmentMaterialContainerTransform(view)
+     metaphorStartFragmentMaterialContainerTransform(view)
 
     loadRecyclerView(isGrid)
     viewBinding.reorder.setOnClickListener {

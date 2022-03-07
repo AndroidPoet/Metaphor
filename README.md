@@ -22,7 +22,7 @@ Add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.androidpoet:metaphor:1.0.3")
+    implementation("io.github.androidpoet:metaphor:1.0.4")
 }
 ```
 
@@ -32,12 +32,30 @@ dependencies {
 
 ```kotlin
 
+  //Start Fragments onclick// 
+  val extras = FragmentNavigatorExtras(view to item.pos.toString())
+        val action = ArtistListFragmentDirections.navToCharacterDetailFragment(item)
+        findNavController().navigate(action, extras)
+		
+//start fragment 
+metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
+
+//destination fragment		
+  metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())// inside onviewcreated
+
+
 ```
 
 ### How to use in views
 
 
 ```kotlin
+
+   metaphorMaterialContainerTransformViewIntoAnotherView(
+        viewBinding.root,
+        viewBinding.fabDetail,
+        viewBinding.controlsPanel
+      )
 
 ```
 
