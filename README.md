@@ -51,10 +51,10 @@ defined in the Material spec.
         findNavController().navigate(action, extras)
 		
 //start fragment 
-metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
+metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated  ////it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
 
 //destination fragment		
-  metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())// inside onviewcreated
+  metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())// inside onviewcreated ////it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
 
 
 ```
@@ -73,7 +73,7 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
         viewBinding.root,
         viewBinding.fabDetail,
         viewBinding.controlsPanel
-      )
+      ) //it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
 
 ```
 
@@ -92,11 +92,11 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
 		
 //start fragment 
 
-metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside on onCreate
+metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside on onCreate   ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
 
 //destination fragment		
 
-metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate
+metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate   ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
 
 
 ```
@@ -117,7 +117,7 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate
         binding.img,
         Metaphor.SharedX,
         true
-      )
+      )  ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
 
 ```
 
@@ -138,11 +138,11 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate
 		
 //start fragment 
 
-metaphorMaterialFadeThroughInFragment()// inside on onCreate
-
+metaphorMaterialFadeThroughInFragment()// inside on onCreate  ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
+ 
 //destination fragment		
 
-metaphorMaterialFadeThroughInFragment()// inside onCreate
+metaphorMaterialFadeThroughInFragment()// inside onCreate  ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
 
 
 ```
@@ -161,7 +161,7 @@ metaphorMaterialFadeThroughInFragment()// inside onCreate
   root: CoordinatorLayout,
   startView: View,
   endView: View
-)
+) ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
 
 ```
 
@@ -180,11 +180,11 @@ metaphorMaterialFadeThroughInFragment()// inside onCreate
 		
 //start fragment 
 
-metaphorMaterialFadeInFragment()// inside on onCreate
+metaphorMaterialFadeInFragment()// inside on onCreate  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
 
 //destination fragment		
 
-metaphorMaterialFadeInFragment()// inside onCreate
+metaphorMaterialFadeInFragment()// inside onCreate  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
 
 
 ```
@@ -200,11 +200,11 @@ metaphorMaterialFadeInFragment()// inside onCreate
 ```kotlin
 
   //ShowView
-   metaphorShowViewWithMaterialFade(root: CoordinatorLayout, view: View)
+   metaphorShowViewWithMaterialFade(root: CoordinatorLayout, view: View)  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
 
 //Hide View
 
-metaphorHideViewWithMaterialFade(root: CoordinatorLayout, view: View)
+metaphorHideViewWithMaterialFade(root: CoordinatorLayout, view: View)  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
 
 ```
 

@@ -114,7 +114,9 @@ class NotificationsFragment : Fragment() {
         metaphorShowViewWithMaterialFade(binding.root, binding.img3)
       } else if (binding.img3.visibility == View.VISIBLE) {
         binding.materialFade.text = "Material Fade (Show)"
-        metaphorHideViewWithMaterialFade(binding.root, binding.img3)
+        metaphorHideViewWithMaterialFade(binding.root, binding.img3).apply {
+
+        }
       }
     }
   }
