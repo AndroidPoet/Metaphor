@@ -59,6 +59,11 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
 
 ```
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157047720-d6dcb0ab-3fe4-4078-84f3-f3be70cbb0f4.gif" width="32%"/>
+
+</p>
+
 ## How to use in views
 
 
