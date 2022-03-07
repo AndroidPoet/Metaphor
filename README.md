@@ -81,8 +81,9 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated
 
 
 
+
 <p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157047014-2cf69797-090f-41a3-97e9-a1aeda55307a.gif" width="32%"/>
+<img src="https://user-images.githubusercontent.com/13647384/157048740-76908bb0-0937-4a33-9759-894d389a46b1.gif" width="32%"/>
 
 </p>
 
