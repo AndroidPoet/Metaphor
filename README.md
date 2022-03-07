@@ -12,8 +12,7 @@ Metaphor is library to easily add Material Motion animations.
 
 </p>
 
-## Who's using Balloon?
-**👉 [Check out who's using Balloon](/usecases.md)**
+
 
 ## Including in your project
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.androidpoet/metaphor.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.github.androidpoet/metaphor)
