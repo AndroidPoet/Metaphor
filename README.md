@@ -1,7 +1,7 @@
 <h1 align="center">Metaphor </h1></br>
 
 <p align="center">
-Metaphor is library to easily add Material Motion animations.
+Metaphor is the library to easily add Material Motion animations..
 </p>
 </br>
 <p align="center">
