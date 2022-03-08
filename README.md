@@ -15,7 +15,7 @@ Metaphor is library to easily add Material Motion animations.
 
 
 
-## Including in your project
+## Include in your project
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.androidpoet/metaphor.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.github.androidpoet/metaphor)
 
 ### Gradle
