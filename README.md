@@ -210,7 +210,7 @@ metaphorHideViewWithMaterialFade(root: CoordinatorLayout, view: View)  ////it al
 ```
 
 
-
+image credit=https://unsplash.com/
 
 
 ## Find this library useful? :heart:
