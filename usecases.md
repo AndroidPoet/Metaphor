@@ -1,7 +1,7 @@
 
 # Who's using Metaphor?
 
-If your project uses Balloon, let me know by creating a new issue or PR! 🤗
+If your project uses Metaphor, let me know by creating a new issue or PR! 🤗
 
 
 
