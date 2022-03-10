@@ -1,10 +1,11 @@
 <h1 align="center">Metaphor </h1></br>
 
 <p align="center">
-Metaphor is library to easily add Material Motion animations.
+Metaphor is the library to easily add Material Motion animations.
 </p>
 </br>
 <p align="center">
+	<img src="https://user-images.githubusercontent.com/13647384/157069132-21a2960b-b228-4dd8-8ffa-963be6bd2f99.svg" />
 
 </p> <br>
 
@@ -12,9 +13,10 @@ Metaphor is library to easily add Material Motion animations.
 
 </p>
 
+## Who's using Metaphor?
+**👉 [Check out who's using Metaphor](/usecases.md)**
 
-
-## Including in your project
+## Include in your project
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.androidpoet/metaphor.svg?label=Maven%20Central)](https://search.maven.org/artifact/io.github.androidpoet/metaphor)
 
 ### Gradle
@@ -209,7 +211,7 @@ metaphorHideViewWithMaterialFade(root: CoordinatorLayout, view: View)  ////it al
 ```
 
 
-
+image credit=https://unsplash.com/
 
 
 ## Find this library useful? :heart:
@@ -217,7 +219,7 @@ Support it by joining __[stargazers](https://github.com/androidpoet/metaphor/sta
 
 # License
 ```xml
-Copyright 2019 AndroidPoet (Ranbir Singh)
+Copyright 2022 AndroidPoet (Ranbir Singh)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

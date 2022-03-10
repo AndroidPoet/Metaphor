@@ -1,50 +1,9 @@
-public final class com/androidpoet/metaphor/AnimationUtilsKt {
-	public static final fun lerp (FFF)F
-	public static final fun lerp (FFFFF)F
-	public static final fun lerp (IIF)I
-	public static final fun lerp (IIFFF)I
-	public static final fun lerp (Lcom/androidpoet/metaphor/CornerRounding;Lcom/androidpoet/metaphor/CornerRounding;FFF)Lcom/androidpoet/metaphor/CornerRounding;
-	public static final fun lerpArgb (IIF)I
-	public static final fun lerpArgb (IIFFF)I
-	public static final fun listenForAllSpringsEnd (Lkotlin/jvm/functions/Function1;[Landroidx/dynamicanimation/animation/SpringAnimation;)Lcom/androidpoet/metaphor/MultiSpringEndListener;
-}
-
-public final class com/androidpoet/metaphor/CornerRounding {
-	public fun <init> ()V
-	public fun <init> (FFFF)V
-	public synthetic fun <init> (FFFFILkotlin/jvm/internal/DefaultConstructorMarker;)V
-	public final fun getBottomLeftRadius ()F
-	public final fun getBottomRightRadius ()F
-	public final fun getTopLeftRadius ()F
-	public final fun getTopRightRadius ()F
-}
-
-public final class com/androidpoet/metaphor/GraphicsExtensionsKt {
-	public static final fun drawRoundedRect (Landroid/graphics/Canvas;Landroid/graphics/RectF;Lcom/androidpoet/metaphor/CornerRounding;Landroid/graphics/Paint;)V
-	public static final fun toCornerRounding (Lcom/google/android/material/shape/ShapeAppearanceModel;Landroid/graphics/RectF;)Lcom/androidpoet/metaphor/CornerRounding;
-	public static final fun toFloatArray (Lcom/androidpoet/metaphor/CornerRounding;)[F
-}
-
-public final class com/androidpoet/metaphor/LifecycleKt {
-	public static final fun doOnCreate (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnDestroy (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnPause (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnResume (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnStart (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnStop (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function0;)V
-	public static final fun observe (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun observe$default (Landroidx/lifecycle/Lifecycle;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
-}
-
-public final class com/androidpoet/metaphor/LifecycleOwnerKt {
-	public static final fun doOnCreate (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnDestroy (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnPause (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnResume (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnStart (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function0;)V
-	public static final fun doOnStop (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function0;)V
-	public static final fun observe (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun observe$default (Landroidx/lifecycle/LifecycleOwner;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+public final class com/androidpoet/metaphor/Metaphor {
+	public static final field INSTANCE Lcom/androidpoet/metaphor/Metaphor;
+	public static final field MaterialSharedElement Ljava/lang/String;
+	public static final field SharedX I
+	public static final field SharedY I
+	public static final field SharedZ I
 }
 
 public final class com/androidpoet/metaphor/MetaphorActivtyExtensionsKt {
@@ -54,42 +13,33 @@ public final class com/androidpoet/metaphor/MetaphorActivtyExtensionsKt {
 	public static final fun currentFragmentChildFragmentManager (Landroidx/appcompat/app/AppCompatActivity;I)Landroidx/fragment/app/Fragment;
 	public static final fun currentFragmentFragment (Landroidx/appcompat/app/AppCompatActivity;)Landroidx/fragment/app/Fragment;
 	public static final fun currentFragmentFragmentManager (Landroidx/appcompat/app/AppCompatActivity;)Landroidx/fragment/app/Fragment;
+	public static final fun metaphorMaterialContainerDestinationActivity (Landroid/app/Activity;)V
+	public static final fun metaphorMaterialContainerStartActivity (Landroid/app/Activity;)V
 	public static final fun metaphorMaterialContainerTransformViewIntoAnotherView (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)V
 	public static final fun metaphorMaterialFadeThroughBetweenViews (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)Lcom/google/android/material/transition/MaterialFadeThrough;
-	public static final fun metaphorSharedAxisTransformation (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;IZ)V
+	public static final fun metaphorMaterialFadeThroughDestinationActivity (Landroid/app/Activity;)V
+	public static final fun metaphorMaterialFadeThroughStartActivity (Landroid/app/Activity;)V
+	public static final fun metaphorSharedAxisDestinationActivity (Landroid/app/Activity;)V
+	public static final fun metaphorSharedAxisStartActivity (Landroid/app/Activity;)V
+	public static final fun metaphorSharedAxisTransformationBetweenViews (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;IZ)V
 	public static final fun replaceFragment (Landroidx/appcompat/app/AppCompatActivity;ILandroidx/fragment/app/Fragment;Ljava/lang/String;)V
 }
 
 public final class com/androidpoet/metaphor/MetaphorFragmentExtensionsKt {
+	public static final fun activity (Landroid/content/Context;)Landroid/app/Activity;
 	public static final fun buildContainerTransformation (Landroidx/fragment/app/Fragment;)Lcom/google/android/material/transition/MaterialContainerTransform;
-	public static final fun gone (Landroid/view/View;)V
-	public static final fun hide (Landroid/view/View;)V
-	public static final fun metaphor (Landroid/view/View;Landroidx/coordinatorlayout/widget/CoordinatorLayout;)V
-	public static final fun metaphorDetailFragmentMaterialContainerTransform (Landroidx/fragment/app/Fragment;Landroid/view/View;Ljava/lang/String;)Lcom/google/android/material/transition/MaterialContainerTransform;
-	public static final fun metaphorHideViewWithAnimation (Landroid/view/View;Landroidx/coordinatorlayout/widget/CoordinatorLayout;)V
-	public static final fun metaphorMaterialContainerTransformViewIntoAnotherView (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)V
+	public static final fun metaphorDestinationFragmentMaterialContainerTransform (Landroidx/fragment/app/Fragment;Landroid/view/View;Ljava/lang/String;)Lcom/google/android/material/transition/MaterialContainerTransform;
+	public static final fun metaphorHideViewWithMaterialFade (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;)Lcom/google/android/material/transition/MaterialFade;
+	public static final fun metaphorMaterialContainerTransformViewIntoAnotherView (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)Lcom/google/android/material/transition/MaterialContainerTransform;
+	public static final fun metaphorMaterialContainerTransformViewIntoFragment (Landroidx/fragment/app/Fragment;Landroid/view/View;Landroid/view/View;)Lcom/google/android/material/transition/MaterialContainerTransform;
+	public static final fun metaphorMaterialFadeBetweenViews (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;)Lcom/google/android/material/transition/MaterialFade;
 	public static final fun metaphorMaterialFadeInFragment (Landroidx/fragment/app/Fragment;)Lcom/google/android/material/transition/MaterialFade;
 	public static final fun metaphorMaterialFadeThroughBetweenViews (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)Lcom/google/android/material/transition/MaterialFadeThrough;
 	public static final fun metaphorMaterialFadeThroughInFragment (Landroidx/fragment/app/Fragment;)Lcom/google/android/material/transition/MaterialFadeThrough;
 	public static final fun metaphorMaterialSharedAxisInFragment (Landroidx/fragment/app/Fragment;IZ)Lcom/google/android/material/transition/MaterialSharedAxis;
-	public static final fun metaphorSharedAxisTransformation (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;IZ)V
-	public static final fun metaphorShowViewWithAnimation (Landroid/view/View;Landroidx/coordinatorlayout/widget/CoordinatorLayout;)V
+	public static final fun metaphorSharedAxisTransformationBetweenViews (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;IZ)Lcom/google/android/material/transition/MaterialSharedAxis;
+	public static final fun metaphorShowViewWithMaterialFade (Landroidx/fragment/app/Fragment;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;)Lcom/google/android/material/transition/MaterialFade;
 	public static final fun metaphorStartFragmentMaterialContainerTransform (Landroidx/fragment/app/Fragment;Landroid/view/View;)V
-	public static final fun metaphorStartFragmentOnCreated (Landroidx/fragment/app/Fragment;Landroid/view/View;)V
-	public static final fun show (Landroid/view/View;)V
-}
-
-public final class com/androidpoet/metaphor/MultiSpringEndListener {
-	public fun <init> (Lkotlin/jvm/functions/Function1;[Landroidx/dynamicanimation/animation/SpringAnimation;)V
-}
-
-public final class com/androidpoet/metaphor/SpringAddItemAnimator : androidx/recyclerview/widget/DefaultItemAnimator {
-	public fun <init> ()V
-	public fun animateAdd (Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
-	public fun endAnimation (Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
-	public fun endAnimations ()V
-	public fun isRunning ()Z
-	public fun runPendingAnimations ()V
 }
 
 public final class com/androidpoet/metaphor/ViewExtensionsKt {
@@ -103,25 +53,5 @@ public final class com/androidpoet/metaphor/ViewExtensionsKt {
 	public static final fun spring (Landroid/view/View;Landroidx/dynamicanimation/animation/DynamicAnimation$ViewProperty;FFLjava/lang/Float;)Landroidx/dynamicanimation/animation/SpringAnimation;
 	public static synthetic fun spring$default (Landroid/view/View;Landroidx/dynamicanimation/animation/DynamicAnimation$ViewProperty;FFLjava/lang/Float;ILjava/lang/Object;)Landroidx/dynamicanimation/animation/SpringAnimation;
 	public static final fun themeColor (Landroid/content/Context;I)I
-}
-
-public final class com/androidpoet/metaphor/ViewKt {
-	public static final fun doOnActivityAttach (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun doOnCreate (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun doOnDestroy (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun doOnFragmentAttach (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun doOnPause (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun doOnResume (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun doOnStart (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun doOnStop (Landroid/view/View;Lkotlin/jvm/functions/Function1;)V
-	public static final fun getActivity (Landroid/content/Context;)Landroidx/activity/ComponentActivity;
-	public static final fun getLifecycle (Landroid/view/View;)Landroidx/lifecycle/Lifecycle;
-	public static final fun getLifecycleOwner (Landroid/view/View;)Landroidx/lifecycle/LifecycleOwner;
-	public static final fun getLifecycleScope (Landroid/view/View;)Landroidx/lifecycle/LifecycleCoroutineScope;
-	public static final fun observe (Landroid/view/View;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
-	public static synthetic fun observe$default (Landroid/view/View;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
-	public static final fun whenCreated (Landroid/view/View;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun whenResumed (Landroid/view/View;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-	public static final fun whenStarted (Landroid/view/View;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 }
 

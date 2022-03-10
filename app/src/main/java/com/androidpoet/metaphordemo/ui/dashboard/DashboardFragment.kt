@@ -1,4 +1,3 @@
-
 package com.androidpoet.metaphordemo.ui.dashboard
 
 import android.os.Build
@@ -6,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +13,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.androidpoet.metaphor.animateView
 import com.androidpoet.metaphor.metaphorMaterialFadeInFragment
 import com.androidpoet.metaphor.metaphorMaterialFadeThroughBetweenViews
 import com.androidpoet.metaphordemo.R
@@ -21,8 +22,10 @@ import com.androidpoet.metaphordemo.ui.home.ArtistGridListAdapter
 import com.androidpoet.metaphordemo.ui.home.ArtistLinearListAdapter
 import com.androidpoet.metaphordemo.ui.home.SampleResponse
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+
 
 class DashboardFragment : Fragment() {
 
@@ -74,6 +77,24 @@ class DashboardFragment : Fragment() {
 
     _binding = FragmentDashboardBinding.inflate(inflater, container, false)
     val root: View = viewBinding.root
+
+
+    val snackbar: Snackbar = Snackbar.make(viewBinding.root, "message", Snackbar.LENGTH_LONG)
+    val snackbarLayout = snackbar.view
+    val lp = LinearLayout.LayoutParams(
+      LinearLayout.LayoutParams.WRAP_CONTENT,
+      LinearLayout.LayoutParams.WRAP_CONTENT
+    )
+    lp.setMargins(50, 0, 0, 0)
+    snackbarLayout.layoutParams = lp
+   
+    snackbar.show()
+
+
+
+
+
+
 
     viewBinding.fab.setOnClickListener {
       val action = DashboardFragmentDirections.actionNavigationHomeToAddnoteFragment()
