@@ -7,7 +7,7 @@ If your project uses Metaphor, let me know by creating a new issue or PR! 🤗
 
 # License
 ```xml
-Copyright 2019 AndroidPoet (Ranbir Singh)
+Copyright 2022 AndroidPoet (Ranbir Singh)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
