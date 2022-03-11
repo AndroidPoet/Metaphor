@@ -15,13 +15,13 @@ public final class com/androidpoet/metaphor/MetaphorActivtyExtensionsKt {
 	public static final fun currentFragmentFragmentManager (Landroidx/appcompat/app/AppCompatActivity;)Landroidx/fragment/app/Fragment;
 	public static final fun metaphorMaterialContainerDestinationActivity (Landroid/app/Activity;)V
 	public static final fun metaphorMaterialContainerStartActivity (Landroid/app/Activity;)V
-	public static final fun metaphorMaterialContainerTransformViewIntoAnotherView (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)V
+	public static final fun metaphorMaterialContainerTransformViewIntoAnotherView (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)Lcom/google/android/material/transition/MaterialContainerTransform;
 	public static final fun metaphorMaterialFadeThroughBetweenViews (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;)Lcom/google/android/material/transition/MaterialFadeThrough;
 	public static final fun metaphorMaterialFadeThroughDestinationActivity (Landroid/app/Activity;)V
 	public static final fun metaphorMaterialFadeThroughStartActivity (Landroid/app/Activity;)V
 	public static final fun metaphorSharedAxisDestinationActivity (Landroid/app/Activity;)V
 	public static final fun metaphorSharedAxisStartActivity (Landroid/app/Activity;)V
-	public static final fun metaphorSharedAxisTransformationBetweenViews (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;IZ)V
+	public static final fun metaphorSharedAxisTransformationBetweenViews (Landroid/app/Activity;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;Landroid/view/View;IZ)Lcom/google/android/material/transition/MaterialSharedAxis;
 	public static final fun replaceFragment (Landroidx/appcompat/app/AppCompatActivity;ILandroidx/fragment/app/Fragment;Ljava/lang/String;)V
 }
 

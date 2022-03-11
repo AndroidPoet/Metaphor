@@ -209,7 +209,7 @@ public fun Activity.metaphorMaterialContainerTransformViewIntoAnotherView(
   startView: View,
   endView: View
 
-) {
+):MaterialContainerTransform{
   val transition = buildContainerTransformation()
 
   transition.startView = startView
@@ -220,6 +220,7 @@ public fun Activity.metaphorMaterialContainerTransformViewIntoAnotherView(
   TransitionManager.beginDelayedTransition(root, transition)
   startView.visibility = View.INVISIBLE
   endView.visibility = View.VISIBLE
+  return transition
 }
 
 /**
@@ -247,7 +248,7 @@ public fun Activity.metaphorSharedAxisTransformationBetweenViews(
   endView: View,
   Axis: Int,
   forward: Boolean
-) {
+) :MaterialSharedAxis{
   // Set up a new MaterialSharedAxis in the specified axis and direction.
   val sharedAxis = MaterialSharedAxis(Axis, forward)
 
@@ -257,6 +258,7 @@ public fun Activity.metaphorSharedAxisTransformationBetweenViews(
 // Make any changes to the hierarchy to be animated by the shared axis transition.
   startView.visibility = View.GONE
   endView.visibility = View.VISIBLE
+  return sharedAxis
 }
 
 public inline fun <reified T : Activity> Context.openActivity(noinline extra: Intent.() -> Unit) {
