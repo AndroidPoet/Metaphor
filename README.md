@@ -4,6 +4,22 @@
 Metaphor is the library to easily add Material Motion animations.
 </p>
 </br>
+
+
+
+<p align="center">
+  <a href="https://devlibrary.withgoogle.com/products/android/repos/androidpoet-Metaphor"><img alt="Google" src="https://github.com/AndroidPoet/androidpoet.github.io/blob/main/badges/GoogleDevelopers.svg"/></a>
+<br>
+  <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
+  <a href="https://github.com/skydoves/Balloon/actions"><img alt="Build Status" src="https://github.com/skydoves/Balloon/workflows/Android%20CI/badge.svg"/></a> 
+  <a href="https://medium.com/@androidpoet/metaphor-make-your-app-shine-with-material-motion-animations-73e5ffc698b4"><img alt="Medium" src="https://github.com/AndroidPoet/androidpoet.github.io/blob/main/badges/Story-Medium.svg"/></a>
+  <a href="https://github.com/AndroidPoet"><img alt="Profile" src="https://github.com/AndroidPoet/androidpoet.github.io/blob/main/badges/style-AndroidPoet-blue.svg/></a>
+ 
+</p> <br>
+
+
+
+
 <p align="center">
 	<img src="https://user-images.githubusercontent.com/13647384/157069132-21a2960b-b228-4dd8-8ffa-963be6bd2f99.svg" />
 
