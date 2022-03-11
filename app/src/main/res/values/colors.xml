@@ -39,5 +39,6 @@
 
     <color name="color_dot_first">#03a9f4</color>
     <color name="blue">#2196F3</color>
+    <color name="app_background">#F8E21E</color>
 
 </resources>

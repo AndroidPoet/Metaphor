@@ -13,7 +13,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.androidpoet.metaphor.animateView
+
 import com.androidpoet.metaphor.metaphorMaterialFadeInFragment
 import com.androidpoet.metaphor.metaphorMaterialFadeThroughBetweenViews
 import com.androidpoet.metaphordemo.R
@@ -78,24 +78,6 @@ class DashboardFragment : Fragment() {
     _binding = FragmentDashboardBinding.inflate(inflater, container, false)
     val root: View = viewBinding.root
 
-
-    val snackbar: Snackbar = Snackbar.make(viewBinding.root, "message", Snackbar.LENGTH_LONG)
-    val snackbarLayout = snackbar.view
-    val lp = LinearLayout.LayoutParams(
-      LinearLayout.LayoutParams.WRAP_CONTENT,
-      LinearLayout.LayoutParams.WRAP_CONTENT
-    )
-    lp.setMargins(50, 0, 0, 0)
-    snackbarLayout.layoutParams = lp
-   
-    snackbar.show()
-
-
-
-
-
-
-
     viewBinding.fab.setOnClickListener {
       val action = DashboardFragmentDirections.actionNavigationHomeToAddnoteFragment()
       findNavController().navigate(action)
@@ -130,7 +112,7 @@ class DashboardFragment : Fragment() {
     }
   }
 
-  fun loadRecyclerView(isGrid: Boolean) {
+  private fun loadRecyclerView(isGrid: Boolean) {
 
     if (isGrid) {
       viewBinding.rcv.apply {

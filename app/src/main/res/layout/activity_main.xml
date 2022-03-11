@@ -22,32 +22,41 @@
 
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".HomeActivity">
+    android:id="@+id/root"
+    android:layout_height="match_parent">
 
-    <com.airbnb.lottie.LottieAnimationView
-      android:id="@+id/animation_view"
+    <FrameLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:id="@+id/layout"
+      android:orientation="vertical"
+      tools:context=".HomeActivity">
 
-      app:lottie_autoPlay="true"
+      <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        app:lottie_autoPlay="true"
 
 
-      app:lottie_loop="true"
+        app:lottie_loop="true"
 
-      app:lottie_rawRes="@raw/metaanimation" />
+        app:lottie_rawRes="@raw/metaanimation" />
 
 
-    <androidx.appcompat.widget.AppCompatImageView
-      android:id="@+id/logo"
-      android:layout_width="200dp"
-      android:layout_height="200dp"
-      android:layout_gravity="center" />
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center" />
 
-  </FrameLayout>
+
+
+    </FrameLayout>
+
+  </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
