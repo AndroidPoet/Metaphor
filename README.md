@@ -128,7 +128,7 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate  
 
 
 ```kotlin
-
+//call this method after startView and add end view,Axis and boolean{forward and backward} as param
 startView.metaphorSharedAxisTransformationBetweenViews(
         endView,
         Metaphor.SharedX,
@@ -137,10 +137,6 @@ startView.metaphorSharedAxisTransformationBetweenViews(
   ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
 
 ```
-
-
-
-
 
 
 <p align="center">
@@ -174,11 +170,10 @@ metaphorMaterialFadeThroughInFragment()// inside onCreate  ////it also retuns th
 
 ```kotlin
 
-    metaphorMaterialFadeThroughBetweenViews(
-  root: CoordinatorLayout,
-  startView: View,
-  endView: View
-) ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
+//call this method after startView and add end view as param
+startView.metaphorMaterialFadeThroughBetweenViews(endView)
+
+ ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
 
 ```
 
