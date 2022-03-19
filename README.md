@@ -72,7 +72,13 @@ defined in the Material spec.
 metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated  ////it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
 
 //destination fragment		
-  metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())// inside onviewcreated ////it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
+
+//option1  
+metaphorStartFragmentWithoutAnimation(view)// inside onviewcreated ////it also retuns the object MaterialContainerTransform() 
+
+
+//option2 
+metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())// inside onviewcreated ////it also retuns the object MaterialContainerTransform() you can use .apply { } to change values
 
 
 ```
