@@ -5,8 +5,14 @@
       <map>
         <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/activity_host_activty.xml" value="0.2318840579710145" />
         <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/activity_main.xml" value="0.1612008072653885" />
+        <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/artist_linear_list.xml" value="0.3328125" />
+        <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/fragment_add_note.xml" value="0.19927536231884058" />
+        <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/fragment_artist_detail.xml" value="0.19927536231884058" />
         <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/fragment_home.xml" value="0.3328125" />
         <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/fragment_list.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/fragment_notifications.xml" value="0.3328125" />
+        <entry key="..\:/AndroidProjects/Metaphor/app/src/main/res/layout/item_artist.xml" value="0.3328125" />
         <entry key="..\:/AndroidProjects/MetaphorDemo/Metaphor/src/main/res/drawable/circle_gray.xml" value="0.1" />
         <entry key="..\:/AndroidProjects/MetaphorDemo/app/src/main/res/drawable/circle.xml" value="0.2425" />
         <entry key="..\:/AndroidProjects/MetaphorDemo/app/src/main/res/drawable/drawer_icon_tint.xml" value="0.2125" />
