@@ -87,11 +87,11 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated 
 
 ```kotlin
 
-   metaphorMaterialContainerTransformViewIntoAnotherView(
-        viewBinding.root,
-        viewBinding.fabDetail,
-        viewBinding.controlsPanel
-      ) //it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
+
+startView.metaphorMaterialContainerTransformViewIntoAnotherView(endView).apply {
+     }
+
+   //it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
 
 ```
 
@@ -129,13 +129,12 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate  
 
 ```kotlin
 
-     metaphorSharedAxisTransformationBetweenViews(
-        binding.root,
-        binding.img,
-        binding.img,
+startView.metaphorSharedAxisTransformationBetweenViews(
+        endView,
         Metaphor.SharedX,
         true
-      )  ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
+      )
+  ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
 
 ```
 
