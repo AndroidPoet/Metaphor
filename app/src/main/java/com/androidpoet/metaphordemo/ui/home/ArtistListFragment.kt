@@ -1,13 +1,11 @@
+
 package com.androidpoet.metaphordemo.ui.home
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AnimationUtils
-import android.view.animation.LayoutAnimationController
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -15,17 +13,12 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.androidpoet.metaphor.Metaphor
-import com.androidpoet.metaphor.metaphorMaterialFadeThroughBetweenViews
-import com.androidpoet.metaphor.metaphorMaterialSharedAxisInFragment
-import com.androidpoet.metaphor.metaphorStartFragmentMaterialContainerTransform
+import com.androidpoet.metaphor.metaphorStartFragmentWithoutAnimation
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentListBinding
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-
 
 class ArtistListFragment : Fragment() {
 
@@ -37,7 +30,7 @@ class ArtistListFragment : Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)
+    // metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)
     artistGridListAdapter = ArtistGridListAdapter(requireContext(), Glide.with(requireContext()))
     artistLinearListAdapter =
       ArtistLinearListAdapter(requireContext(), Glide.with(requireContext()))
@@ -85,26 +78,17 @@ class ArtistListFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     /**this method is used for MaterialContainerTransform it add some delay to load animation basically it will wait for recyclerview to be drawn   */
-    metaphorStartFragmentMaterialContainerTransform(view)
+    metaphorStartFragmentWithoutAnimation(viewBinding.rcv)
 
     loadRecyclerView(isGrid)
     viewBinding.reorder.setOnClickListener {
 
       if (isGrid) {
         isGrid = false
-//        metaphorMaterialFadeThroughBetweenViews(
-//          viewBinding.root,
-//          viewBinding.rcv,
-//          viewBinding.rcv
-//        )
         loadRecyclerView(isGrid)
       } else {
         isGrid = true
-//        metaphorMaterialFadeThroughBetweenViews(
-//          viewBinding.root,
-//          viewBinding.rcv,
-//          viewBinding.rcv
-//        )
+
         loadRecyclerView(isGrid)
       }
     }
@@ -118,9 +102,6 @@ class ArtistListFragment : Fragment() {
         layoutManager = GridLayoutManager(requireContext(), 2)
         adapter = artistGridListAdapter.apply {
           viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            val controller: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down)
-            layoutAnimation = controller
-            scheduleLayoutAnimation()
             submitList(sampleResponse())
           }
         }
@@ -131,15 +112,10 @@ class ArtistListFragment : Fragment() {
         layoutManager = LinearLayoutManager(requireContext())
         adapter = artistLinearListAdapter.apply {
           viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            val controller: LayoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down)
-            layoutAnimation = controller
-            scheduleLayoutAnimation()
             submitList(sampleResponse())
           }
         }
       }
     }
   }
-
-
 }

@@ -69,9 +69,7 @@ class NotificationsFragment : Fragment() {
     binding.SharedX.setOnClickListener {
       binding.img.visibility = View.GONE
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img)
-      metaphorSharedAxisTransformationBetweenViews(
-        binding.root,
-        binding.img,
+      binding.img.metaphorSharedAxisTransformationBetweenViews(
         binding.img,
         Metaphor.SharedX,
         true
@@ -81,9 +79,7 @@ class NotificationsFragment : Fragment() {
     binding.SharedY.setOnClickListener {
       binding.img.visibility = View.GONE
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img)
-      metaphorSharedAxisTransformationBetweenViews(
-        binding.root,
-        binding.img,
+      binding.img.metaphorSharedAxisTransformationBetweenViews(
         binding.img,
         Metaphor.SharedY,
         true
@@ -92,9 +88,7 @@ class NotificationsFragment : Fragment() {
     binding.SharedZ.setOnClickListener {
       binding.img.visibility = View.GONE
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img)
-      metaphorSharedAxisTransformationBetweenViews(
-        binding.root,
-        binding.img,
+      binding.img.metaphorSharedAxisTransformationBetweenViews(
         binding.img,
         Metaphor.SharedZ,
         true
@@ -102,20 +96,19 @@ class NotificationsFragment : Fragment() {
     }
 
     binding.materialFadeThrough.setOnClickListener {
-      binding.img2.visibility = View.GONE
+      // binding.img2.visibility = View.GONE
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img2)
-      metaphorMaterialFadeThroughBetweenViews(binding.root, binding.img2, binding.img2)
+      binding.img2.metaphorMaterialFadeThroughBetweenViews(binding.img2)
     }
 
     binding.materialFade.setOnClickListener {
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img3)
       if (binding.img3.visibility == View.INVISIBLE) {
         binding.materialFade.text = "Material Fade (Hide)"
-        metaphorShowViewWithMaterialFade(binding.root, binding.img3)
+        binding.img3.metaphorShowViewWithMaterialFade()
       } else if (binding.img3.visibility == View.VISIBLE) {
         binding.materialFade.text = "Material Fade (Show)"
-        metaphorHideViewWithMaterialFade(binding.root, binding.img3).apply {
-
+        binding.img3.metaphorHideViewWithMaterialFade().apply {
         }
       }
     }

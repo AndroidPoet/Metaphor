@@ -2,156 +2,151 @@
 package com.androidpoet.metaphor
 
 import android.animation.ValueAnimator
-import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.view.View
 import android.view.View.GONE
-import android.view.View.MeasureSpec
+import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.annotation.AttrRes
-import androidx.annotation.ColorInt
-import androidx.annotation.IdRes
 import androidx.annotation.Px
 import androidx.annotation.RequiresApi
 import androidx.core.animation.doOnEnd
-import androidx.core.content.res.use
 import androidx.core.graphics.applyCanvas
 import androidx.core.view.ViewCompat
 import androidx.core.view.drawToBitmap
-import androidx.core.view.forEach
-import androidx.dynamicanimation.animation.DynamicAnimation.ViewProperty
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
+import androidx.transition.ArcMotion
+import androidx.transition.TransitionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialFade
+import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.transition.MaterialSharedAxis
 
 /**
- * An extension function which creates/retrieves a [SpringAnimation] and stores it in the [View]s
- * tag.
+ * extension functions for View to make animations easier
  */
-public fun View.spring(
-  property: ViewProperty,
-  stiffness: Float = 200f,
-  damping: Float = 0.3f,
-  startVelocity: Float? = null
-): SpringAnimation {
-  val key = getKey(property)
-  var springAnim = getTag(key) as? SpringAnimation?
-  if (springAnim == null) {
-    springAnim = SpringAnimation(this, property).apply {
-      spring = SpringForce().apply {
-        this.dampingRatio = damping
-        this.stiffness = stiffness
-        startVelocity?.let { setStartVelocity(it) }
-      }
-    }
-    setTag(key, springAnim)
+
+/** This method will be used for fade FadeThrough animation between two views
+ * end view will be needed to perform a animation between them
+ * */
+public fun View.metaphorMaterialFadeThroughBetweenViews(
+  endView: View
+): MaterialFadeThrough {
+  val parent = parent as? ViewGroup
+  val fadeThrough = MaterialFadeThrough()
+  fadeThrough.duration = 1000L
+// Begin watching for changes in the View hierarchy.
+  if (parent != null) {
+    TransitionManager.beginDelayedTransition(parent, fadeThrough)
   }
-  return springAnim
+// Make any changes to the hierarchy to be animated by the fade through transition.
+  visibility = GONE
+  endView.visibility = VISIBLE
+  return fadeThrough
 }
 
-/**
- * Map from a [ViewProperty] to an `id` suitable to use as a [View] tag.
- */
-@IdRes
-private fun getKey(property: ViewProperty): Int {
-  return when (property) {
-    SpringAnimation.TRANSLATION_X -> R.id.metaphortranslation_x
-    SpringAnimation.TRANSLATION_Y -> R.id.metaphortranslation_y
-    SpringAnimation.TRANSLATION_Z -> R.id.metaphortranslation_z
-    SpringAnimation.SCALE_X -> R.id.metaphorscale_x
-    SpringAnimation.SCALE_Y -> R.id.metaphorscale_y
-    SpringAnimation.ROTATION -> R.id.metaphorrotation
-    SpringAnimation.ROTATION_X -> R.id.metaphorrotation_x
-    SpringAnimation.ROTATION_Y -> R.id.metaphorrotation_y
-    SpringAnimation.X -> R.id.metaphorx
-    SpringAnimation.Y -> R.id.metaphory
-    SpringAnimation.Z -> R.id.metaphorz
-    SpringAnimation.ALPHA -> R.id.metaphoralpha
-    SpringAnimation.SCROLL_X -> R.id.metaphorscroll_x
-    SpringAnimation.SCROLL_Y -> R.id.metaphorscroll_y
-    else -> throw IllegalAccessException("Unknown ViewProperty: $property")
+/** This method will be used for fade FadeThrough animation between two views
+ * end view will be needed to perform a animation between them
+ * */
+public fun View.metaphorMaterialFadeBetweenViews(): MaterialFade {
+  val fade = MaterialFade()
+  val parent = parent as? ViewGroup
+// Begin watching for changes in the View hierarchy.
+  if (parent != null) {
+    TransitionManager.beginDelayedTransition(parent, fade)
   }
+// Make any changes to the hierarchy to be animated by the fade through transition.
+  visibility = VISIBLE
+
+  return fade
 }
 
-/**
- * Retrieve a color from the current [android.content.res.Resources.Theme].
- */
-@ColorInt
-public fun Context.themeColor(
-  @AttrRes themeAttrId: Int
-): Int {
-  return obtainStyledAttributes(
-    intArrayOf(themeAttrId)
-  ).use {
-    it.getColor(0, Color.MAGENTA)
+/** This method will be used for fade MaterialContainerTransform animation between two views
+ * end view will be needed to perform a animation between them
+ * */
+public fun View.metaphorMaterialContainerTransformViewIntoAnotherView(
+
+  endView: View
+
+): MaterialContainerTransform {
+
+  val parent = parent as? ViewGroup
+  val transition = buildContainerTransformation()
+
+  transition.startView = this
+  transition.endView = endView
+
+  transition.addTarget(endView)
+
+  if (parent != null) {
+    TransitionManager.beginDelayedTransition(parent, transition)
   }
+  visibility = INVISIBLE
+  endView.visibility = VISIBLE
+  return transition
 }
 
-/**
- * Search this view and any children for a [ColorDrawable] `background` and return it's `color`,
- * else return `colorSurface`.
- */
-@ColorInt
-public fun View.descendantBackgroundColor(): Int {
-  val bg = backgroundColor()
-  if (bg != null) {
-    return bg
-  } else if (this is ViewGroup) {
-    forEach {
-      val childBg = descendantBackgroundColorOrNull()
-      if (childBg != null) {
-        return childBg
-      }
-    }
+public fun View.buildContainerTransformation(): MaterialContainerTransform =
+  MaterialContainerTransform().apply {
+    scrimColor = Color.TRANSPARENT
+    duration = 300
+    setPathMotion(ArcMotion())
   }
-  return context.themeColor(android.R.attr.colorBackground)
+
+/** This method will be used for fade MaterialContainerTransform animation between two views
+ * end view will be needed to perform a animation between them
+ * Axis is axis in which animation will be perform
+ * forward is bool function to perform animation in up or down
+ * */
+public fun View.metaphorSharedAxisTransformationBetweenViews(
+  endView: View,
+  Axis: Int,
+  forward: Boolean
+): MaterialSharedAxis {
+  val parent = parent as? ViewGroup
+  // Set up a new MaterialSharedAxis in the specified axis and direction.
+  val sharedAxis = MaterialSharedAxis(Axis, forward)
+
+// Begin watching for changes in the View hierarchy.
+  if (parent != null) {
+    TransitionManager.beginDelayedTransition(parent, sharedAxis)
+  }
+
+// Make any changes to the hierarchy to be animated by the shared axis transition.
+  visibility = GONE
+  endView.visibility = VISIBLE
+  return sharedAxis
 }
 
-@ColorInt
-private fun View.descendantBackgroundColorOrNull(): Int? {
-  val bg = backgroundColor()
-  if (bg != null) {
-    return bg
-  } else if (this is ViewGroup) {
-    forEach {
-      val childBg = backgroundColor()
-      if (childBg != null) {
-        return childBg
-      }
-    }
+/** Show view with MaterialFade */
+public fun View.metaphorShowViewWithMaterialFade(): MaterialFade {
+  val parent = parent as? ViewGroup
+  val materialFade = MaterialFade().apply {
+    duration = 550L
   }
-  return null
+  if (parent != null) {
+    TransitionManager.beginDelayedTransition(parent, materialFade)
+  }
+  visibility = VISIBLE
+  return materialFade
 }
 
-/**
- * Check if this [View]'s `background` is a [ColorDrawable] and if so, return it's `color`,
- * otherwise `null`.
- */
-@ColorInt
-public fun View.backgroundColor(): Int? {
-  val bg = background
-  if (bg is ColorDrawable) {
-    return bg.color
+/** Hide view with MaterialFade */
+public fun View.metaphorHideViewWithMaterialFade(): MaterialFade {
+  val parent = parent as? ViewGroup
+  val materialFade = MaterialFade().apply {
+    duration = 550L
   }
-  return null
-}
-
-/**
- * Walk up from a [View] looking for an ancestor with a given `id`.
- */
-public fun View.findAncestorById(@IdRes ancestorId: Int): View {
-  return when {
-    id == ancestorId -> this
-    parent is View -> (parent as View).findAncestorById(ancestorId)
-    else -> throw IllegalArgumentException("$ancestorId not a valid ancestor")
+  if (parent != null) {
+    TransitionManager.beginDelayedTransition(parent, materialFade)
   }
+  visibility = INVISIBLE
+  return materialFade
 }
 
 /**
@@ -172,8 +167,8 @@ public fun BottomNavigationView.show() {
   // laid out yet, need to do this manually.
   if (!isLaidOut) {
     measure(
-      MeasureSpec.makeMeasureSpec(parent.width, MeasureSpec.EXACTLY),
-      MeasureSpec.makeMeasureSpec(parent.height, MeasureSpec.AT_MOST)
+      View.MeasureSpec.makeMeasureSpec(parent.width, View.MeasureSpec.EXACTLY),
+      View.MeasureSpec.makeMeasureSpec(parent.height, View.MeasureSpec.AT_MOST)
     )
     layout(parent.left, parent.height - measuredHeight, parent.right, parent.height)
   }
