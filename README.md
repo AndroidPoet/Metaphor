@@ -212,11 +212,11 @@ metaphorMaterialFadeInFragment()// inside onCreate  ////it also retuns the objec
 ```kotlin
 
   //ShowView
-   metaphorShowViewWithMaterialFade(root: CoordinatorLayout, view: View)  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
+  startView.metaphorHideViewWithMaterialFade() ////it also retuns the object of MaterialFade () you can use .apply { } to change values
 
 //Hide View
 
-metaphorHideViewWithMaterialFade(root: CoordinatorLayout, view: View)  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
+ startView.metaphorHideViewWithMaterialFade()  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
 
 ```
 
