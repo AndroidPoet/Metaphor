@@ -2,60 +2,14 @@
 package com.androidpoet.metaphor
 
 import android.app.Activity
-import android.content.Context
-import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.view.View
 import android.view.Window
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import androidx.transition.ArcMotion
-import androidx.transition.TransitionManager
-import com.google.android.material.transition.MaterialContainerTransform
-import com.google.android.material.transition.MaterialFadeThrough
-import com.google.android.material.transition.MaterialSharedAxis
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
-
-// get currant Fragment from FragmentManager
-public fun AppCompatActivity.currentFragmentFragmentManager(): Fragment {
-  val fragments: List<Fragment> = supportFragmentManager.fragments
-  return fragments[fragments.size - 1]
-}
-
-// get currant Fragment from FragmentManager
-public fun AppCompatActivity.currentFragmentFragment(): Fragment? {
-  val navHostFragment: Fragment? = supportFragmentManager.primaryNavigationFragment
-  val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
-  return fragment
-}
-
-// get currant Fragment ChildFragmentManager
-public fun AppCompatActivity.currentFragmentChildFragmentManager(int: Int): Fragment? {
-
-  return supportFragmentManager.findFragmentById(int)
-    ?.childFragmentManager
-    ?.fragments
-    ?.first()
-}
-
-// add  Fragment FragmentManager
-public fun AppCompatActivity.addFragment(frameId: Int, fragment: Fragment, tag: String) {
-  supportFragmentManager.commit {
-    add(frameId, fragment, tag)
-  }
-}
-
-// add  Fragment FragmentManager
-public fun AppCompatActivity.replaceFragment(frameId: Int, fragment: Fragment, tag: String) {
-  supportFragmentManager.commit {
-    replace(frameId, fragment, tag)
-  }
-}
 
 // Perform SharedAxis  animation
 public fun AppCompatActivity.MaterialSharedAxisAnimation(
@@ -179,90 +133,4 @@ public fun Activity.metaphorMaterialFadeThroughDestinationActivity() {
   // Allow Activity A’s exit transition to play at the same time as this Activity’s
   // enter transition instead of playing them sequentially.
   window.allowEnterTransitionOverlap = true
-}
-
-// ////Views//////
-/** This method will be used for fade FadeThrough animation between two views
- * it will take root view basically CoordinatorLayout
- * start view and end view will be needed to perform a animation between them
- * */
-public fun Activity.metaphorMaterialFadeThroughBetweenViews(
-  root: CoordinatorLayout,
-  startView: View,
-  endView: View
-): MaterialFadeThrough {
-  val fadeThrough = MaterialFadeThrough()
-// Begin watching for changes in the View hierarchy.
-  TransitionManager.beginDelayedTransition(root, fadeThrough)
-// Make any changes to the hierarchy to be animated by the fade through transition.
-  startView.visibility = View.GONE
-  endView.visibility = View.VISIBLE
-  return fadeThrough
-}
-
-/** This method will be used for fade MaterialContainerTransform animation between two views
- * it will take root view basically CoordinatorLayout
- * start view and end view will be needed to perform a animation between them
- * */
-public fun Activity.metaphorMaterialContainerTransformViewIntoAnotherView(
-  root: CoordinatorLayout,
-  startView: View,
-  endView: View
-
-):MaterialContainerTransform{
-  val transition = buildContainerTransformation()
-
-  transition.startView = startView
-  transition.endView = endView
-
-  transition.addTarget(endView)
-
-  TransitionManager.beginDelayedTransition(root, transition)
-  startView.visibility = View.INVISIBLE
-  endView.visibility = View.VISIBLE
-  return transition
-}
-
-/**
- * builds MaterialContainerTransform object
- * */
-
-public fun Activity.buildContainerTransformation(): MaterialContainerTransform =
-  MaterialContainerTransform().apply {
-    scrimColor = Color.TRANSPARENT
-    duration = 300
-    setPathMotion(ArcMotion())
-    interpolator = FastOutSlowInInterpolator()
-    fadeMode = MaterialContainerTransform.FADE_MODE_IN
-  }
-
-/** This method will be used for fade MaterialContainerTransform animation between two views
- * it will take root view basically CoordinatorLayout
- * start view and end view will be needed to perform a animation between them
- * Axis is axis in which animation will be perform
- * forward is bool function to perform animation in up or down
- * */
-public fun Activity.metaphorSharedAxisTransformationBetweenViews(
-  root: CoordinatorLayout,
-  startView: View,
-  endView: View,
-  Axis: Int,
-  forward: Boolean
-) :MaterialSharedAxis{
-  // Set up a new MaterialSharedAxis in the specified axis and direction.
-  val sharedAxis = MaterialSharedAxis(Axis, forward)
-
-// Begin watching for changes in the View hierarchy.
-  TransitionManager.beginDelayedTransition(root, sharedAxis)
-
-// Make any changes to the hierarchy to be animated by the shared axis transition.
-  startView.visibility = View.GONE
-  endView.visibility = View.VISIBLE
-  return sharedAxis
-}
-
-public inline fun <reified T : Activity> Context.openActivity(noinline extra: Intent.() -> Unit) {
-  val intent = Intent(this, T::class.java)
-  intent.extra()
-  startActivity(intent)
 }

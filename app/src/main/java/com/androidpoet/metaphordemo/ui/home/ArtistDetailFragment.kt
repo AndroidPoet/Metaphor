@@ -62,20 +62,16 @@ class ArtistDetailFragment : Fragment() {
     )
 
     viewBinding.fabDetail.setOnClickListener {
-      metaphorMaterialContainerTransformViewIntoAnotherView(
-        viewBinding.root,
-        viewBinding.fabDetail,
-        viewBinding.controlsPanel
-      )
+
+      it.metaphorMaterialContainerTransformViewIntoAnotherView(viewBinding.controlsPanel)
     }
 
     viewBinding.controlsPanel.setOnClickListener {
       // one line of code to transform fab button to CardView
-      metaphorMaterialContainerTransformViewIntoAnotherView(
-        viewBinding.root,
-        viewBinding.controlsPanel,
-        viewBinding.fabDetail
-      )
+      // it is reference for the currant view
+      // parmas[endView]you need to pass end view for the transformation
+      it.metaphorMaterialContainerTransformViewIntoAnotherView(viewBinding.fabDetail).apply {
+      }
     }
 
     metaphorMaterialSharedAxisInFragment(
