@@ -76,7 +76,7 @@ metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated 
 //destination fragment		
 
 //option1  
-metaphorStartFragmentWithoutAnimation(view)// inside onviewcreated ////it also retuns the object MaterialContainerTransform() 
+metaphorStartFragmentWithoutAnimation(view)// inside onviewcreated /it will not created any animation while reenter in fragment
 
 
 //option2 
