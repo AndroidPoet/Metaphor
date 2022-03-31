@@ -104,8 +104,7 @@ metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toStri
 ```kotlin
 
 
-startView.metaphorMaterialContainerTransformViewIntoAnotherView(endView).apply {
-     }
+startView.metaphorMaterialContainerTransformViewIntoAnotherView(endView)
 
    //it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
 
