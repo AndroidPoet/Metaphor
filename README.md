@@ -241,7 +241,7 @@ metaphorMaterialFadeInFragment()// inside onCreate  ////it also retuns the objec
 
 </p>
 
-images credit=https://unsplash.com/
+images credit:https://unsplash.com/
 
 
 ## Find this repository useful? :heart:
