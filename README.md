@@ -342,6 +342,7 @@ images credit:https://unsplash.com/
 Support it by joining __[stargazers](https://github.com/AndroidPoet/Metaphor/stargazers)__ for this repository. :star: <br>
 Also, __[follow me](https://github.com/AndroidPoet)__ on GitHub for cool projects! 🤩
 
+
 # License
 ```xml
 Copyright 2022 AndroidPoet (Ranbir Singh)
