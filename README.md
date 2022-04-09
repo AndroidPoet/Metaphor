@@ -115,7 +115,8 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 ## Container transform How to use in views
 
 ```kotlin
-//call this method with startView and add end view,Axis and set Animation you want to perform
+//call this method with startView and add end view set Animation you want to perform
+
 
 viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(it)
@@ -181,7 +182,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ## Shared axis How to use in views
 
 ```kotlin
-//call this method with startView and add end view,Axis and set Animation you want to perform
+//call this method with startView and add end view set Animation you want to perform
+
 viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(it)
         .setDuration(300)
@@ -246,7 +248,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ```kotlin
 
-//call this method with startView and add end view,Axis and set Animation you want to perform
+//call this method with startView and add end view set Animation you want to perform
 
 
 viewBinding.fabDetail.setOnClickListener {
@@ -313,7 +315,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ```kotlin
 
-//call this method with startView and add end view,Axis and set Animation you want to perform
+//call this method with startView and add end view set Animation you want to perform
 
 viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(it)
