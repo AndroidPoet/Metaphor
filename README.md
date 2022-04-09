@@ -315,8 +315,6 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ```kotlin
 
 //call this method with startView and add end view,Axis and set Animation you want to perform
-startView.metaphorMaterialFadeThroughBetweenViews(endView)
-
 
 viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(it)
