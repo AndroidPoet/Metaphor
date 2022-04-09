@@ -189,7 +189,6 @@ viewBinding.fabDetail.setOnClickListener {
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
-        .setMotion(MaterialArcMotion())
         .build()
     meta.animate()
 }
@@ -256,7 +255,6 @@ viewBinding.fabDetail.setOnClickListener {
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
-        .setMotion(MaterialArcMotion())
         .build()
     meta.animate()
 }
@@ -322,7 +320,7 @@ viewBinding.fabDetail.setOnClickListener {
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
-        .setMotion(MaterialArcMotion())
+ 
         .build()
     meta.animate()
 }
