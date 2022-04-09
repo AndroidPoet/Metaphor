@@ -1,22 +1,3 @@
-/*
- *
- *  * Copyright 2022 AndroidPoet (Ranbir Singh)
- *  *
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *
- *  * http://www.apache.org/licenses/LICENSE-2.0
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License.
- *
- *
- */
-
 
 package com.androidpoet.metaphor
 
@@ -28,7 +9,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.view.View
 import android.view.View.GONE
-import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
@@ -37,137 +17,103 @@ import androidx.annotation.RequiresApi
 import androidx.core.animation.doOnEnd
 import androidx.core.graphics.applyCanvas
 import androidx.core.view.ViewCompat
-import androidx.core.view.drawToBitmap
-import androidx.transition.ArcMotion
+import androidx.transition.Transition
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.transition.MaterialContainerTransform
-import com.google.android.material.transition.MaterialFade
-import com.google.android.material.transition.MaterialFadeThrough
 import com.google.android.material.transition.MaterialSharedAxis
 
-/**
- * extension functions for View to make animations easier
- */
+/** applies Metaphor form attributes to a View instance. */
+@JvmSynthetic
+public fun View.applyMetaphor(metaphor: MetaphorView) {
 
-/** This method will be used for fade FadeThrough animation between two views
- * end view will be needed to perform a animation between them
- * */
-public fun View.metaphorMaterialFadeThroughBetweenViews(
-  endView: View
-): MaterialFadeThrough {
-  val parent = parent as? ViewGroup
-  val fadeThrough = MaterialFadeThrough()
-  fadeThrough.duration = 1000L
-// Begin watching for changes in the View hierarchy.
-  if (parent != null) {
-    TransitionManager.beginDelayedTransition(parent, fadeThrough)
+  when (metaphor.animation) {
+    MetaphorAnimation.ContainerTransform -> {
+      val transition = buildContainerTransform()
+      transition.scrimColor = Color.TRANSPARENT
+      transition.startView = this
+      transition.endView = metaphor.endView
+      transition.duration = metaphor.duration
+      transition.setPathMotion(metaphor.motion)
+      metaphor.endView?.let { transition.addTarget(it) }
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+    MetaphorAnimation.MaterialFadeThrough -> {
+
+      val transition = buildMaterialFadeThrough()
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+
+    MetaphorAnimation.MaterialFade -> {
+      val transition = buildMaterialFade()
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+    MetaphorAnimation.SharedAxisXForward -> {
+
+      val transition = buildSharedAxis(MaterialSharedAxis.X, true)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+
+    MetaphorAnimation.SharedAxisYForward -> {
+
+      val transition = buildSharedAxis(MaterialSharedAxis.Y, true)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+
+    MetaphorAnimation.SharedAxisZForward -> {
+
+      val transition = buildSharedAxis(MaterialSharedAxis.Z, true)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+    MetaphorAnimation.SharedAxisXBackward -> {
+      val transition = buildSharedAxis(MaterialSharedAxis.X, false)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+
+    MetaphorAnimation.SharedAxisYBackward -> {
+
+      val transition = buildSharedAxis(MaterialSharedAxis.Y, false)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+
+    MetaphorAnimation.SharedAxisZBackward -> {
+      val transition = buildSharedAxis(MaterialSharedAxis.Z, false)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+
+    MetaphorAnimation.MaterialElevationScale -> {
+      val transition = buildMaterialElevationScale(false)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+    MetaphorAnimation.MaterialElevationScaleGrow -> {
+      val transition = buildMaterialElevationScale(true)
+      applyAnimation(metaphor.endView, transition, metaphor)
+    }
+    else -> {}
   }
-// Make any changes to the hierarchy to be animated by the fade through transition.
-  visibility = GONE
-  endView.visibility = VISIBLE
-  return fadeThrough
 }
 
-/** This method will be used for fade FadeThrough animation between two views
- * end view will be needed to perform a animation between them
- * */
-public fun View.metaphorMaterialFadeBetweenViews(): MaterialFade {
-  val fade = MaterialFade()
-  val parent = parent as? ViewGroup
-// Begin watching for changes in the View hierarchy.
-  if (parent != null) {
-    TransitionManager.beginDelayedTransition(parent, fade)
-  }
-// Make any changes to the hierarchy to be animated by the fade through transition.
-  visibility = VISIBLE
+/** applies Animation form attributes to a View instance. */
+@JvmSynthetic
+internal fun View.applyAnimation(
+  endView: View?,
+  transition: Transition,
+  metaphor: MetaphorView
+) {
 
-  return fade
-}
-
-/** This method will be used for fade MaterialContainerTransform animation between two views
- * end view will be needed to perform a animation between them
- * */
-public fun View.metaphorMaterialContainerTransformViewIntoAnotherView(
-
-  endView: View
-
-): MaterialContainerTransform {
-
-  val parent = parent as? ViewGroup
-  val transition = buildContainerTransformation()
-
-  transition.startView = this
-  transition.endView = endView
-
-  transition.addTarget(endView)
-
-  if (parent != null) {
-    TransitionManager.beginDelayedTransition(parent, transition)
-  }
-  visibility = INVISIBLE
-  endView.visibility = VISIBLE
-  return transition
-}
-
-public fun View.buildContainerTransformation(): MaterialContainerTransform =
-  MaterialContainerTransform().apply {
-    scrimColor = Color.TRANSPARENT
-    duration = 300
-    setPathMotion(ArcMotion())
-  }
-
-/** This method will be used for fade MaterialContainerTransform animation between two views
- * end view will be needed to perform a animation between them
- * Axis is axis in which animation will be perform
- * forward is bool function to perform animation in up or down
- * */
-public fun View.metaphorSharedAxisTransformationBetweenViews(
-  endView: View,
-  Axis: Int,
-  forward: Boolean
-): MaterialSharedAxis {
   val parent = parent as? ViewGroup
   // Set up a new MaterialSharedAxis in the specified axis and direction.
-  val sharedAxis = MaterialSharedAxis(Axis, forward)
 
 // Begin watching for changes in the View hierarchy.
   if (parent != null) {
-    TransitionManager.beginDelayedTransition(parent, sharedAxis)
+    TransitionManager.beginDelayedTransition(parent, transition)
   }
 
 // Make any changes to the hierarchy to be animated by the shared axis transition.
   visibility = GONE
-  endView.visibility = VISIBLE
-  return sharedAxis
+  if (endView != null) {
+    endView.visibility = VISIBLE
+  }
 }
-
-/** Show view with MaterialFade */
-public fun View.metaphorShowViewWithMaterialFade(): MaterialFade {
-  val parent = parent as? ViewGroup
-  val materialFade = MaterialFade().apply {
-    duration = 550L
-  }
-  if (parent != null) {
-    TransitionManager.beginDelayedTransition(parent, materialFade)
-  }
-  visibility = VISIBLE
-  return materialFade
-}
-
-/** Hide view with MaterialFade */
-public fun View.metaphorHideViewWithMaterialFade(): MaterialFade {
-  val parent = parent as? ViewGroup
-  val materialFade = MaterialFade().apply {
-    duration = 550L
-  }
-  if (parent != null) {
-    TransitionManager.beginDelayedTransition(parent, materialFade)
-  }
-  visibility = INVISIBLE
-  return materialFade
-}
-
 /**
  * Potentially animate showing a [BottomNavigationView].
  *

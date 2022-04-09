@@ -1,22 +1,3 @@
-/*
- *
- *  * Copyright 2022 AndroidPoet (Ranbir Singh)
- *  *
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *
- *  * http://www.apache.org/licenses/LICENSE-2.0
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License.
- *
- *
- */
-
 
 package com.androidpoet.metaphordemo.ui.home
 
@@ -30,10 +11,9 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.androidpoet.metaphor.Metaphor
-import com.androidpoet.metaphor.metaphorDestinationFragmentMaterialContainerTransform
-import com.androidpoet.metaphor.metaphorMaterialContainerTransformViewIntoAnotherView
-import com.androidpoet.metaphor.metaphorMaterialSharedAxisInFragment
+import com.androidpoet.metaphor.MetaphorAnimation
+import com.androidpoet.metaphor.MetaphorFragment
+import com.androidpoet.metaphor.MetaphorView
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentArtistDetailBinding
 import com.bumptech.glide.Glide
@@ -42,6 +22,7 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.google.android.material.transition.MaterialArcMotion
 
 class ArtistDetailFragment : Fragment() {
 
@@ -70,8 +51,16 @@ class ArtistDetailFragment : Fragment() {
 
     /** This is the method to perform MaterialContainerTransform which we need to call inside onViewCreated
      * it is important to call this method inside onViewCreated */
-    metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())
+    // metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())
 
+    val metaphor = MetaphorFragment.Builder(this)
+      .setDuration(300)
+      .setView(view)
+      .setTransitionName(args.data.pos.toString())
+      .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+      .setMotion(MaterialArcMotion())
+      .build()
+    metaphor.animate()
     viewBinding.toolBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24); // your drawable
     viewBinding.toolBar.setNavigationOnClickListener(
       View.OnClickListener {
@@ -81,22 +70,37 @@ class ArtistDetailFragment : Fragment() {
     )
 
     viewBinding.fabDetail.setOnClickListener {
-
-      it.metaphorMaterialContainerTransformViewIntoAnotherView(viewBinding.controlsPanel)
+      val meta = MetaphorView.Builder(it)
+        .setDuration(300)
+        .setEndView(viewBinding.controls)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setMotion(MaterialArcMotion())
+        .build()
+      meta.animate()
     }
 
-    viewBinding.controlsPanel.setOnClickListener {
+    viewBinding.controls.setOnClickListener {
       // one line of code to transform fab button to CardView
       // it is reference for the currant view
       // parmas[endView]you need to pass end view for the transformation
-      it.metaphorMaterialContainerTransformViewIntoAnotherView(viewBinding.fabDetail).apply {
-      }
-    }
+      val meta = MetaphorView.Builder(it)
+        .setDuration(300)
+        .setEndView(viewBinding.fabDetail)
+        .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+        .setMotion(MaterialArcMotion())
+        .build()
+      meta.animate()
 
-    metaphorMaterialSharedAxisInFragment(
-      Metaphor.SharedX,
-      true
-    )
+//      val balloon = metaphorView(it) {
+//        setDuration(300)
+//        setEndView(viewBinding.fabDetail)
+//        setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+//        setMotion(MaterialArcMotion())
+//        build()
+//
+//      }
+//      balloon.animate()
+    }
 
     // load image with palette
     Glide.with(requireContext())

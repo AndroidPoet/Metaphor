@@ -1,22 +1,3 @@
-/*
- *
- *  * Copyright 2022 AndroidPoet (Ranbir Singh)
- *  *
- *  * Licensed under the Apache License, Version 2.0 (the "License");
- *  * you may not use this file except in compliance with the License.
- *  * You may obtain a copy of the License at
- *  *
- *  * http://www.apache.org/licenses/LICENSE-2.0
- *  *
- *  * Unless required by applicable law or agreed to in writing, software
- *  * distributed under the License is distributed on an "AS IS" BASIS,
- *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  * See the License for the specific language governing permissions and
- *  * limitations under the License.
- *
- *
- */
-
 
 package com.androidpoet.metaphordemo.ui.notifications
 
@@ -27,15 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import com.androidpoet.metaphor.Metaphor
-import com.androidpoet.metaphor.metaphorHideViewWithMaterialFade
-import com.androidpoet.metaphor.metaphorMaterialFadeInFragment
-import com.androidpoet.metaphor.metaphorMaterialFadeThroughBetweenViews
-import com.androidpoet.metaphor.metaphorSharedAxisTransformationBetweenViews
-import com.androidpoet.metaphor.metaphorShowViewWithMaterialFade
+import com.androidpoet.metaphor.MetaphorAnimation
+import com.androidpoet.metaphor.MetaphorFragment
+import com.androidpoet.metaphor.MetaphorView
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentNotificationsBinding
 import com.bumptech.glide.Glide
+import com.google.android.material.transition.MaterialArcMotion
 import java.util.Random
 
 class NotificationsFragment : Fragment() {
@@ -62,7 +41,12 @@ class NotificationsFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
-    metaphorMaterialFadeInFragment().duration = 200L
+
+    val metaphor = MetaphorFragment.Builder(this)
+      .setDuration(300)
+      .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+      .build()
+    metaphor.animate()
   }
 
   override fun onCreateView(
@@ -87,49 +71,56 @@ class NotificationsFragment : Fragment() {
 
     binding.SharedX.setOnClickListener {
       binding.img.visibility = View.GONE
-      Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img)
-      binding.img.metaphorSharedAxisTransformationBetweenViews(
-        binding.img,
-        Metaphor.SharedX,
-        true
-      )
+      val meta = MetaphorView.Builder(binding.img)
+        .setDuration(300)
+        .setEndView(binding.img)
+        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .setMotion(MaterialArcMotion())
+        .build()
+      meta.animate()
     }
 
     binding.SharedY.setOnClickListener {
       binding.img.visibility = View.GONE
-      Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img)
-      binding.img.metaphorSharedAxisTransformationBetweenViews(
-        binding.img,
-        Metaphor.SharedY,
-        true
-      )
+
+      val meta = MetaphorView.Builder(binding.img)
+        .setDuration(300)
+        .setEndView(binding.img)
+        .setMetaphorAnimation(MetaphorAnimation.SharedAxisYForward)
+        .build()
+      meta.animate()
     }
     binding.SharedZ.setOnClickListener {
       binding.img.visibility = View.GONE
-      Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img)
-      binding.img.metaphorSharedAxisTransformationBetweenViews(
-        binding.img,
-        Metaphor.SharedZ,
-        true
-      )
+
+      val meta = MetaphorView.Builder(binding.img)
+        .setDuration(300)
+        .setEndView(binding.img)
+        .setMetaphorAnimation(MetaphorAnimation.SharedAxisZForward)
+        .build()
+      meta.animate()
     }
 
     binding.materialFadeThrough.setOnClickListener {
-      // binding.img2.visibility = View.GONE
-      Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img2)
-      binding.img2.metaphorMaterialFadeThroughBetweenViews(binding.img2)
+      binding.img2.visibility = View.GONE
+      val meta = MetaphorView.Builder(binding.img2)
+        .setDuration(300)
+        .setEndView(binding.img2)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .build()
+      meta.animate()
     }
 
     binding.materialFade.setOnClickListener {
+      binding.img3.visibility = View.GONE
+
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img3)
-      if (binding.img3.visibility == View.INVISIBLE) {
-        binding.materialFade.text = "Material Fade (Hide)"
-        binding.img3.metaphorShowViewWithMaterialFade()
-      } else if (binding.img3.visibility == View.VISIBLE) {
-        binding.materialFade.text = "Material Fade (Show)"
-        binding.img3.metaphorHideViewWithMaterialFade().apply {
-        }
-      }
+      val meta = MetaphorView.Builder(binding.img3)
+        .setDuration(300)
+        .setEndView(binding.img3)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .build()
+      meta.animate()
     }
   }
 
