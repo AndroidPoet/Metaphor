@@ -21,18 +21,17 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+  xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/root"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-      android:fitsSystemWindows="true"
-        android:background="?android:attr/colorBackground">
+  <androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:fitsSystemWindows="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
 
             android:id="@+id/parent"
             android:layout_width="match_parent"
@@ -101,7 +100,7 @@
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/controls_panel"
+                android:id="@+id/controls"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/color_dot_first"
@@ -188,19 +187,19 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@color/color_dot_first"
-                app:fabSize="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.669"
-                app:srcCompat="@drawable/ic_outline_play_arrow_24" />
+      <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/color_dot_first"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.669"
+        app:srcCompat="@drawable/ic_outline_play_arrow_24" />
 
 
 

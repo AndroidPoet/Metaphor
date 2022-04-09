@@ -1,9 +1,9 @@
-<h1 align="center">Metaphor </h1></br>
+<h1 align="center">Metaphor </h1>
 
 <p align="center">
 Metaphor is library to easily add Material Motion animations.
 </p>
-</br>
+
 
 
 
@@ -25,7 +25,7 @@ Metaphor is library to easily add Material Motion animations.
 </p> <br>
   
 	
-</p> <br>
+
 
 
 
@@ -70,26 +70,40 @@ defined in the Material spec.
 
 ## Container transform How to use In Fragments
 
-
 ```kotlin
 
-  //Start Fragments onclick// 
-  val extras = FragmentNavigatorExtras(view to item.pos.toString())
-        val action = ArtistListFragmentDirections.navToCharacterDetailFragment(item)
-        findNavController().navigate(action, extras)
-		
+//Start Fragments onclick// 
+val extras = FragmentNavigatorExtras(view to item.pos.toString())
+val action = ArtistListFragmentDirections.navToCharacterDetailFragment(item)
+findNavController().navigate(action, extras)
+
 //start fragment 
-metaphorStartFragmentMaterialContainerTransform(view)// inside on onviewcreated  ////it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
+// inside on onViewCreated  
+override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    val meta = MetaphorFragment.Builder(fragment)
+        .setMetaphorAnimation(MetaphorAnimation.Hold)
+        .setView(view)
+        .build()
+    meta.animate()
+
+}
+
 
 //destination fragment		
 
-//option1  
-metaphorStartFragmentWithoutAnimation(view)// inside onviewcreated /it will not create any animation while reenter in fragment
-
-
-//option2 
-metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())// inside onviewcreated ////it also retuns the object MaterialContainerTransform() you can use .apply { } to change values
-
+// inside on onViewCreated  
+override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    super.onViewCreated(view, savedInstanceState)
+    val metaphor = MetaphorFragment.Builder(fragment)
+        .setDuration(300)
+        .setView(view)
+        .setTransitionName(args.data.pos.toString())
+        .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+        .setMotion(MaterialArcMotion())
+        .build()
+    metaphor.animate()
+}
 
 ```
 
@@ -100,13 +114,20 @@ metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toStri
 
 ## Container transform How to use in views
 
-
 ```kotlin
 
 
-startView.metaphorMaterialContainerTransformViewIntoAnotherView(endView)
+viewBinding.fabDetail.setOnClickListener {
+    val meta = MetaphorView.Builder(it)
+        .setDuration(300)
+        .setEndView(viewBinding.controls)
+        .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+        .setMotion(MaterialArcMotion())
+        .build()
+    meta.animate()
+}
 
-   //it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
+//it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
 
 ```
 
@@ -125,11 +146,29 @@ startView.metaphorMaterialContainerTransformViewIntoAnotherView(endView)
 		
 //start fragment 
 
-metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside on onCreate   ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // FadeThrough inside fragment
+
+    val metaphor = MetaphorFragment.Builder(this)
+        .setDuration(300)
+        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .build()
+    metaphor.animate()
+}
 
 //destination fragment		
 
-metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate   ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // FadeThrough inside fragment
+
+    val metaphor = MetaphorFragment.Builder(this)
+        .setDuration(300)
+        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .build()
+    metaphor.animate()
+}
 
 
 ```
@@ -141,15 +180,19 @@ metaphorMaterialSharedAxisInFragment(Metaphor.SharedX, true)// inside onCreate  
 
 ## Shared axis How to use in views
 
-
 ```kotlin
-//call this method after startView and add end view,Axis and boolean{forward and backward} as param
-startView.metaphorSharedAxisTransformationBetweenViews(
-        endView,
-        Metaphor.SharedX,
-        true
-      )
-  ////it also retuns the object of MaterialSharedAxis() you can use .apply { } to change values
+//call this method with startView and add end view,Axis and set Animation you want to perform
+viewBinding.fabDetail.setOnClickListener {
+    val meta = MetaphorView.Builder(it)
+        .setDuration(300)
+        .setEndView(viewBinding.controls)
+        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .setMotion(MaterialArcMotion())
+        .build()
+    meta.animate()
+}
+
+
 
 ```
 
@@ -166,11 +209,29 @@ startView.metaphorSharedAxisTransformationBetweenViews(
 		
 //start fragment 
 
-metaphorMaterialFadeThroughInFragment()// inside on onCreate  ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // FadeThrough inside fragment
+
+    val metaphor = MetaphorFragment.Builder(this)
+        .setDuration(300)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .build()
+    metaphor.animate()
+}
  
 //destination fragment		
 
-metaphorMaterialFadeThroughInFragment()// inside onCreate  ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // FadeThrough inside fragment
+
+    val metaphor = MetaphorFragment.Builder(this)
+        .setDuration(300)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .build()
+    metaphor.animate()
+}
 
 
 ```
@@ -185,10 +246,20 @@ metaphorMaterialFadeThroughInFragment()// inside onCreate  ////it also retuns th
 
 ```kotlin
 
-//call this method after startView and add end view as param
+//call this method with startView and add end view,Axis and set Animation you want to perform
 startView.metaphorMaterialFadeThroughBetweenViews(endView)
 
- ////it also retuns the object of MaterialFadeThrough () you can use .apply { } to change values
+
+viewBinding.fabDetail.setOnClickListener {
+    val meta = MetaphorView.Builder(it)
+        .setDuration(300)
+        .setEndView(viewBinding.controls)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMotion(MaterialArcMotion())
+        .build()
+    meta.animate()
+}
+
 
 ```
 
@@ -206,12 +277,29 @@ startView.metaphorMaterialFadeThroughBetweenViews(endView)
 ```kotlin
 		
 //start fragment 
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // FadeThrough inside fragment
 
-metaphorMaterialFadeInFragment()// inside on onCreate  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
+    val metaphor = MetaphorFragment.Builder(this)
+        .setDuration(300)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .build()
+    metaphor.animate()
+}
 
 //destination fragment		
 
-metaphorMaterialFadeInFragment()// inside onCreate  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    // FadeThrough inside fragment
+
+    val metaphor = MetaphorFragment.Builder(this)
+        .setDuration(300)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .build()
+    metaphor.animate()
+}
 
 
 ```
@@ -226,12 +314,21 @@ metaphorMaterialFadeInFragment()// inside onCreate  ////it also retuns the objec
 
 ```kotlin
 
-  //ShowView
-  startView.metaphorShowViewWithMaterialFade() ////it also retuns the object of MaterialFade () you can use .apply { } to change values
+//call this method with startView and add end view,Axis and set Animation you want to perform
+startView.metaphorMaterialFadeThroughBetweenViews(endView)
 
-//Hide View
 
- startView.metaphorHideViewWithMaterialFade()  ////it also retuns the object of MaterialFade () you can use .apply { } to change values
+viewBinding.fabDetail.setOnClickListener {
+    val meta = MetaphorView.Builder(it)
+        .setDuration(300)
+        .setEndView(viewBinding.controls)
+        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setMotion(MaterialArcMotion())
+        .build()
+    meta.animate()
+}
+
+
 
 ```
 
