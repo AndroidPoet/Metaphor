@@ -360,7 +360,7 @@ viewBinding.fabDetail.setOnClickListener {
 
 
 
-### Create MetaphorView with Kotlin DSL
+### Create Metaphor View with Kotlin DSL
 We can also create an instance of the MetaphorView with the Kotlin DSL.
 
 
@@ -381,7 +381,7 @@ We can also create an instance of the MetaphorView with the Kotlin DSL.
 
 
 
-### Create MetaphorFragment with Kotlin DSL
+### Create Metaphor Fragment with Kotlin DSL
 We can also create an instance of the MetaphorFragment with the Kotlin DSL.
 
 
