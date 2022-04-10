@@ -119,7 +119,7 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
@@ -151,7 +151,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
@@ -164,7 +164,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
@@ -185,7 +185,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 //call this method with startView and add end view set Animation you want to perform
 
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
@@ -214,7 +214,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
         .build()
@@ -227,7 +227,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
         .build()
@@ -251,7 +251,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
@@ -280,7 +280,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
         .build()
@@ -293,7 +293,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
         .build()
@@ -316,7 +316,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 //call this method with startView and add end view set Animation you want to perform
 
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
