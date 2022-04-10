@@ -40,8 +40,8 @@ class DashboardFragment : Fragment() {
     super.onCreate(savedInstanceState)
 
     val meta = MetaphorFragment.Builder(this)
-      .setEnterAnimation(MetaphorAnimation.SharedAxisXBackward)
-      .setDuration(500)
+      .setEnterAnimation(MetaphorAnimation.ElevationScaleGrow)
+      .setExitAnimation(MetaphorAnimation.ElevationScale)
       .build()
     meta.animate()
 

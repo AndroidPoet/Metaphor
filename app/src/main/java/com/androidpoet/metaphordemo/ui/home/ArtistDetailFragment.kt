@@ -55,7 +55,7 @@ class ArtistDetailFragment : Fragment() {
     // metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())
 
     val metaphor = MetaphorFragment.Builder(this)
-      .setDuration(300)
+      .setEnterDuration(300)
       .setView(view)
       .setTransitionName(args.data.pos.toString())
       .setExitAnimation(MetaphorAnimation.ContainerTransform)
@@ -89,7 +89,7 @@ class ArtistDetailFragment : Fragment() {
       // it is reference for the currant view
       // parmas[endView]you need to pass end view for the transformation
       val meta = MetaphorView.Builder(it)
-        .setDuration(300)
+        .setDuration(500)
         .setEndView(viewBinding.fabDetail)
         .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
         .setMotion(MaterialArcMotion())
@@ -123,15 +123,7 @@ class ArtistDetailFragment : Fragment() {
           dataSource: DataSource?,
           isFirstResource: Boolean
         ): Boolean {
-//                    Timber.e("resource $resource")
-//                    (resource as? BitmapDrawable)?.bitmap?.let {
-//                        val palette = Palette.from(it).generate()
-//                        val paletteTarget = androidx.palette.graphics.Target.DARK_MUTED
-//                        val selectedSwatch = palette[paletteTarget]
-//                        selectedSwatch?.rgb?.let { color ->
-//                            viewBinding.collapsingToolbar.setContentScrimColor(color)
-//                        }
-//                    }
+
           return false
         }
       })

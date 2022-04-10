@@ -33,7 +33,6 @@ public enum class MetaphorAnimation(public val value: Int) {
   SharedAxisXBackward(8),
   SharedAxisYBackward(9),
   SharedAxisZBackward(10),
-  Hold(11),
-  ElevationScaleGrow(12),
-  ElevationScale(13),
+  ElevationScaleGrow(11),
+  ElevationScale(12),
 }

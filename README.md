@@ -50,7 +50,7 @@ Add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.androidpoet:metaphor:1.0.9")
+    implementation("io.github.androidpoet:metaphor:1.1.0")
 }
 ```
 Metaphor provides support for all four motion patterns
@@ -81,11 +81,7 @@ findNavController().navigate(action, extras)
 // inside on onViewCreated  
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val meta = MetaphorFragment.Builder(fragment)
-        .setMetaphorAnimation(MetaphorAnimation.Hold)
-        .setView(view)
-        .build()
-    meta.animate()
+     hold() // this is function is really important for the "ContainerTransform" it will hold the currant fragment view
 
 }
 
@@ -96,10 +92,10 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val metaphor = MetaphorFragment.Builder(fragment)
-        .setDuration(300)
+        .setExitDuration(300)
         .setView(view)
         .setTransitionName(args.data.pos.toString())
-        .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+        .setExitAnimation(MetaphorAnimation.ContainerTransform)
         .setMotion(MaterialArcMotion())
         .build()
     metaphor.animate()
@@ -152,8 +148,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     // FadeThrough inside fragment
 
     val metaphor = MetaphorFragment.Builder(fragment)
-        .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .setEnterDuration(300)
+        .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
     metaphor.animate()
 }
@@ -165,8 +161,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     // FadeThrough inside fragment
 
     val metaphor = MetaphorFragment.Builder(fragment)
-        .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .setEnterDuration(300)
+        .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
     metaphor.animate()
 }
@@ -215,8 +211,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     // FadeThrough inside fragment
 
     val metaphor = MetaphorFragment.Builder(fragment)
-        .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
+        .setEnterDuration(300)
+        .setEnterAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -228,8 +224,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     // FadeThrough inside fragment
 
     val metaphor = MetaphorFragment.Builder(fragment)
-        .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
+        .setEnterDuration(300)
+        .setEnterAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -281,8 +277,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     // FadeThrough inside fragment
 
     val metaphor = MetaphorFragment.Builder(fragment)
-        .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setEnterDuration(300)
+        .setEnterAnimation(MetaphorAnimation.MaterialFade)
         .build()
     metaphor.animate()
 }
@@ -294,8 +290,8 @@ override fun onCreate(savedInstanceState: Bundle?) {
     // FadeThrough inside fragment
 
     val metaphor = MetaphorFragment.Builder(fragment)
-        .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.Fade)
+        .setEnterDuration(300)
+        .setEnterAnimation(MetaphorAnimation.Fade)
         .build()
     metaphor.animate()
 }
@@ -334,7 +330,7 @@ viewBinding.fabDetail.setOnClickListener {
 ## Supported Animations
 
 ```kotlin
-
+MetaphorAnimation.None
 MetaphorAnimation.ContainerTransform
 MetaphorAnimation.FadeThrough
 MetaphorAnimation.Fade
@@ -360,8 +356,27 @@ MetaphorAnimation.ElevationScale
 
 
 
+
+
+
+
+### Create Metaphor Fragment with Kotlin DSL
+We can also create an instance of the MetaphorFragment with the Kotlin DSL.
+
+
+
+```kotlin
+  val meta = metaphorFragment(this) {
+      setEnterAnimation(MetaphorAnimation.Fade)
+        setView(view)
+        build()
+    }
+    meta.animate()
+
+```
+
 ### Create Metaphor View with Kotlin DSL
-        We can also create an instance of the MetaphorView with the Kotlin DSL.
+We can also create an instance of the MetaphorView with the Kotlin DSL.
 
 
 
@@ -380,23 +395,6 @@ meta.animate()
 
 
 
-
-### Create Metaphor Fragment with Kotlin DSL
-We can also create an instance of the MetaphorFragment with the Kotlin DSL.
-
-
-
-```kotlin
-   val metaphor = MetaphorFragment.Builder(this)
-      .setDuration(300)
-      .setView(view)
-      .setTransitionName(args.data.pos.toString())
-      .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
-      .setMotion(MaterialArcMotion())
-      .build()
-    metaphor.animate()
-
-```
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157848865-d85ff703-0cac-4930-a02d-69b277df7ca4.png" width="80%"/>
@@ -419,15 +417,15 @@ Also, __[follow me](https://github.com/AndroidPoet)__ on GitHub for cool project
 ```xml
 Copyright 2022 AndroidPoet (Ranbir Singh)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
 
-   http://www.apache.org/licenses/LICENSE-2.0
+    http://www.apache.org/licenses/LICENSE-2.0
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
 ```
