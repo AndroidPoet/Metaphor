@@ -50,7 +50,7 @@ Add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.androidpoet:metaphor:1.0.6")
+    implementation("io.github.androidpoet:metaphor:1.0.8")
 }
 ```
 Metaphor provides support for all four motion patterns
@@ -115,10 +115,11 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 ## Container transform How to use in views
 
 ```kotlin
+//call this method with startView and add end view set Animation you want to perform
 
 
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
@@ -127,7 +128,7 @@ viewBinding.fabDetail.setOnClickListener {
     meta.animate()
 }
 
-//it also retuns the object of MaterialContainerTransform() you can use .apply { } to change values
+
 
 ```
 
@@ -150,7 +151,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
@@ -163,7 +164,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
@@ -181,13 +182,13 @@ override fun onCreate(savedInstanceState: Bundle?) {
 ## Shared axis How to use in views
 
 ```kotlin
-//call this method with startView and add end view,Axis and set Animation you want to perform
+//call this method with startView and add end view set Animation you want to perform
+
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
-        .setMotion(MaterialArcMotion())
         .build()
     meta.animate()
 }
@@ -213,7 +214,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
         .build()
@@ -226,7 +227,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
         .build()
@@ -246,16 +247,14 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ```kotlin
 
-//call this method with startView and add end view,Axis and set Animation you want to perform
-startView.metaphorMaterialFadeThroughBetweenViews(endView)
+//call this method with startView and add end view set Animation you want to perform
 
 
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
-        .setMotion(MaterialArcMotion())
         .build()
     meta.animate()
 }
@@ -281,7 +280,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
         .build()
@@ -294,7 +293,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
 
-    val metaphor = MetaphorFragment.Builder(this)
+    val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
         .build()
@@ -314,16 +313,14 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
 ```kotlin
 
-//call this method with startView and add end view,Axis and set Animation you want to perform
-startView.metaphorMaterialFadeThroughBetweenViews(endView)
-
+//call this method with startView and add end view set Animation you want to perform
 
 viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(it)
+    val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
-        .setMotion(MaterialArcMotion())
+ 
         .build()
     meta.animate()
 }
@@ -333,10 +330,82 @@ viewBinding.fabDetail.setOnClickListener {
 ```
 
 
+
+## Supported Animations
+	
+```kotlin
+
+ MetaphorAnimation.ContainerTransform
+ MetaphorAnimation.MaterialFadeThrough 
+ MetaphorAnimation.MaterialFade
+ MetaphorAnimation.SharedAxisXForward 
+ MetaphorAnimation.SharedAxisYForward 
+ MetaphorAnimation.SharedAxisZForward
+ MetaphorAnimation.SharedAxisXBackward 
+ MetaphorAnimation.SharedAxisYBackward
+ MetaphorAnimation.SharedAxisZBackward
+ MetaphorAnimation.MaterialElevationScaleGrow 
+ MetaphorAnimation.MaterialElevationScale
+	
+```	
+
+
+
+
+
+
+
+
+
+
+
+
+### Create Metaphor View with Kotlin DSL
+We can also create an instance of the MetaphorView with the Kotlin DSL.
+
+
+
+```kotlin
+    val meta = metaphorView(it) {
+        setDuration(300)
+        setEndView(viewBinding.controls)
+        setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        setMotion(MaterialArcMotion())
+        build()
+      }
+
+      meta.animate()
+
+```
+
+
+
+
+### Create Metaphor Fragment with Kotlin DSL
+We can also create an instance of the MetaphorFragment with the Kotlin DSL.
+
+
+
+```kotlin
+   val metaphor = MetaphorFragment.Builder(this)
+      .setDuration(300)
+      .setView(view)
+      .setTransitionName(args.data.pos.toString())
+      .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+      .setMotion(MaterialArcMotion())
+      .build()
+    metaphor.animate()
+
+```
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157848865-d85ff703-0cac-4930-a02d-69b277df7ca4.png" width="80%"/>
 
 </p>
+
+
+
+
 
 images credit:https://unsplash.com/
 
@@ -344,6 +413,7 @@ images credit:https://unsplash.com/
 ## Find this repository useful? :heart:
 Support it by joining __[stargazers](https://github.com/AndroidPoet/Metaphor/stargazers)__ for this repository. :star: <br>
 Also, __[follow me](https://github.com/AndroidPoet)__ on GitHub for cool projects! 🤩
+
 
 # License
 ```xml
