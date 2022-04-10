@@ -48,7 +48,7 @@ public class MetaphorView private constructor(
   public val motion: PathMotion = builder.motion
 
   /** start view to transform into View */
-  public val starView: View = builder.startView
+  private val starView: View = builder.startView
 
   /** Builder class for [MetaphorView]. */
   @MetaphorViewInlineDsl
@@ -87,6 +87,6 @@ public class MetaphorView private constructor(
   /** starts  animation. */
   @MainThread
   public fun animate() {
-    starView.applyMetaphor(this)
+    starView.applyAnimation(this)
   }
 }

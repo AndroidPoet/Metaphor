@@ -41,12 +41,10 @@ class NotificationsFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
-
-    val metaphor = MetaphorFragment.Builder(this)
-      .setDuration(300)
-      .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
+    val meta = MetaphorFragment.Builder(this)
+      .setEnterAnimation(MetaphorAnimation.SharedAxisYForward)
       .build()
-    metaphor.animate()
+    meta.animate()
   }
 
   override fun onCreateView(

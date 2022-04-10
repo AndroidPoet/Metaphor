@@ -42,6 +42,5 @@ class AddNoteFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    // metaphorMaterialContainerTransformViewIntoFragment(requireActivity().findViewById(R.id.fab), viewBinding.root)
   }
 }

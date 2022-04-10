@@ -50,7 +50,7 @@ Add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.androidpoet:metaphor:1.0.8")
+    implementation("io.github.androidpoet:metaphor:1.0.9")
 }
 ```
 Metaphor provides support for all four motion patterns

@@ -18,86 +18,13 @@ import androidx.annotation.RequiresApi
 import androidx.core.animation.doOnEnd
 import androidx.core.graphics.applyCanvas
 import androidx.core.view.ViewCompat
-import androidx.transition.Transition
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.transition.MaterialSharedAxis
-
-/** applies Metaphor form attributes to a View instance. */
-@JvmSynthetic
-public fun View.applyMetaphor(metaphor: MetaphorView) {
-
-  when (metaphor.animation) {
-    MetaphorAnimation.ContainerTransform -> {
-      val transition = buildContainerTransform()
-      transition.scrimColor = Color.TRANSPARENT
-      transition.startView = this
-      transition.endView = metaphor.endView
-      transition.duration = metaphor.duration
-      transition.setPathMotion(metaphor.motion)
-      metaphor.endView?.let { transition.addTarget(it) }
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-    MetaphorAnimation.FadeThrough -> {
-
-      val transition = buildMaterialFadeThrough()
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-
-    MetaphorAnimation.Fade -> {
-      val transition = buildMaterialFade()
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-    MetaphorAnimation.SharedAxisXForward -> {
-
-      val transition = buildSharedAxis(MaterialSharedAxis.X, true)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisYForward -> {
-
-      val transition = buildSharedAxis(MaterialSharedAxis.Y, true)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisZForward -> {
-
-      val transition = buildSharedAxis(MaterialSharedAxis.Z, true)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-    MetaphorAnimation.SharedAxisXBackward -> {
-      val transition = buildSharedAxis(MaterialSharedAxis.X, false)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisYBackward -> {
-
-      val transition = buildSharedAxis(MaterialSharedAxis.Y, false)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisZBackward -> {
-      val transition = buildSharedAxis(MaterialSharedAxis.Z, false)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-
-    MetaphorAnimation.ElevationScale -> {
-      val transition = buildMaterialElevationScale(false)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-    MetaphorAnimation.ElevationScaleGrow -> {
-      val transition = buildMaterialElevationScale(true)
-      applyAnimation(metaphor.endView, transition, metaphor)
-    }
-    else -> {}
-  }
-}
+import com.google.android.material.transition.MaterialContainerTransform
 
 /** applies Animation form attributes to a View instance. */
 @JvmSynthetic
 internal fun View.applyAnimation(
-  endView: View?,
-  transition: Transition,
   metaphor: MetaphorView
 ) {
 
@@ -106,13 +33,26 @@ internal fun View.applyAnimation(
 
 // Begin watching for changes in the View hierarchy.
   if (parent != null) {
-    TransitionManager.beginDelayedTransition(parent, transition)
+    val transition = getMetaphorAnimation(metaphor.animation)
+
+    if (transition is MaterialContainerTransform) {
+      transition.scrimColor = Color.TRANSPARENT
+      transition.startView = this
+      transition.endView = metaphor.endView
+      transition.duration = metaphor.duration
+      transition.setPathMotion(metaphor.motion)
+      metaphor.endView?.let { transition.addTarget(it) }
+    }
+    TransitionManager.beginDelayedTransition(
+      parent,
+      transition
+    )
   }
 
 // Make any changes to the hierarchy to be animated by the shared axis transition.
   visibility = GONE
-  if (endView != null) {
-    endView.visibility = VISIBLE
+  if (metaphor.endView != null) {
+    metaphor.endView.visibility = VISIBLE
   }
 }
 /**

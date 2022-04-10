@@ -32,6 +32,17 @@ class ArtistListFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
+//
+//    val meta = MetaphorFragment.Builder(this)
+//      .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
+//      .setExitAnimation(MetaphorAnimation.SharedAxisXForward)
+//      .setReturnAnimation(MetaphorAnimation.SharedAxisXForward)
+//      .setReenterAnimation(MetaphorAnimation.SharedAxisXForward)
+//      .setDuration(500)
+//
+//      .build()
+//    meta.animate()
+
     artistGridListAdapter = ArtistGridListAdapter(requireContext(), Glide.with(requireContext()))
     artistLinearListAdapter =
       ArtistLinearListAdapter(requireContext(), Glide.with(requireContext()))
@@ -81,7 +92,7 @@ class ArtistListFragment : Fragment() {
     /**this method is used for MaterialContainerTransform it add some delay to load animation basically it will wait for recyclerview to be drawn   */
 
     val meta = MetaphorFragment.Builder(this)
-      .setMetaphorAnimation(MetaphorAnimation.Hold)
+      .setEnterAnimation(MetaphorAnimation.Hold)
       .setView(view)
       .build()
     meta.animate()
