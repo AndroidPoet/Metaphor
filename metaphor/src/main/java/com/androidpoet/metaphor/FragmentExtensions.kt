@@ -35,12 +35,12 @@ public fun Fragment.applyMetaphor(metaphor: MetaphorFragment) {
         scrimColor = Color.TRANSPARENT
       }
     }
-    MetaphorAnimation.MaterialFadeThrough -> {
+    MetaphorAnimation.FadeThrough -> {
       val transition = buildMaterialFadeThrough()
       applyAnimation(transition, metaphor)
     }
 
-    MetaphorAnimation.MaterialFade -> {
+    MetaphorAnimation.Fade -> {
       val transition = buildMaterialFade()
       applyAnimation(transition, metaphor)
     }
@@ -79,11 +79,11 @@ public fun Fragment.applyMetaphor(metaphor: MetaphorFragment) {
       postponeEnterTransition()
       metaphor.view?.doOnPreDraw { startPostponedEnterTransition() }
     }
-    MetaphorAnimation.MaterialElevationScale -> {
+    MetaphorAnimation.ElevationScale -> {
       val transition = buildMaterialElevationScale(false)
       applyAnimation(transition, metaphor)
     }
-    MetaphorAnimation.MaterialElevationScaleGrow -> {
+    MetaphorAnimation.ElevationScaleGrow -> {
       val transition = buildMaterialElevationScale(true)
       applyAnimation(transition, metaphor)
     }

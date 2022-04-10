@@ -5,11 +5,11 @@ public final class com/androidpoet/metaphor/FragmentExtensionsKt {
 
 public final class com/androidpoet/metaphor/MetaphorAnimation : java/lang/Enum {
 	public static final field ContainerTransform Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public static final field ElevationScale Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public static final field ElevationScaleGrow Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public static final field Fade Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public static final field FadeThrough Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field Hold Lcom/androidpoet/metaphor/MetaphorAnimation;
-	public static final field MaterialElevationScale Lcom/androidpoet/metaphor/MetaphorAnimation;
-	public static final field MaterialElevationScaleGrow Lcom/androidpoet/metaphor/MetaphorAnimation;
-	public static final field MaterialFade Lcom/androidpoet/metaphor/MetaphorAnimation;
-	public static final field MaterialFadeThrough Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisXBackward Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisXForward Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisYBackward Lcom/androidpoet/metaphor/MetaphorAnimation;
