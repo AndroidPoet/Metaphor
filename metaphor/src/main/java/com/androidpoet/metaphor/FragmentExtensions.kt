@@ -10,7 +10,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.transition.Transition
-import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialContainerTransform
 
 public fun Context.activity(): Activity? = when (this) {
@@ -25,13 +24,13 @@ internal fun Fragment.applyAnimation(
 ) {
 
   val enterAnimation =
-    getMetaphorAnimation(metaphor.enterAnimation)?.let { addAnimationProperties(it, metaphor) }
+    getMetaphorAnimation(metaphor.enterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.enterDuration) }
   val exitAnimation =
-    getMetaphorAnimation(metaphor.exitAnimation)?.let { addAnimationProperties(it, metaphor) }
+    getMetaphorAnimation(metaphor.exitAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.exitDuration) }
   val reenterAnimation =
-    getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor) }
+    getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.reenterDuration) }
   val returnAnimation =
-    getMetaphorAnimation(metaphor.returnAnimation)?.let { addAnimationProperties(it, metaphor) }
+    getMetaphorAnimation(metaphor.returnAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.returnDuration) }
 
   enterTransition = enterAnimation
   exitTransition = exitAnimation
@@ -44,7 +43,8 @@ internal fun Fragment.applyAnimation(
 @JvmSynthetic
 internal fun Fragment.addAnimationProperties(
   transition: Transition,
-  metaphor: MetaphorFragment
+  metaphor: MetaphorFragment,
+  animationDuration: Long
 ): Transition {
 
   if (transition is MaterialContainerTransform) {
@@ -56,13 +56,8 @@ internal fun Fragment.addAnimationProperties(
     }
   }
 
-  if (transition is Hold) {
-    postponeEnterTransition()
-    metaphor.view?.doOnPreDraw { startPostponedEnterTransition() }
-  }
-
   transition.apply {
-    duration = metaphor.duration
+    duration = animationDuration
     setPathMotion(metaphor.motion)
   }
   return transition

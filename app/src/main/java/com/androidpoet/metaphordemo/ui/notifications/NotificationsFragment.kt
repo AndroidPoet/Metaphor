@@ -42,7 +42,8 @@ class NotificationsFragment : Fragment() {
     super.onCreate(savedInstanceState)
     // FadeThrough inside fragment
     val meta = MetaphorFragment.Builder(this)
-      .setEnterAnimation(MetaphorAnimation.SharedAxisYForward)
+      .setEnterAnimation(MetaphorAnimation.ElevationScale)
+      .setExitAnimation(MetaphorAnimation.ElevationScaleGrow)
       .build()
     meta.animate()
   }

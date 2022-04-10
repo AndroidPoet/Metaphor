@@ -1,5 +1,4 @@
 public final class com/androidpoet/metaphor/AnimationsExtenstionsKt {
-	public static final synthetic fun getMetaphorAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)Landroidx/transition/Transition;
 }
 
 public final class com/androidpoet/metaphor/FragmentExtensionsKt {
@@ -13,7 +12,6 @@ public final class com/androidpoet/metaphor/MetaphorAnimation : java/lang/Enum {
 	public static final field ElevationScaleGrow Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field Fade Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field FadeThrough Lcom/androidpoet/metaphor/MetaphorAnimation;
-	public static final field Hold Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field None Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisXBackward Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisXForward Lcom/androidpoet/metaphor/MetaphorAnimation;
@@ -29,13 +27,16 @@ public final class com/androidpoet/metaphor/MetaphorAnimation : java/lang/Enum {
 public final class com/androidpoet/metaphor/MetaphorFragment {
 	public synthetic fun <init> (Lcom/androidpoet/metaphor/MetaphorFragment$Builder;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun animate ()V
-	public final fun getDuration ()J
 	public final fun getEnterAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getEnterDuration ()J
 	public final fun getExitAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getExitDuration ()J
 	public final fun getFragment ()Landroidx/fragment/app/Fragment;
 	public final fun getMotion ()Landroidx/transition/PathMotion;
 	public final fun getReenterAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getReenterDuration ()J
 	public final fun getReturnAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getReturnDuration ()J
 	public final fun getTransitionName ()Ljava/lang/String;
 	public final fun getView ()Landroid/view/View;
 }
@@ -43,27 +44,36 @@ public final class com/androidpoet/metaphor/MetaphorFragment {
 public final class com/androidpoet/metaphor/MetaphorFragment$Builder {
 	public fun <init> (Landroidx/fragment/app/Fragment;)V
 	public final fun build ()Lcom/androidpoet/metaphor/MetaphorFragment;
-	public final fun getDuration ()J
 	public final fun getEnterAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getEnterDuration ()J
 	public final fun getExitAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getExitDuration ()J
 	public final fun getFragment ()Landroidx/fragment/app/Fragment;
 	public final fun getMotion ()Landroidx/transition/PathMotion;
 	public final fun getReenterAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getReenterDuration ()J
 	public final fun getReturnAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public final fun getReturnDuration ()J
 	public final fun getTransitionName ()Ljava/lang/String;
 	public final fun getView ()Landroid/view/View;
-	public final fun setDuration (J)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
-	public final synthetic fun setDuration (J)V
 	public final fun setEnterAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
 	public final synthetic fun setEnterAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
+	public final fun setEnterDuration (J)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
+	public final synthetic fun setEnterDuration (J)V
 	public final fun setExitAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
 	public final synthetic fun setExitAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
+	public final fun setExitDuration (J)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
+	public final synthetic fun setExitDuration (J)V
 	public final fun setMotion (Landroidx/transition/PathMotion;)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
 	public final synthetic fun setMotion (Landroidx/transition/PathMotion;)V
 	public final fun setReenterAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
 	public final synthetic fun setReenterAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
+	public final fun setReenterDuration (J)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
+	public final synthetic fun setReenterDuration (J)V
 	public final fun setReturnAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
 	public final synthetic fun setReturnAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
+	public final fun setReturnDuration (J)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
+	public final synthetic fun setReturnDuration (J)V
 	public final fun setTransitionName (Ljava/lang/String;)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
 	public final synthetic fun setTransitionName (Ljava/lang/String;)V
 	public final fun setView (Landroid/view/View;)Lcom/androidpoet/metaphor/MetaphorFragment$Builder;
@@ -106,9 +116,9 @@ public final class com/androidpoet/metaphor/MetaphorViewKt {
 }
 
 public final class com/androidpoet/metaphor/ViewExtensionsKt {
-	public static final fun drawToBitmap (Landroid/view/View;I)Landroid/graphics/Bitmap;
+	public static final synthetic fun drawToBitmap (Landroid/view/View;I)Landroid/graphics/Bitmap;
 	public static synthetic fun drawToBitmap$default (Landroid/view/View;IILjava/lang/Object;)Landroid/graphics/Bitmap;
-	public static final fun hide (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
-	public static final fun show (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
+	public static final synthetic fun hide (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
+	public static final synthetic fun show (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
 }
 

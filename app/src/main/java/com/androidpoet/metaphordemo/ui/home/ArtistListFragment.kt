@@ -14,7 +14,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidpoet.metaphor.MetaphorAnimation
-import com.androidpoet.metaphor.MetaphorFragment
+import com.androidpoet.metaphor.hold
+import com.androidpoet.metaphor.metaphorFragment
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentListBinding
 import com.bumptech.glide.Glide
@@ -32,16 +33,12 @@ class ArtistListFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-//
-//    val meta = MetaphorFragment.Builder(this)
-//      .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
-//      .setExitAnimation(MetaphorAnimation.SharedAxisXForward)
-//      .setReturnAnimation(MetaphorAnimation.SharedAxisXForward)
-//      .setReenterAnimation(MetaphorAnimation.SharedAxisXForward)
-//      .setDuration(500)
-//
-//      .build()
-//    meta.animate()
+    val meta = metaphorFragment(this) {
+      setExitAnimation(MetaphorAnimation.ElevationScale)
+      setReenterAnimation(MetaphorAnimation.ElevationScaleGrow)
+      build()
+    }
+    meta.animate()
 
     artistGridListAdapter = ArtistGridListAdapter(requireContext(), Glide.with(requireContext()))
     artistLinearListAdapter =
@@ -90,12 +87,7 @@ class ArtistListFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     /**this method is used for MaterialContainerTransform it add some delay to load animation basically it will wait for recyclerview to be drawn   */
-
-    val meta = MetaphorFragment.Builder(this)
-      .setEnterAnimation(MetaphorAnimation.Hold)
-      .setView(view)
-      .build()
-    meta.animate()
+    hold()
 
     loadRecyclerView(isGrid)
     viewBinding.reorder.setOnClickListener {

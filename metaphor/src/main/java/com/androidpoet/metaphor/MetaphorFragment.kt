@@ -35,8 +35,14 @@ public inline fun metaphorFragment(
 public class MetaphorFragment private constructor(
   builder: Builder
 ) {
-  /** duration of the animations. */
-  public val duration: Long = builder.duration
+  /** duration of enter the animations. */
+  public val enterDuration: Long = builder.enterDuration
+  /** duration of reenter the animations. */
+  public val reenterDuration: Long = builder.reenterDuration
+  /** duration of exit the animations. */
+  public val exitDuration: Long = builder.exitDuration
+  /** duration of return the animations. */
+  public val returnDuration: Long = builder.returnDuration
 
   /** Enter Animation of  fragment. */
   public val enterAnimation: MetaphorAnimation = builder.enterAnimation
@@ -65,8 +71,18 @@ public class MetaphorFragment private constructor(
   /** Builder class for [MetaphorFragment]. */
   @MetaphorViewInlineDsl
   public class Builder(public val fragment: Fragment) {
+
     @set:JvmSynthetic
-    public var duration: Long = 300
+    public var enterDuration: Long = 300
+
+    @set:JvmSynthetic
+    public var reenterDuration: Long = 300
+
+    @set:JvmSynthetic
+    public var exitDuration: Long = 300
+
+    @set:JvmSynthetic
+    public var returnDuration: Long = 300
 
     @set:JvmSynthetic
     public var enterAnimation: MetaphorAnimation = MetaphorAnimation.None
@@ -90,7 +106,16 @@ public class MetaphorFragment private constructor(
     public var transitionName: String = ""
 
     /** sets the duration of the Animation. */
-    public fun setDuration(value: Long): Builder = apply { this.duration = value }
+    public fun setEnterDuration(value: Long): Builder = apply { this.enterDuration = value }
+
+    /** sets the duration of the Animation. */
+    public fun setExitDuration(value: Long): Builder = apply { this.exitDuration = value }
+
+    /** sets the duration of the Animation. */
+    public fun setReenterDuration(value: Long): Builder = apply { this.reenterDuration = value }
+
+    /** sets the duration of the Animation. */
+    public fun setReturnDuration(value: Long): Builder = apply { this.returnDuration = value }
 
     /** sets enter the [Animation] of the Fragment. */
     public fun setEnterAnimation(value: MetaphorAnimation): Builder =

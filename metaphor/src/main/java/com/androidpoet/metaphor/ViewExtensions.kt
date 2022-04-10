@@ -66,6 +66,7 @@ internal fun View.applyAnimation(
  */
 @SuppressLint("NewApi")
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+@JvmSynthetic
 public fun BottomNavigationView.show() {
   if (visibility == VISIBLE) return
 
@@ -112,6 +113,7 @@ public fun BottomNavigationView.show() {
  * out the snapshot.
  */
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+@JvmSynthetic
 public fun BottomNavigationView.hide() {
   if (visibility == GONE) return
 
@@ -143,6 +145,7 @@ public fun BottomNavigationView.hide() {
  * useful when it will be used in a [android.graphics.BitmapShader][BitmapShader] with
  * a [android.graphics.Shader.TileMode.CLAMP][CLAMP tile mode].
  */
+@JvmSynthetic
 public fun View.drawToBitmap(@Px extraPaddingBottom: Int = 0): Bitmap {
   if (!ViewCompat.isLaidOut(this)) {
     throw IllegalStateException("View needs to be laid out before calling drawToBitmap()")
