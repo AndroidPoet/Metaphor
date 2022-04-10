@@ -371,7 +371,7 @@ We can also create an instance of the MetaphorFragment with the Kotlin DSL.
 
 ```kotlin
   val meta = metaphorFragment(this) {
-      setEnterAnimation(MetaphorAnimation.Hold)
+      setEnterAnimation(MetaphorAnimation.Fade)
         setView(view)
         build()
     }
