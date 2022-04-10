@@ -360,8 +360,27 @@ MetaphorAnimation.ElevationScale
 
 
 
+
+
+
+
+### Create Metaphor Fragment with Kotlin DSL
+We can also create an instance of the MetaphorFragment with the Kotlin DSL.
+
+
+
+```kotlin
+  val meta = metaphorFragment(this) {
+      setEnterAnimation(MetaphorAnimation.Hold)
+        setView(view)
+        build()
+    }
+    meta.animate()
+
+```
+
 ### Create Metaphor View with Kotlin DSL
-        We can also create an instance of the MetaphorView with the Kotlin DSL.
+We can also create an instance of the MetaphorView with the Kotlin DSL.
 
 
 
@@ -380,23 +399,6 @@ meta.animate()
 
 
 
-
-### Create Metaphor Fragment with Kotlin DSL
-We can also create an instance of the MetaphorFragment with the Kotlin DSL.
-
-
-
-```kotlin
-   val metaphor = MetaphorFragment.Builder(this)
-      .setDuration(300)
-      .setView(view)
-      .setTransitionName(args.data.pos.toString())
-      .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
-      .setMotion(MaterialArcMotion())
-      .build()
-    metaphor.animate()
-
-```
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157848865-d85ff703-0cac-4930-a02d-69b277df7ca4.png" width="80%"/>
