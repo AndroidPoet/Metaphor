@@ -216,7 +216,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -229,7 +229,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -254,7 +254,7 @@ viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
     meta.animate()
 }
@@ -295,7 +295,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setMetaphorAnimation(MetaphorAnimation.Fade)
         .build()
     metaphor.animate()
 }
@@ -319,7 +319,7 @@ viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setMetaphorAnimation(MetaphorAnimation.Fade)
  
         .build()
     meta.animate()
@@ -336,16 +336,16 @@ viewBinding.fabDetail.setOnClickListener {
 ```kotlin
 
  MetaphorAnimation.ContainerTransform
- MetaphorAnimation.MaterialFadeThrough 
- MetaphorAnimation.MaterialFade
+ MetaphorAnimation.FadeThrough 
+ MetaphorAnimation.Fade
  MetaphorAnimation.SharedAxisXForward 
  MetaphorAnimation.SharedAxisYForward 
  MetaphorAnimation.SharedAxisZForward
  MetaphorAnimation.SharedAxisXBackward 
  MetaphorAnimation.SharedAxisYBackward
  MetaphorAnimation.SharedAxisZBackward
- MetaphorAnimation.MaterialElevationScaleGrow 
- MetaphorAnimation.MaterialElevationScale
+ MetaphorAnimation.ElevationScaleGrow 
+ MetaphorAnimation.ElevationScale
 	
 ```	
 
@@ -369,7 +369,7 @@ We can also create an instance of the MetaphorView with the Kotlin DSL.
     val meta = metaphorView(it) {
         setDuration(300)
         setEndView(viewBinding.controls)
-        setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        setMetaphorAnimation(MetaphorAnimation.Fade)
         setMotion(MaterialArcMotion())
         build()
       }
