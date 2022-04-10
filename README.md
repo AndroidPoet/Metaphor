@@ -335,6 +335,46 @@ viewBinding.fabDetail.setOnClickListener {
 
 </p>
 
+
+
+### Create MetaphorView with Kotlin DSL
+We can also create an instance of the MetaphorView with the Kotlin DSL.
+
+
+
+```kotlin
+    val meta = metaphorView(it) {
+        setDuration(300)
+        setEndView(viewBinding.controls)
+        setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        setMotion(MaterialArcMotion())
+        build()
+      }
+
+      meta.animate()
+
+```
+
+
+
+
+### Create MetaphorFragment with Kotlin DSL
+We can also create an instance of the MetaphorFragment with the Kotlin DSL.
+
+
+
+```kotlin
+   val metaphor = MetaphorFragment.Builder(this)
+      .setDuration(300)
+      .setView(view)
+      .setTransitionName(args.data.pos.toString())
+      .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+      .setMotion(MaterialArcMotion())
+      .build()
+    metaphor.animate()
+
+```
+
 images credit:https://unsplash.com/
 
 
