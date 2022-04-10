@@ -330,10 +330,33 @@ viewBinding.fabDetail.setOnClickListener {
 ```
 
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157848865-d85ff703-0cac-4930-a02d-69b277df7ca4.png" width="80%"/>
 
-</p>
+## Supported Animations
+	
+```kotlin
+
+ MetaphorAnimation.ContainerTransform
+ MetaphorAnimation.MaterialFadeThrough 
+ MetaphorAnimation.MaterialFade
+ MetaphorAnimation.SharedAxisXForward 
+ MetaphorAnimation.SharedAxisYForward 
+ MetaphorAnimation.SharedAxisZForward
+ MetaphorAnimation.SharedAxisXBackward 
+ MetaphorAnimation.SharedAxisYBackward
+ MetaphorAnimation.SharedAxisZBackward
+ MetaphorAnimation.MaterialElevationScaleGrow 
+ MetaphorAnimation.MaterialElevationScale
+	
+```	
+
+
+
+
+
+
+
+
+
 
 
 
@@ -374,6 +397,15 @@ We can also create an instance of the MetaphorFragment with the Kotlin DSL.
     metaphor.animate()
 
 ```
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/13647384/157848865-d85ff703-0cac-4930-a02d-69b277df7ca4.png" width="80%"/>
+
+</p>
+
+
+
+
 
 images credit:https://unsplash.com/
 
