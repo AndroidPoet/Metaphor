@@ -10,100 +10,67 @@ import androidx.annotation.RequiresApi
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.transition.Transition
-import com.google.android.material.transition.MaterialSharedAxis
+import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialContainerTransform
 
 public fun Context.activity(): Activity? = when (this) {
   is Activity -> this
   else -> (this as? ContextWrapper)?.baseContext?.activity()
 }
 
-/** applies Metaphor form attributes to a View instance. */
-
-@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-@JvmSynthetic
-public fun Fragment.applyMetaphor(metaphor: MetaphorFragment) {
-
-  when (metaphor.animation) {
-    MetaphorAnimation.ContainerTransform -> {
-      val transition = buildContainerTransform()
-      metaphor.view?.transitionName = metaphor.transitionName
-      sharedElementEnterTransition = transition.apply {
-        duration = metaphor.duration
-        setPathMotion(metaphor.motion)
-        startView?.let { addTarget(it) }
-        setAllContainerColors(Color.TRANSPARENT)
-        scrimColor = Color.TRANSPARENT
-      }
-    }
-    MetaphorAnimation.FadeThrough -> {
-      val transition = buildMaterialFadeThrough()
-      applyAnimation(transition, metaphor)
-    }
-
-    MetaphorAnimation.Fade -> {
-      val transition = buildMaterialFade()
-      applyAnimation(transition, metaphor)
-    }
-    MetaphorAnimation.SharedAxisXForward -> {
-      val transition = buildSharedAxis(MaterialSharedAxis.X, true)
-      applyAnimation(transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisYForward -> {
-      val transition = buildSharedAxis(MaterialSharedAxis.Y, true)
-      applyAnimation(transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisZForward -> {
-
-      val transition = buildSharedAxis(MaterialSharedAxis.Z, true)
-      applyAnimation(transition, metaphor)
-    }
-    MetaphorAnimation.SharedAxisXBackward -> {
-      val transition = buildSharedAxis(MaterialSharedAxis.X, false)
-      applyAnimation(transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisYBackward -> {
-
-      val transition = buildSharedAxis(MaterialSharedAxis.Y, false)
-      applyAnimation(transition, metaphor)
-    }
-
-    MetaphorAnimation.SharedAxisZBackward -> {
-      val transition = buildSharedAxis(MaterialSharedAxis.Z, false)
-      applyAnimation(transition, metaphor)
-    }
-
-    MetaphorAnimation.Hold -> {
-      postponeEnterTransition()
-      metaphor.view?.doOnPreDraw { startPostponedEnterTransition() }
-    }
-    MetaphorAnimation.ElevationScale -> {
-      val transition = buildMaterialElevationScale(false)
-      applyAnimation(transition, metaphor)
-    }
-    MetaphorAnimation.ElevationScaleGrow -> {
-      val transition = buildMaterialElevationScale(true)
-      applyAnimation(transition, metaphor)
-    }
-  }
-}
-
 /** applies Animation form attributes to a View instance. */
 @JvmSynthetic
 internal fun Fragment.applyAnimation(
-  transition: Transition,
   metaphor: MetaphorFragment
 ) {
+
+  val enterAnimation =
+    getMetaphorAnimation(metaphor.enterAnimation)?.let { addAnimationProperties(it, metaphor) }
+  val exitAnimation =
+    getMetaphorAnimation(metaphor.exitAnimation)?.let { addAnimationProperties(it, metaphor) }
+  val reenterAnimation =
+    getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor) }
+  val returnAnimation =
+    getMetaphorAnimation(metaphor.returnAnimation)?.let { addAnimationProperties(it, metaphor) }
+
+  enterTransition = enterAnimation
+  exitTransition = exitAnimation
+  reenterTransition = reenterAnimation
+  returnTransition = returnAnimation
+}
+
+/** applies Properties on Animation form attributes. */
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+@JvmSynthetic
+internal fun Fragment.addAnimationProperties(
+  transition: Transition,
+  metaphor: MetaphorFragment
+): Transition {
+
+  if (transition is MaterialContainerTransform) {
+    metaphor.view?.transitionName = metaphor.transitionName
+    sharedElementEnterTransition = transition.apply {
+      startView?.let { addTarget(it) }
+      setAllContainerColors(Color.TRANSPARENT)
+      scrimColor = Color.TRANSPARENT
+    }
+  }
+
+  if (transition is Hold) {
+    postponeEnterTransition()
+    metaphor.view?.doOnPreDraw { startPostponedEnterTransition() }
+  }
 
   transition.apply {
     duration = metaphor.duration
     setPathMotion(metaphor.motion)
   }
+  return transition
+}
 
-  enterTransition = transition
-  exitTransition = transition
-  reenterTransition = transition
-  returnTransition = transition
+// hold extension to use in container transform.
+@JvmSynthetic
+public fun Fragment.hold() {
+  postponeEnterTransition()
+  view?.doOnPreDraw { startPostponedEnterTransition() }
 }

@@ -1,5 +1,6 @@
 
 package com.androidpoet.metaphor
+
 /*
  *
  *  * Copyright 2022 AndroidPoet (Ranbir Singh)
@@ -22,16 +23,17 @@ package com.androidpoet.metaphor
 /** MetaphorAnimation is an animation attribute of [MetaphorAnimation]'s the showing and dismissing. */
 
 public enum class MetaphorAnimation(public val value: Int) {
-  ContainerTransform(0),
-  FadeThrough(1),
-  Fade(2),
-  SharedAxisXForward(3),
-  SharedAxisYForward(4),
-  SharedAxisZForward(5),
-  SharedAxisXBackward(6),
-  SharedAxisYBackward(7),
-  SharedAxisZBackward(8),
-  Hold(9),
-  ElevationScaleGrow(10),
-  ElevationScale(11),
+  None(1),
+  ContainerTransform(2),
+  FadeThrough(3),
+  Fade(4),
+  SharedAxisXForward(5),
+  SharedAxisYForward(6),
+  SharedAxisZForward(7),
+  SharedAxisXBackward(8),
+  SharedAxisYBackward(9),
+  SharedAxisZBackward(10),
+  Hold(11),
+  ElevationScaleGrow(12),
+  ElevationScale(13),
 }

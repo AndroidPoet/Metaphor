@@ -21,7 +21,6 @@ import com.androidpoet.metaphordemo.ui.home.ArtistGridListAdapter
 import com.androidpoet.metaphordemo.ui.home.ArtistLinearListAdapter
 import com.androidpoet.metaphordemo.ui.home.SampleResponse
 import com.bumptech.glide.Glide
-import com.google.android.material.transition.MaterialArcMotion
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -40,12 +39,11 @@ class DashboardFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    val metaphor = MetaphorFragment.Builder(this)
-      .setDuration(300)
-      .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
-      .setMotion(MaterialArcMotion())
+    val meta = MetaphorFragment.Builder(this)
+      .setEnterAnimation(MetaphorAnimation.SharedAxisXBackward)
+      .setDuration(500)
       .build()
-    metaphor.animate()
+    meta.animate()
 
     artistGridListAdapter = ArtistGridListAdapter(requireContext(), Glide.with(requireContext()))
     artistLinearListAdapter =

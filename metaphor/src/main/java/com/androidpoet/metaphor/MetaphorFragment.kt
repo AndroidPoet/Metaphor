@@ -38,8 +38,17 @@ public class MetaphorFragment private constructor(
   /** duration of the animations. */
   public val duration: Long = builder.duration
 
-  /** Animation of  fragment. */
-  public val animation: MetaphorAnimation = builder.animation
+  /** Enter Animation of  fragment. */
+  public val enterAnimation: MetaphorAnimation = builder.enterAnimation
+
+  /** Exit Animation of  fragment. */
+  public val exitAnimation: MetaphorAnimation = builder.exitAnimation
+
+  /** Reenter Animation of  fragment. */
+  public val reenterAnimation: MetaphorAnimation = builder.reenterAnimation
+
+  /** Return Animation of  fragment. */
+  public val returnAnimation: MetaphorAnimation = builder.returnAnimation
 
   /** Motion path of on fragment animation */
   public val motion: PathMotion = builder.motion
@@ -57,10 +66,19 @@ public class MetaphorFragment private constructor(
   @MetaphorViewInlineDsl
   public class Builder(public val fragment: Fragment) {
     @set:JvmSynthetic
-    public var duration: Long = 0
+    public var duration: Long = 300
 
     @set:JvmSynthetic
-    public var animation: MetaphorAnimation = MetaphorAnimation.FadeThrough
+    public var enterAnimation: MetaphorAnimation = MetaphorAnimation.None
+
+    @set:JvmSynthetic
+    public var exitAnimation: MetaphorAnimation = MetaphorAnimation.None
+
+    @set:JvmSynthetic
+    public var reenterAnimation: MetaphorAnimation = MetaphorAnimation.None
+
+    @set:JvmSynthetic
+    public var returnAnimation: MetaphorAnimation = MetaphorAnimation.None
 
     @set:JvmSynthetic
     public var motion: PathMotion = ArcMotion()
@@ -74,11 +92,23 @@ public class MetaphorFragment private constructor(
     /** sets the duration of the Animation. */
     public fun setDuration(value: Long): Builder = apply { this.duration = value }
 
-    /** sets the [Animation] of the Fragment. */
-    public fun setMetaphorAnimation(value: MetaphorAnimation): Builder =
-      apply { this.animation = value }
+    /** sets enter the [Animation] of the Fragment. */
+    public fun setEnterAnimation(value: MetaphorAnimation): Builder =
+      apply { this.enterAnimation = value }
 
-    /** sets the [StartView] of the Fragment. */
+    /** sets the exit [Animation] of the Fragment. */
+    public fun setExitAnimation(value: MetaphorAnimation): Builder =
+      apply { this.exitAnimation = value }
+
+    /** sets the return [Animation] of the Fragment. */
+    public fun setReturnAnimation(value: MetaphorAnimation): Builder =
+      apply { this.returnAnimation = value }
+
+    /** sets the reenter [Animation] of the Fragment. */
+    public fun setReenterAnimation(value: MetaphorAnimation): Builder =
+      apply { this.reenterAnimation = value }
+
+    /** sets the [SetView] of the Fragment. */
     public fun setView(value: View): Builder =
       apply { this.view = value }
 
@@ -95,6 +125,6 @@ public class MetaphorFragment private constructor(
 
   /** starts  animation. */
   public fun animate() {
-    fragment.applyMetaphor(this)
+    fragment.applyAnimation(this)
   }
 }
