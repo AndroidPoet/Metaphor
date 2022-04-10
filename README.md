@@ -16,15 +16,15 @@ Metaphor is library to easily add Material Motion animations.
   <a href="https://github.com/AndroidPoet"><img alt="Profile" src="https://github.com/AndroidPoet/androidpoet.github.io/blob/main/badges/style-AndroidPoet-blue.svg"/>
     <a href="https://androidweekly.net/issues/issue-509"><img alt="Android Weekly" src="https://androidweekly.net/issues/issue-509/badge"/></a>	
 	</a>
-	
-	
-	
+
+
+
 <p align="center">
 <a href="https://mailchi.mp/kotlinweekly/kotlin-weekly-295"><img alt="Kotlin Weekly" src="https://img.shields.io/badge/Featured%20in%20kotlinweekly-Issue%20%20295-blue.svg"/></a>
 
 </p> <br>
-  
-	
+
+
 
 
 
@@ -216,7 +216,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -229,7 +229,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -254,7 +254,7 @@ viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
     meta.animate()
 }
@@ -295,7 +295,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setMetaphorAnimation(MetaphorAnimation.Fade)
         .build()
     metaphor.animate()
 }
@@ -319,7 +319,7 @@ viewBinding.fabDetail.setOnClickListener {
     val meta = MetaphorView.Builder(viewBinding.fabDetail)
         .setDuration(300)
         .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setMetaphorAnimation(MetaphorAnimation.Fade)
  
         .build()
     meta.animate()
@@ -332,22 +332,22 @@ viewBinding.fabDetail.setOnClickListener {
 
 
 ## Supported Animations
-	
+
 ```kotlin
 
- MetaphorAnimation.ContainerTransform
- MetaphorAnimation.MaterialFadeThrough 
- MetaphorAnimation.MaterialFade
- MetaphorAnimation.SharedAxisXForward 
- MetaphorAnimation.SharedAxisYForward 
- MetaphorAnimation.SharedAxisZForward
- MetaphorAnimation.SharedAxisXBackward 
- MetaphorAnimation.SharedAxisYBackward
- MetaphorAnimation.SharedAxisZBackward
- MetaphorAnimation.MaterialElevationScaleGrow 
- MetaphorAnimation.MaterialElevationScale
-	
-```	
+MetaphorAnimation.ContainerTransform
+MetaphorAnimation.FadeThrough
+MetaphorAnimation.Fade
+MetaphorAnimation.SharedAxisXForward
+MetaphorAnimation.SharedAxisYForward
+MetaphorAnimation.SharedAxisZForward
+MetaphorAnimation.SharedAxisXBackward
+MetaphorAnimation.SharedAxisYBackward
+MetaphorAnimation.SharedAxisZBackward
+MetaphorAnimation.ElevationScaleGrow
+MetaphorAnimation.ElevationScale
+
+```
 
 
 
@@ -361,20 +361,20 @@ viewBinding.fabDetail.setOnClickListener {
 
 
 ### Create Metaphor View with Kotlin DSL
-We can also create an instance of the MetaphorView with the Kotlin DSL.
+        We can also create an instance of the MetaphorView with the Kotlin DSL.
 
 
 
 ```kotlin
-    val meta = metaphorView(it) {
-        setDuration(300)
-        setEndView(viewBinding.controls)
-        setMetaphorAnimation(MetaphorAnimation.MaterialFade)
-        setMotion(MaterialArcMotion())
-        build()
-      }
+val meta = metaphorView(it) {
+    setDuration(300)
+    setEndView(viewBinding.controls)
+    setMetaphorAnimation(MetaphorAnimation.Fade)
+    setMotion(MaterialArcMotion())
+    build()
+}
 
-      meta.animate()
+meta.animate()
 
 ```
 
