@@ -44,7 +44,7 @@ class NotificationsFragment : Fragment() {
 
     val metaphor = MetaphorFragment.Builder(this)
       .setDuration(300)
-      .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+      .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
       .build()
     metaphor.animate()
   }
@@ -106,7 +106,7 @@ class NotificationsFragment : Fragment() {
       val meta = MetaphorView.Builder(binding.img2)
         .setDuration(300)
         .setEndView(binding.img2)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
       meta.animate()
     }
@@ -118,7 +118,7 @@ class NotificationsFragment : Fragment() {
       val meta = MetaphorView.Builder(binding.img3)
         .setDuration(300)
         .setEndView(binding.img3)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFadeThrough)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
       meta.animate()
     }
