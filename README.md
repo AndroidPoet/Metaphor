@@ -82,7 +82,7 @@ findNavController().navigate(action, extras)
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
     val meta = MetaphorFragment.Builder(fragment)
-        .setMetaphorAnimation(MetaphorAnimation.Hold)
+        .setEnterAnimation(MetaphorAnimation.Hold)
         .setView(view)
         .build()
     meta.animate()
@@ -99,7 +99,7 @@ override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         .setDuration(300)
         .setView(view)
         .setTransitionName(args.data.pos.toString())
-        .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
+        .setExitAnimation(MetaphorAnimation.ContainerTransform)
         .setMotion(MaterialArcMotion())
         .build()
     metaphor.animate()
@@ -153,7 +153,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
     metaphor.animate()
 }
@@ -166,7 +166,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
+        .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
         .build()
     metaphor.animate()
 }
@@ -216,7 +216,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
+        .setEnterAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -229,7 +229,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
+        .setEnterAnimation(MetaphorAnimation.FadeThrough)
         .build()
     metaphor.animate()
 }
@@ -282,7 +282,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
+        .setEnterAnimation(MetaphorAnimation.MaterialFade)
         .build()
     metaphor.animate()
 }
@@ -295,7 +295,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
 
     val metaphor = MetaphorFragment.Builder(fragment)
         .setDuration(300)
-        .setMetaphorAnimation(MetaphorAnimation.Fade)
+        .setEnterAnimation(MetaphorAnimation.Fade)
         .build()
     metaphor.animate()
 }
@@ -334,7 +334,7 @@ viewBinding.fabDetail.setOnClickListener {
 ## Supported Animations
 
 ```kotlin
-
+MetaphorAnimation.None
 MetaphorAnimation.ContainerTransform
 MetaphorAnimation.FadeThrough
 MetaphorAnimation.Fade
