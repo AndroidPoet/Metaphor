@@ -14,6 +14,8 @@ import androidx.navigation.fragment.navArgs
 import com.androidpoet.metaphor.MetaphorAnimation
 import com.androidpoet.metaphor.MetaphorFragment
 import com.androidpoet.metaphor.MetaphorView
+import com.androidpoet.metaphor.metaphorFragment
+import com.androidpoet.metaphor.metaphorView
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentArtistDetailBinding
 import com.bumptech.glide.Glide
@@ -61,6 +63,11 @@ class ArtistDetailFragment : Fragment() {
       .setMotion(MaterialArcMotion())
       .build()
     metaphor.animate()
+
+
+
+
+
     viewBinding.toolBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24); // your drawable
     viewBinding.toolBar.setNavigationOnClickListener(
       View.OnClickListener {
@@ -70,12 +77,15 @@ class ArtistDetailFragment : Fragment() {
     )
 
     viewBinding.fabDetail.setOnClickListener {
-      val meta = MetaphorView.Builder(it)
-        .setDuration(300)
-        .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.MaterialFade)
-        .setMotion(MaterialArcMotion())
-        .build()
+
+      val meta = metaphorView(it) {
+        setDuration(300)
+        setEndView(viewBinding.controls)
+        setMetaphorAnimation(MetaphorAnimation.Fade)
+        setMotion(MaterialArcMotion())
+        build()
+      }
+
       meta.animate()
     }
 
@@ -91,15 +101,7 @@ class ArtistDetailFragment : Fragment() {
         .build()
       meta.animate()
 
-//      val balloon = metaphorView(it) {
-//        setDuration(300)
-//        setEndView(viewBinding.fabDetail)
-//        setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
-//        setMotion(MaterialArcMotion())
-//        build()
-//
-//      }
-//      balloon.animate()
+
     }
 
     // load image with palette

@@ -2,6 +2,7 @@
 package com.androidpoet.metaphor
 
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Bitmap.Config.ARGB_8888
 import android.graphics.Color
@@ -37,13 +38,13 @@ public fun View.applyMetaphor(metaphor: MetaphorView) {
       metaphor.endView?.let { transition.addTarget(it) }
       applyAnimation(metaphor.endView, transition, metaphor)
     }
-    MetaphorAnimation.MaterialFadeThrough -> {
+    MetaphorAnimation.FadeThrough -> {
 
       val transition = buildMaterialFadeThrough()
       applyAnimation(metaphor.endView, transition, metaphor)
     }
 
-    MetaphorAnimation.MaterialFade -> {
+    MetaphorAnimation.Fade -> {
       val transition = buildMaterialFade()
       applyAnimation(metaphor.endView, transition, metaphor)
     }
@@ -80,11 +81,11 @@ public fun View.applyMetaphor(metaphor: MetaphorView) {
       applyAnimation(metaphor.endView, transition, metaphor)
     }
 
-    MetaphorAnimation.MaterialElevationScale -> {
+    MetaphorAnimation.ElevationScale -> {
       val transition = buildMaterialElevationScale(false)
       applyAnimation(metaphor.endView, transition, metaphor)
     }
-    MetaphorAnimation.MaterialElevationScaleGrow -> {
+    MetaphorAnimation.ElevationScaleGrow -> {
       val transition = buildMaterialElevationScale(true)
       applyAnimation(metaphor.endView, transition, metaphor)
     }
@@ -123,6 +124,7 @@ internal fun View.applyAnimation(
  * Instead, take a snapshot of the view, and animate this in, only changing the visibility (and
  * thus layout) when the animation completes.
  */
+@SuppressLint("NewApi")
 @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
 public fun BottomNavigationView.show() {
   if (visibility == VISIBLE) return
