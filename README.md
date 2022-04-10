@@ -81,11 +81,7 @@ findNavController().navigate(action, extras)
 // inside on onViewCreated  
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-    val meta = MetaphorFragment.Builder(fragment)
-        .setEnterAnimation(MetaphorAnimation.Hold)
-        .setView(view)
-        .build()
-    meta.animate()
+     hold()
 
 }
 
