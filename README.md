@@ -81,7 +81,7 @@ findNavController().navigate(action, extras)
 // inside on onViewCreated  
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-     hold()
+     hold() // this is function is really important for the "ContainerTransform" it will hold the currant fragment view
 
 }
 
