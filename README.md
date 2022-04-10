@@ -334,7 +334,6 @@ MetaphorAnimation.None
 MetaphorAnimation.ContainerTransform
 MetaphorAnimation.FadeThrough
 MetaphorAnimation.Fade
-MetaphorAnimation.Hold //hold dose nothing but this is used with "ContainerTransform" to hold the content 
 MetaphorAnimation.SharedAxisXForward
 MetaphorAnimation.SharedAxisYForward
 MetaphorAnimation.SharedAxisZForward
