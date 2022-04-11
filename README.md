@@ -8,7 +8,7 @@ Metaphor is library to easily add Material Motion animations.
 
 
 <p align="center">
-  <a href="https://devlibrary.withgoogle.com/authors/AndroidPoet"><img alt="Google" src="https://github.com/AndroidPoet/androidpoet.github.io/blob/main/badges/GoogleDevelopers.svg"/></a>
+  <a href="https://devlibrary.withgoogle.com/authors/AndroidPoet"><img alt="Google" src="https://user-images.githubusercontent.com/13647384/162662962-82e3c1eb-baf8-4e21-ad26-d4c4e3c31e44.svg"/></a>
 <br>
 	<br>
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
