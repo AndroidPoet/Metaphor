@@ -69,9 +69,9 @@ class NotificationsFragment : Fragment() {
     Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img3)
 
     binding.SharedX.setOnClickListener {
-      binding.img.visibility = View.GONE
+
       val meta = MetaphorView.Builder(binding.img)
-        .setDuration(300)
+        .setDuration(1000)
         .setEndView(binding.img)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
         .setMotion(MaterialArcMotion())
@@ -80,20 +80,18 @@ class NotificationsFragment : Fragment() {
     }
 
     binding.SharedY.setOnClickListener {
-      binding.img.visibility = View.GONE
 
       val meta = MetaphorView.Builder(binding.img)
-        .setDuration(300)
+        .setDuration(1000)
         .setEndView(binding.img)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisYForward)
         .build()
       meta.animate()
     }
     binding.SharedZ.setOnClickListener {
-      binding.img.visibility = View.GONE
 
       val meta = MetaphorView.Builder(binding.img)
-        .setDuration(300)
+        .setDuration(1000)
         .setEndView(binding.img)
         .setMetaphorAnimation(MetaphorAnimation.SharedAxisZForward)
         .build()
@@ -101,9 +99,9 @@ class NotificationsFragment : Fragment() {
     }
 
     binding.materialFadeThrough.setOnClickListener {
-      binding.img2.visibility = View.GONE
+
       val meta = MetaphorView.Builder(binding.img2)
-        .setDuration(300)
+        .setDuration(1000)
         .setEndView(binding.img2)
         .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
@@ -111,11 +109,10 @@ class NotificationsFragment : Fragment() {
     }
 
     binding.materialFade.setOnClickListener {
-      binding.img3.visibility = View.GONE
 
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img3)
       val meta = MetaphorView.Builder(binding.img3)
-        .setDuration(300)
+        .setDuration(1000)
         .setEndView(binding.img3)
         .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()

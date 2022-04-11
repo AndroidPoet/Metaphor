@@ -27,20 +27,23 @@ import com.google.android.material.transition.MaterialContainerTransform
 internal fun View.applyAnimation(
   metaphor: MetaphorView
 ) {
-
+  visibility = GONE
   val parent = parent as? ViewGroup
   // Set up a new MaterialSharedAxis in the specified axis and direction.
 
 // Begin watching for changes in the View hierarchy.
   if (parent != null) {
     val transition = getMetaphorAnimation(metaphor.animation)
+    if (transition != null) {
+      transition.duration = metaphor.duration
+      transition.setPathMotion(metaphor.motion)
+    }
 
     if (transition is MaterialContainerTransform) {
       transition.scrimColor = Color.TRANSPARENT
       transition.startView = this
       transition.endView = metaphor.endView
-      transition.duration = metaphor.duration
-      transition.setPathMotion(metaphor.motion)
+
       metaphor.endView?.let { transition.addTarget(it) }
     }
     TransitionManager.beginDelayedTransition(
