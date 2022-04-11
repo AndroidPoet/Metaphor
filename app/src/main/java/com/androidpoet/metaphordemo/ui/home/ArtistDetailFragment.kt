@@ -55,7 +55,7 @@ class ArtistDetailFragment : Fragment() {
     // metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())
 
     val metaphor = MetaphorFragment.Builder(this)
-      .setEnterDuration(300)
+      .setEnterDuration(1000)
       .setView(view)
       .setTransitionName(args.data.pos.toString())
       .setExitAnimation(MetaphorAnimation.ContainerTransform)
@@ -74,7 +74,7 @@ class ArtistDetailFragment : Fragment() {
     viewBinding.fabDetail.setOnClickListener {
 
       val meta = metaphorView(it) {
-        setDuration(300)
+        setDuration(1000)
         setEndView(viewBinding.controls)
         setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
         setMotion(MaterialArcMotion())
