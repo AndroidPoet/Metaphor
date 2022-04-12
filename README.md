@@ -270,7 +270,7 @@ viewBinding.fabDetail.setOnClickListener {
 
 
 ```kotlin
-		
+
 //start fragment 
 override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

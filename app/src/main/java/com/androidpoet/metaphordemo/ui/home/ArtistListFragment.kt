@@ -34,8 +34,9 @@ class ArtistListFragment : Fragment() {
     super.onCreate(savedInstanceState)
 
     val meta = metaphorFragment(this) {
-      setExitAnimation(MetaphorAnimation.ElevationScale)
-      setReenterAnimation(MetaphorAnimation.ElevationScaleGrow)
+      setExitAnimation(MetaphorAnimation.ElevationScaleGrow)
+      setReenterAnimation(MetaphorAnimation.ElevationScale)
+
       build()
     }
     meta.animate()

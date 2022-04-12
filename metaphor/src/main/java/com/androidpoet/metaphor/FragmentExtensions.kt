@@ -4,7 +4,6 @@ package com.androidpoet.metaphor
 import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
-import android.graphics.Color
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.view.doOnPreDraw
@@ -51,14 +50,16 @@ internal fun Fragment.addAnimationProperties(
     metaphor.view?.transitionName = metaphor.transitionName
     sharedElementEnterTransition = transition.apply {
       startView?.let { addTarget(it) }
-      setAllContainerColors(Color.TRANSPARENT)
-      scrimColor = Color.TRANSPARENT
+      setAllContainerColors(metaphor.containerColors)
+      scrimColor = metaphor.scrimColor
     }
   }
 
   transition.apply {
     duration = animationDuration
     setPathMotion(metaphor.motion)
+    allowEnterTransitionOverlap = metaphor.enterTransitionOverlap
+    allowReturnTransitionOverlap = metaphor.returnTransitionOverlap
   }
   return transition
 }
