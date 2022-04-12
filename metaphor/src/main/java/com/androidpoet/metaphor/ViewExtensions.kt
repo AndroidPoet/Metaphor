@@ -18,6 +18,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.animation.doOnEnd
 import androidx.core.graphics.applyCanvas
 import androidx.core.view.ViewCompat
+import androidx.core.view.isVisible
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.transition.MaterialContainerTransform
@@ -27,7 +28,6 @@ import com.google.android.material.transition.MaterialContainerTransform
 internal fun View.applyAnimation(
   metaphor: MetaphorView
 ) {
-  visibility = GONE
   val parent = parent as? ViewGroup
   // Set up a new MaterialSharedAxis in the specified axis and direction.
 
@@ -50,12 +50,23 @@ internal fun View.applyAnimation(
       parent,
       transition
     )
-  }
 
 // Make any changes to the hierarchy to be animated by the shared axis transition.
-  visibility = GONE
-  if (metaphor.endView != null) {
-    metaphor.endView.visibility = VISIBLE
+
+    if (this == metaphor.endView) {
+
+      if (metaphor.endView.isVisible) {
+        this.visibility = GONE
+      } else {
+        this.visibility = VISIBLE
+      }
+    } else {
+
+      visibility = GONE
+      if (metaphor.endView != null) {
+        metaphor.endView.visibility = VISIBLE
+      }
+    }
   }
 }
 /**

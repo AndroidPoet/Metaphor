@@ -73,7 +73,7 @@ class ArtistDetailFragment : Fragment() {
 
     viewBinding.fabDetail.setOnClickListener {
 
-      val meta = metaphorView(it) {
+      val meta = metaphorView(viewBinding.fabDetail) {
         setDuration(1000)
         setEndView(viewBinding.controls)
         setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
@@ -89,7 +89,7 @@ class ArtistDetailFragment : Fragment() {
       // it is reference for the currant view
       // parmas[endView]you need to pass end view for the transformation
       val meta = MetaphorView.Builder(it)
-        .setDuration(500)
+        .setDuration(1000)
         .setEndView(viewBinding.fabDetail)
         .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
         .setMotion(MaterialArcMotion())

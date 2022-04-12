@@ -1,6 +1,7 @@
 
 package com.androidpoet.metaphor
 
+import android.graphics.Color
 import android.view.View
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
@@ -56,6 +57,12 @@ public class MetaphorFragment private constructor(
   /** Return Animation of  fragment. */
   public val returnAnimation: MetaphorAnimation = builder.returnAnimation
 
+  /**   Enter AnimationOverlap of  fragment. */
+  public val enterTransitionOverlap: Boolean = builder.enterTransitionOverlap
+
+  /**   Return AnimationOverlap of  fragment. */
+  public val returnTransitionOverlap: Boolean = builder.returnTransitionOverlap
+
   /** Motion path of on fragment animation */
   public val motion: PathMotion = builder.motion
 
@@ -67,6 +74,12 @@ public class MetaphorFragment private constructor(
 
   /** transitionName to transform view to another fragment */
   public val transitionName: String = builder.transitionName
+
+  /** scrimColor while performing animation */
+  public val scrimColor: Int = builder.scrimColor
+
+  /** containerColors while performing animation */
+  public val containerColors: Int = builder.containerColors
 
   /** Builder class for [MetaphorFragment]. */
   @MetaphorViewInlineDsl
@@ -97,6 +110,12 @@ public class MetaphorFragment private constructor(
     public var returnAnimation: MetaphorAnimation = MetaphorAnimation.None
 
     @set:JvmSynthetic
+    public var enterTransitionOverlap: Boolean = false
+
+    @set:JvmSynthetic
+    public var returnTransitionOverlap: Boolean = false
+
+    @set:JvmSynthetic
     public var motion: PathMotion = ArcMotion()
 
     @set:JvmSynthetic
@@ -104,6 +123,12 @@ public class MetaphorFragment private constructor(
 
     @set:JvmSynthetic
     public var transitionName: String = ""
+
+    @set:JvmSynthetic
+    public var scrimColor: Int = Color.TRANSPARENT
+
+    @set:JvmSynthetic
+    public var containerColors: Int = Color.TRANSPARENT
 
     /** sets the duration of the Animation. */
     public fun setEnterDuration(value: Long): Builder = apply { this.enterDuration = value }
@@ -117,33 +142,49 @@ public class MetaphorFragment private constructor(
     /** sets the duration of the Animation. */
     public fun setReturnDuration(value: Long): Builder = apply { this.returnDuration = value }
 
-    /** sets enter the [Animation] of the Fragment. */
+    /** sets enter the Animation of the Fragment. */
     public fun setEnterAnimation(value: MetaphorAnimation): Builder =
       apply { this.enterAnimation = value }
 
-    /** sets the exit [Animation] of the Fragment. */
+    /** sets the exit Animation of the Fragment. */
     public fun setExitAnimation(value: MetaphorAnimation): Builder =
       apply { this.exitAnimation = value }
 
-    /** sets the return [Animation] of the Fragment. */
+    /** sets the return Animation of the Fragment. */
     public fun setReturnAnimation(value: MetaphorAnimation): Builder =
       apply { this.returnAnimation = value }
 
-    /** sets the reenter [Animation] of the Fragment. */
+    /** sets the reenter Animation of the Fragment. */
     public fun setReenterAnimation(value: MetaphorAnimation): Builder =
       apply { this.reenterAnimation = value }
 
-    /** sets the [SetView] of the Fragment. */
+    /** sets the SetView of the Fragment. */
     public fun setView(value: View): Builder =
       apply { this.view = value }
 
-    /** sets the [Motion] of the View. */
+    /** sets the Motion of the View. */
     public fun setMotion(value: PathMotion): Builder =
       apply { this.motion = value }
 
-    /** sets the [TransitionName] of the View. */
+    /** sets the TransitionName of the View. */
     public fun setTransitionName(value: String): Builder =
       apply { this.transitionName = value }
+
+    /** sets the enter Overlap of the Fragment. */
+    public fun setEnterAnimation(value: Boolean): Builder =
+      apply { this.enterTransitionOverlap = value }
+
+    /** sets the return Overlap of the Fragment. */
+    public fun setReturnAnimation(value: Boolean): Builder =
+      apply { this.returnTransitionOverlap = value }
+
+    /** sets the ScrimColor of the Fragment. */
+    public fun setScrimColor(value: Int): Builder =
+      apply { this.scrimColor = value }
+
+    /** sets the ScrimColor of the Fragment. */
+    public fun setcontainerColor(value: Int): Builder =
+      apply { this.containerColors = value }
 
     public fun build(): MetaphorFragment = MetaphorFragment(this)
   }

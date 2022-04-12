@@ -14,7 +14,6 @@ import com.androidpoet.metaphor.MetaphorView
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentNotificationsBinding
 import com.bumptech.glide.Glide
-import com.google.android.material.transition.MaterialArcMotion
 import java.util.Random
 
 class NotificationsFragment : Fragment() {
@@ -55,9 +54,8 @@ class NotificationsFragment : Fragment() {
   ): View {
 
     _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
-    val root: View = binding.root
 
-    return root
+    return binding.root
   }
 
   @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -73,8 +71,7 @@ class NotificationsFragment : Fragment() {
       val meta = MetaphorView.Builder(binding.img)
         .setDuration(1000)
         .setEndView(binding.img)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
-        .setMotion(MaterialArcMotion())
+        .setMetaphorAnimation(MetaphorAnimation.Fade)
         .build()
       meta.animate()
     }
@@ -84,7 +81,7 @@ class NotificationsFragment : Fragment() {
       val meta = MetaphorView.Builder(binding.img)
         .setDuration(1000)
         .setEndView(binding.img)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisYForward)
+        .setMetaphorAnimation(MetaphorAnimation.Fade)
         .build()
       meta.animate()
     }
@@ -93,7 +90,7 @@ class NotificationsFragment : Fragment() {
       val meta = MetaphorView.Builder(binding.img)
         .setDuration(1000)
         .setEndView(binding.img)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisZForward)
+        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
         .build()
       meta.animate()
     }
