@@ -38,7 +38,7 @@
         android:id="@+id/animation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:visibility="gone"
         app:lottie_autoPlay="true"
 
 
@@ -54,8 +54,20 @@
         android:layout_gravity="center" />
 
 
-
     </FrameLayout>
 
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+      android:id="@+id/fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="end|bottom"
+      android:layout_margin="40dp"
+      android:text="Fab"
+      android:textColor="@color/white"
+      app:backgroundTint="@color/blue"
+      app:fabSize="normal"
+      app:icon="@drawable/ic_baseline_add_24"
+      app:iconTint="@color/white"
+      app:srcCompat="@drawable/ic_outline_play_arrow_24" />
   </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

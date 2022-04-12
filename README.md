@@ -50,7 +50,7 @@ Add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.androidpoet:metaphor:1.1.2")
+    implementation("io.github.androidpoet:metaphor:1.1.3")
 }
 ```
 Metaphor provides support for all four motion patterns
@@ -81,7 +81,7 @@ findNavController().navigate(action, extras)
 // inside on onViewCreated  
 override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
-     hold() // this is function is really important for the "ContainerTransform" it will hold the currant fragment view
+    hold() // this is function is really important for the "ContainerTransform" it will hold the currant fragment view
 
 }
 
@@ -140,7 +140,7 @@ viewBinding.fabDetail.setOnClickListener {
 
 
 ```kotlin
-		
+
 //start fragment 
 
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -203,7 +203,7 @@ viewBinding.fabDetail.setOnClickListener {
 
 
 ```kotlin
-		
+
 //start fragment 
 
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -216,7 +216,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
         .build()
     metaphor.animate()
 }
- 
+
 //destination fragment		
 
 override fun onCreate(savedInstanceState: Bundle?) {
@@ -316,7 +316,7 @@ viewBinding.fabDetail.setOnClickListener {
         .setDuration(300)
         .setEndView(viewBinding.controls)
         .setMetaphorAnimation(MetaphorAnimation.Fade)
- 
+
         .build()
     meta.animate()
 }
@@ -367,11 +367,11 @@ We can also create an instance of the MetaphorFragment with the Kotlin DSL.
 
 ```kotlin
   val meta = metaphorFragment(this) {
-      setEnterAnimation(MetaphorAnimation.Fade)
-        setView(view)
-        build()
-    }
-    meta.animate()
+    setEnterAnimation(MetaphorAnimation.Fade)
+    setView(view)
+    build()
+}
+meta.animate()
 
 ```
 
