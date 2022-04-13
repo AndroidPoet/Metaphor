@@ -3,14 +3,12 @@ package com.androidpoet.metaphordemo.activties
 
 import android.os.Build
 import android.os.Bundle
-import android.transition.ArcMotion
 import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -20,8 +18,6 @@ import com.androidpoet.metaphor.show
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.ActivityHostActivtyBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.transition.platform.MaterialContainerTransform
-import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
 class FragmentHostActivty : AppCompatActivity() {
 
@@ -33,8 +29,6 @@ class FragmentHostActivty : AppCompatActivity() {
 
     binding = ActivityHostActivtyBinding.inflate(layoutInflater)
     setContentView(binding.root)
-
-
 
     val navView: BottomNavigationView = binding.navView
 
@@ -85,7 +79,4 @@ class FragmentHostActivty : AppCompatActivity() {
       }
     }
   }
-
-
-
 }

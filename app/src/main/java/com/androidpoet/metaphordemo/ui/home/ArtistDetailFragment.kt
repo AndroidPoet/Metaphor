@@ -85,9 +85,8 @@ class ArtistDetailFragment : Fragment() {
     }
 
     viewBinding.controls.setOnClickListener {
-      // one line of code to transform fab button to CardView
       // it is reference for the currant view
-      // parmas[endView]you need to pass end view for the transformation
+      // params[endView]you need to pass end view for the transformation
       val meta = MetaphorView.Builder(it)
         .setDuration(1000)
         .setEndView(viewBinding.fabDetail)

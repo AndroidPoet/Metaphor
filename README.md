@@ -1,7 +1,7 @@
 <h1 align="center">Metaphor </h1>
 
 <p align="center">
-Metaphor is library to easily add Material Motion animations.
+	💠Metaphor is a library that lets you implement Material's motion system animations.
 </p>
 
 
@@ -31,7 +31,7 @@ Metaphor is library to easily add Material Motion animations.
 
 
 <p align="center">
-	<img src="https://user-images.githubusercontent.com/13647384/157069132-21a2960b-b228-4dd8-8ffa-963be6bd2f99.svg" />
+	<img src="https://user-images.githubusercontent.com/13647384/163097135-a2de3617-e0b8-4629-82e2-cb5d1110c051.svg" />
 
 </p> <br>
 
@@ -50,7 +50,7 @@ Add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.androidpoet:metaphor:1.1.3")
+    implementation("io.github.androidpoet:metaphor:1.1.5")
 }
 ```
 Metaphor provides support for all four motion patterns

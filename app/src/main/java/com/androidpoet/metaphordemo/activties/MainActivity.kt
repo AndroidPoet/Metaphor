@@ -1,7 +1,6 @@
 
 package com.androidpoet.metaphordemo.activties
 
-import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -9,13 +8,9 @@ import android.os.Handler
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import com.androidpoet.metaphor.MetaphorActivity
-import com.androidpoet.metaphor.MetaphorAnimation
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.ActivityMainBinding
 import com.bumptech.glide.Glide
-import com.google.android.material.transition.platform.MaterialContainerTransform
 import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
 class MainActivity : AppCompatActivity() {
@@ -45,11 +40,5 @@ class MainActivity : AppCompatActivity() {
       },
       2000
     )
-
-
-
-
   }
-
-
 }
