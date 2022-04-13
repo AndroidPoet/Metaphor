@@ -1,7 +1,7 @@
 <h1 align="center">Metaphor </h1>
 
 <p align="center">
-	💠Metaphor is a library that lets you implement Material's motion system animations in an Android app.
+	💠Metaphor is a library that lets you implement Material's motion system animations.
 </p>
 
 
