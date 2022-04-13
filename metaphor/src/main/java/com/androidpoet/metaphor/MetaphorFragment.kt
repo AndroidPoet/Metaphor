@@ -171,11 +171,11 @@ public class MetaphorFragment private constructor(
       apply { this.transitionName = value }
 
     /** sets the enter Overlap of the Fragment. */
-    public fun setEnterAnimation(value: Boolean): Builder =
+    public fun setEnterOverlap(value: Boolean): Builder =
       apply { this.enterTransitionOverlap = value }
 
     /** sets the return Overlap of the Fragment. */
-    public fun setReturnAnimation(value: Boolean): Builder =
+    public fun setReturnOverlap(value: Boolean): Builder =
       apply { this.returnTransitionOverlap = value }
 
     /** sets the ScrimColor of the Fragment. */
@@ -183,7 +183,7 @@ public class MetaphorFragment private constructor(
       apply { this.scrimColor = value }
 
     /** sets the ScrimColor of the Fragment. */
-    public fun setcontainerColor(value: Int): Builder =
+    public fun setContainerColor(value: Int): Builder =
       apply { this.containerColors = value }
 
     public fun build(): MetaphorFragment = MetaphorFragment(this)
