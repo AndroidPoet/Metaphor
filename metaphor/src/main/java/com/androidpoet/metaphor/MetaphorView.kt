@@ -12,7 +12,7 @@ internal annotation class MetaphorViewInlineDsl
 /**
  * Creates an instance of the [MetaphorView] by scope of the [MetaphorView.Builder] using kotlin dsl.
  *
- * @param context A context for creating resources of the [MetaphorView].
+ * @param view A context for creating resources of the [MetaphorView].
  * @param block A dsl scope lambda from the [MetaphorView.Builder].
  * */
 @MainThread
@@ -69,15 +69,15 @@ public class MetaphorView private constructor(
     /** sets the duration of the View. */
     public fun setDuration(value: Long): Builder = apply { this.duration = value }
 
-    /** sets the [Animation] of the View. */
+    /** sets the animation of the animation. */
     public fun setMetaphorAnimation(value: MetaphorAnimation): Builder =
       apply { this.animation = value }
 
-    /** sets the [EndView] of the View. */
+    /** sets the endView of the animation. */
     public fun setEndView(value: View): Builder =
       apply { this.endView = value }
 
-    /** sets the [Motion] of the View. */
+    /** sets the motion of the animation. */
     public fun setMotion(value: PathMotion): Builder =
       apply { this.motion = value }
 

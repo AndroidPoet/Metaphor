@@ -29,9 +29,6 @@ internal fun View.applyAnimation(
   metaphor: MetaphorView
 ) {
   val parent = parent as? ViewGroup
-  // Set up a new MaterialSharedAxis in the specified axis and direction.
-
-// Begin watching for changes in the View hierarchy.
   if (parent != null) {
     val transition = getMetaphorAnimation(metaphor.animation)
     if (transition != null) {
@@ -126,7 +123,7 @@ public fun BottomNavigationView.show() {
  * Instead, take a snapshot, instantly hide the view (so content lays out to fill), then animate
  * out the snapshot.
  */
-@RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+@RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 @JvmSynthetic
 public fun BottomNavigationView.hide() {
   if (visibility == GONE) return
@@ -156,7 +153,7 @@ public fun BottomNavigationView.hide() {
 
 /**
  * A copy of the KTX method, adding the ability to add extra padding the bottom of the [Bitmap];
- * useful when it will be used in a [android.graphics.BitmapShader][BitmapShader] with
+ * useful when it will be used in a [android.graphics.BitmapShader]with
  * a [android.graphics.Shader.TileMode.CLAMP][CLAMP tile mode].
  */
 @JvmSynthetic

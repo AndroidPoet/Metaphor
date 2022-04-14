@@ -11,7 +11,7 @@ internal annotation class MetaphorActivityInlineDsl
 /**
  * Creates an instance of the [MetaphorActivity] by scope of the [MetaphorActivity.Builder] using kotlin dsl.
  *
- * @param Context A context for creating resources of the [MetaphorActivity].
+ * @param activity A context for creating resources of the [MetaphorActivity].
  * @param block A dsl scope lambda from the [MetaphorActivity.Builder].
  * */
 @MainThread
@@ -136,41 +136,41 @@ public class MetaphorActivity private constructor(
     /** sets the duration of the Animation. */
     public fun setReturnDuration(value: Long): Builder = apply { this.returnDuration = value }
 
-    /** sets enter the [Animation] of the Fragment. */
+    /** sets enter the animation  of the Activity. */
     public fun setEnterAnimation(value: MetaphorAnimation): Builder =
       apply { this.enterAnimation = value }
 
-    /** sets the exit [Animation] of the Fragment. */
+    /** sets the exit animation of the Activity. */
     public fun setExitAnimation(value: MetaphorAnimation): Builder =
       apply { this.exitAnimation = value }
 
-    /** sets the return [Animation] of the Fragment. */
+    /** sets the return animation of the Activity. */
     public fun setReturnAnimation(value: MetaphorAnimation): Builder =
       apply { this.returnAnimation = value }
 
-    /** sets the reenter [Animation] of the Fragment. */
+    /** sets the reenter animation of the Activity. */
     public fun setReenterAnimation(value: MetaphorAnimation): Builder =
       apply { this.reenterAnimation = value }
 
-    /** sets the [SetView] of the Fragment. */
+    /** sets the view of the Activity. */
     public fun setView(value: View): Builder = apply { this.view = value }
 
-    /** sets the [Motion] of the View. */
+    /** sets the motion of the View. */
     public fun setMotion(value: android.transition.PathMotion): Builder =
       apply { this.motion = value }
 
-    /** sets the [TransitionName] of the View. */
+    /** sets the transition of the View. */
     public fun setTransitionName(value: String): Builder = apply { this.transitionName = value }
 
-    /** sets the enter [Overlap] of the Fragment. */
+    /** sets the enter overlap of the Activity. */
     public fun setEnterOverlap(value: Boolean): Builder =
       apply { this.enterTransitionOverlap = value }
 
-    /** sets the return [Overlap] of the Fragment. */
+    /** sets the return overlap of the Activity. */
     public fun setReturnOverlap(value: Boolean): Builder =
       apply { this.returnTransitionOverlap = value }
 
-    /** sets startActivity of MetaphorActivity. */
+    /** sets start Activity of MetaphorActivity. */
     public fun setStartActivity(value: Boolean): Builder =
       apply { this.startActivity = value }
 

@@ -21,20 +21,10 @@ public fun Context.activity(): Activity? = when (this) {
 internal fun Fragment.applyAnimation(
   metaphor: MetaphorFragment
 ) {
-
-  val enterAnimation =
-    getMetaphorAnimation(metaphor.enterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.enterDuration) }
-  val exitAnimation =
-    getMetaphorAnimation(metaphor.exitAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.exitDuration) }
-  val reenterAnimation =
-    getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.reenterDuration) }
-  val returnAnimation =
-    getMetaphorAnimation(metaphor.returnAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.returnDuration) }
-
-  enterTransition = enterAnimation
-  exitTransition = exitAnimation
-  reenterTransition = reenterAnimation
-  returnTransition = returnAnimation
+  enterTransition = getMetaphorAnimation(metaphor.enterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.enterDuration) }
+  exitTransition = getMetaphorAnimation(metaphor.exitAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.exitDuration) }
+  reenterTransition =  getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.reenterDuration) }
+  returnTransition = getMetaphorAnimation(metaphor.returnAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.returnDuration) }
 }
 
 /** applies Properties on Animation form attributes. */
