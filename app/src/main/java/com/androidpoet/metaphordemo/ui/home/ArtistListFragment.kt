@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidpoet.metaphor.MetaphorAnimation
 import com.androidpoet.metaphor.hold
+import com.androidpoet.metaphor.metaphorFragment
 import com.androidpoet.metaphor.metaphorWindow
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentListBinding
@@ -35,6 +36,13 @@ class ArtistListFragment : Fragment() {
     super.onCreate(savedInstanceState)
 
 
+    val meta = metaphorFragment(this) {
+      setExitAnimation(MetaphorAnimation.ElevationScaleGrow)
+      setReenterAnimation(MetaphorAnimation.ElevationScale)
+
+      build()
+    }
+    meta.animate()
 
 
 
