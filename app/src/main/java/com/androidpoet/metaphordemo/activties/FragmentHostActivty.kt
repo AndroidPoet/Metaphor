@@ -4,20 +4,28 @@ package com.androidpoet.metaphordemo.activties
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import com.androidpoet.metaphor.MetaphorActivity
+import com.androidpoet.metaphor.MetaphorAnimation
 import com.androidpoet.metaphor.hide
 import com.androidpoet.metaphor.show
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.ActivityHostActivtyBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.color.MaterialColors
+import com.google.android.material.transition.platform.MaterialArcMotion
+import com.google.android.material.transition.platform.MaterialContainerTransform
+import com.google.android.material.transition.platform.MaterialContainerTransformSharedElementCallback
 
 class FragmentHostActivty : AppCompatActivity() {
 
@@ -26,9 +34,10 @@ class FragmentHostActivty : AppCompatActivity() {
   @RequiresApi(Build.VERSION_CODES.M)
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
     binding = ActivityHostActivtyBinding.inflate(layoutInflater)
-    setContentView(binding.root)
+    setContentView(binding.container)
+
+
 
     val navView: BottomNavigationView = binding.navView
 
@@ -79,4 +88,8 @@ class FragmentHostActivty : AppCompatActivity() {
       }
     }
   }
+
+
+
+
 }
