@@ -15,7 +15,6 @@ import com.google.android.material.transition.platform.MaterialContainerTransfor
 internal fun Activity.applyAnimation(
   metaphor: MetaphorActivity
 ) {
-
   val enterAnimation =
     getWindowMetaphorAnimation(metaphor.enterAnimation)?.let {
       addAnimationProperties(
@@ -86,7 +85,6 @@ internal fun Activity.addAnimationProperties(
       }
     }
   }
-
   transition.apply {
     duration = animationDuration
     pathMotion = metaphor.motion
