@@ -83,7 +83,6 @@ public class MetaphorView private constructor(
 
     public fun build(): MetaphorView = MetaphorView(this)
   }
-
   /** starts  animation. */
   @MainThread
   public fun animate() {
