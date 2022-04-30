@@ -10,7 +10,6 @@ import androidx.transition.PathMotion
 
 @DslMarker
 internal annotation class MetaphorFragmentInlineDsl
-
 /**
  * Creates an instance of the [MetaphorFragment] by scope of the [MetaphorFragment.Builder] using kotlin dsl.
  *
