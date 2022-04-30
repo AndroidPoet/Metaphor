@@ -26,7 +26,6 @@ internal fun Fragment.applyAnimation(
   reenterTransition =  getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.reenterDuration) }
   returnTransition = getMetaphorAnimation(metaphor.returnAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.returnDuration) }
 }
-
 /** applies Properties on Animation form attributes. */
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
 @JvmSynthetic
