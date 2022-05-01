@@ -395,22 +395,15 @@ meta.animate()
 
 
 
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157848865-d85ff703-0cac-4930-a02d-69b277df7ca4.png" width="80%"/>
-
-</p>
-
-
-
-
-
 images credit:https://unsplash.com/
 
 
 ## Find this repository useful? :heart:
 Support it by joining __[stargazers](https://github.com/AndroidPoet/Metaphor/stargazers)__ for this repository. :star: <br>
 Also, __[follow me](https://github.com/AndroidPoet)__ on GitHub for cool projects! 🤩
+
+<a href="https://www.buymeacoffee.com/AndroidPoet" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 
 
 # License
