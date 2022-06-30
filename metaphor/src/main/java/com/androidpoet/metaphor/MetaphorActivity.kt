@@ -5,7 +5,6 @@ import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 
 @DslMarker
 internal annotation class MetaphorActivityInlineDsl

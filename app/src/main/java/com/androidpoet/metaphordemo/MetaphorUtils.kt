@@ -1,10 +1,15 @@
+
 package com.androidpoet.metaphordemo
 
 import android.view.View
 import android.widget.PopupWindow
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.androidpoet.metaphor.*
+import com.androidpoet.metaphor.MetaphorActivity
+import com.androidpoet.metaphor.MetaphorAnimation
+import com.androidpoet.metaphor.MetaphorFragment
+import com.androidpoet.metaphor.MetaphorView
+import com.androidpoet.metaphor.MetaphorWindow
 import com.google.android.material.transition.MaterialArcMotion
 
 object MetaphorUtils {
@@ -22,7 +27,6 @@ object MetaphorUtils {
       .build()
   }
 
-
   fun getActivityMetaphor(
     appCompatActivity: AppCompatActivity,
     enterAnimation: MetaphorAnimation,
@@ -34,7 +38,6 @@ object MetaphorUtils {
       .setExitAnimation(exitAnimation)
       .build()
   }
-
 
   fun View.getViewMetaphor(
     metaphorAnimation: MetaphorAnimation,
@@ -60,6 +63,4 @@ object MetaphorUtils {
       .setExitAnimation(metaphorAnimation)
       .build()
   }
-
-
 }

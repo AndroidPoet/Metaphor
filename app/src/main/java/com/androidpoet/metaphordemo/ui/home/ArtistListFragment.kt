@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidpoet.metaphor.MetaphorAnimation
 import com.androidpoet.metaphor.hold
 import com.androidpoet.metaphor.metaphorFragment
-import com.androidpoet.metaphor.metaphorWindow
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentListBinding
 import com.bumptech.glide.Glide
@@ -35,7 +33,6 @@ class ArtistListFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-
     val meta = metaphorFragment(this) {
       setExitAnimation(MetaphorAnimation.ElevationScaleGrow)
       setReenterAnimation(MetaphorAnimation.ElevationScale)
@@ -43,9 +40,6 @@ class ArtistListFragment : Fragment() {
       build()
     }
     meta.animate()
-
-
-
 
     artistGridListAdapter = ArtistGridListAdapter(requireContext(), Glide.with(requireContext()))
     artistLinearListAdapter =

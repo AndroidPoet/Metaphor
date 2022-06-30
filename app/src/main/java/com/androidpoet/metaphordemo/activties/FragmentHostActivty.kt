@@ -1,3 +1,4 @@
+
 package com.androidpoet.metaphordemo.activties
 
 import android.os.Build
@@ -27,7 +28,6 @@ class FragmentHostActivty : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     binding = ActivityHostActivtyBinding.inflate(layoutInflater)
     setContentView(binding.container)
-
 
     val navView: BottomNavigationView = binding.navView
 
@@ -78,6 +78,4 @@ class FragmentHostActivty : AppCompatActivity() {
       }
     }
   }
-
-
 }

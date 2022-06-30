@@ -23,7 +23,7 @@ internal fun Fragment.applyAnimation(
 ) {
   enterTransition = getMetaphorAnimation(metaphor.enterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.enterDuration) }
   exitTransition = getMetaphorAnimation(metaphor.exitAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.exitDuration) }
-  reenterTransition =  getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.reenterDuration) }
+  reenterTransition = getMetaphorAnimation(metaphor.reenterAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.reenterDuration) }
   returnTransition = getMetaphorAnimation(metaphor.returnAnimation)?.let { addAnimationProperties(it, metaphor, metaphor.returnDuration) }
 }
 /** applies Properties on Animation form attributes. */
