@@ -1,4 +1,3 @@
-
 package com.androidpoet.metaphordemo.ui.home
 
 import android.graphics.drawable.Drawable
@@ -15,6 +14,7 @@ import com.androidpoet.metaphor.MetaphorAnimation
 import com.androidpoet.metaphor.MetaphorFragment
 import com.androidpoet.metaphor.MetaphorView
 import com.androidpoet.metaphor.metaphorView
+import com.androidpoet.metaphordemo.MetaphorUtils
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentArtistDetailBinding
 import com.bumptech.glide.Glide

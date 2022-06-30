@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
       Glide.with(this).load(R.drawable.metalogo).into(binding.logo)
       Handler().postDelayed(
-        Runnable {
+        {
           val intent = Intent(this, FragmentHostActivty::class.java)
           startActivity(intent)
           finish()

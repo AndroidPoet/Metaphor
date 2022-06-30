@@ -55,14 +55,10 @@ public class MetaphorWindow private constructor(
     /** duration of enter the animations. */
     public val enterDuration: Long = builder.enterDuration
 
-    /** duration of reenter the animations. */
-    public val reenterDuration: Long = builder.reenterDuration
-
     /** duration of exit the animations. */
     public val exitDuration: Long = builder.exitDuration
 
-    /** duration of return the animations. */
-    public val returnDuration: Long = builder.returnDuration
+
 
     /**   Enter AnimationOverlap of  Activity. */
     public val enterTransitionOverlap: Boolean = builder.enterTransitionOverlap
@@ -76,11 +72,6 @@ public class MetaphorWindow private constructor(
     /** Exit Animation of  fragment. */
     public var exitAnimation: MetaphorAnimation = builder.exitAnimation
 
-    /** Reenter Animation of  fragment. */
-    public val reenterAnimation: MetaphorAnimation = builder.reenterAnimation
-
-    /** Return Animation of  fragment. */
-    public val returnAnimation: MetaphorAnimation = builder.returnAnimation
 
     /** Motion path of on fragment animation */
     public val motion: android.transition.PathMotion = builder.motion
@@ -112,12 +103,6 @@ public class MetaphorWindow private constructor(
         public var exitAnimation: MetaphorAnimation = MetaphorAnimation.None
 
         @set:JvmSynthetic
-        public var reenterAnimation: MetaphorAnimation = MetaphorAnimation.None
-
-        @set:JvmSynthetic
-        public var returnAnimation: MetaphorAnimation = MetaphorAnimation.None
-
-        @set:JvmSynthetic
         public var motion: android.transition.PathMotion = android.transition.ArcMotion()
 
         @set:JvmSynthetic
@@ -139,11 +124,7 @@ public class MetaphorWindow private constructor(
         /** sets the duration of the Animation. */
         public fun setExitDuration(value: Long): Builder = apply { this.exitDuration = value }
 
-        /** sets the duration of the Animation. */
-        public fun setReenterDuration(value: Long): Builder = apply { this.reenterDuration = value }
 
-        /** sets the duration of the Animation. */
-        public fun setReturnDuration(value: Long): Builder = apply { this.returnDuration = value }
 
         /** sets enter the animation  of the Activity. */
         public fun setEnterAnimation(value: MetaphorAnimation): Builder =
@@ -152,14 +133,6 @@ public class MetaphorWindow private constructor(
         /** sets the exit animation of the Activity. */
         public fun setExitAnimation(value: MetaphorAnimation): Builder =
             apply { this.exitAnimation = value }
-
-        /** sets the return animation of the Activity. */
-        public fun setReturnAnimation(value: MetaphorAnimation): Builder =
-            apply { this.returnAnimation = value }
-
-        /** sets the reenter animation of the Activity. */
-        public fun setReenterAnimation(value: MetaphorAnimation): Builder =
-            apply { this.reenterAnimation = value }
 
         /** sets the view of the Activity. */
         public fun setView(value: View): Builder = apply { this.view = value }

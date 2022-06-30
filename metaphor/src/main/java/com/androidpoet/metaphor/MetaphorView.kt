@@ -3,6 +3,7 @@ package com.androidpoet.metaphor
 
 import android.view.View
 import androidx.annotation.MainThread
+import androidx.fragment.app.Fragment
 import androidx.transition.ArcMotion
 import androidx.transition.PathMotion
 
@@ -87,5 +88,16 @@ public class MetaphorView private constructor(
   @MainThread
   public fun animate() {
     starView.applyAnimation(this)
+  }
+
+
+  public abstract class Factory {
+
+    /**
+     * Creates a new instance of [MetaphorView].
+     *
+     * @return A new created instance of the [MetaphorView].
+     */
+    public abstract fun create(view: View): MetaphorView
   }
 }

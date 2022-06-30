@@ -28,7 +28,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$versions.gradleBuildTool"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.4.1"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10"
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.21'
         classpath "com.diffplug.spotless:spotless-plugin-gradle:$versions.spotlessGradle"
         classpath "com.vanniktech:gradle-maven-publish-plugin:$versions.mavenPublish"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:$versions.dokkaGradle"

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:id="@+id/container"
+  android:layout_gravity="center"
+  android:orientation="vertical"
+  tools:context=".activties.HomeActivity">
+
+
+  <androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/fragment"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/blue"
+    android:padding="10dp"
+    android:text="Fragment and Views"
+    android:textColor="@color/white" />
+
+  <androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/activity"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:background="@color/blue"
+    android:padding="10dp"
+    android:text="Activities"
+    android:textColor="@color/white" />
+
+  <androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/Window"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:background="@color/blue"
+    android:padding="10dp"
+    android:text="Window"
+    android:textColor="@color/white" />
+
+
+</LinearLayout>
+
+</layout>
+

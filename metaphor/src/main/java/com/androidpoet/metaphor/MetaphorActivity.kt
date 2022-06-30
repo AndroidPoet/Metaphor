@@ -4,6 +4,8 @@ package com.androidpoet.metaphor
 import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 @DslMarker
 internal annotation class MetaphorActivityInlineDsl
@@ -180,5 +182,15 @@ public class MetaphorActivity private constructor(
   /** starts  animation. */
   public fun animate() {
     activity.applyAnimation(this)
+  }
+
+  public abstract class Factory {
+
+    /**
+     * Creates a new instance of [MetaphorActivity].
+     *
+     * @return A new created instance of the [MetaphorActivity].
+     */
+    public abstract fun create(fragment: AppCompatActivity): MetaphorActivity
   }
 }

@@ -18,12 +18,12 @@
   -->
 
 <resources>
-    <string name="app_name">MetaphorDemo</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="track_author" translatable="false">Artist</string>
-    <!-- TODO: Remove or change this placeholder text -->
+  <string name="app_name">MetaphorDemo</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="title_home">Home</string>
+  <string name="title_dashboard">Dashboard</string>
+  <string name="title_notifications">Notifications</string>
+  <string name="track_author" translatable="false">Artist</string>
+  <!-- TODO: Remove or change this placeholder text -->
 
 </resources>

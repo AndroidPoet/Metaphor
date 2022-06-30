@@ -47,22 +47,7 @@ internal fun PopupWindow.applyAnimation(
                 window.exitDuration
             )
         }
-    val reenterAnimation =
-        getWindowMetaphorAnimation(window.reenterAnimation)?.let {
-            addAnimationProperties(
-                it,
-                window,
-                window.reenterDuration
-            )
-        }
-    val returnAnimation =
-        getWindowMetaphorAnimation(window.returnAnimation)?.let {
-            addAnimationProperties(
-                it,
-                window,
-                window.returnDuration
-            )
-        }
+
 
     this.enterTransition = enterAnimation
     this.exitTransition = exitAnimation

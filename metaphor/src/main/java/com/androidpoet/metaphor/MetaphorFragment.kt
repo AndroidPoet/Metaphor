@@ -1,4 +1,3 @@
-
 package com.androidpoet.metaphor
 
 import android.graphics.Color
@@ -9,7 +8,8 @@ import androidx.transition.ArcMotion
 import androidx.transition.PathMotion
 
 @DslMarker
-internal annotation class MetaphorFragmentInlineDsl
+public annotation class MetaphorFragmentInlineDsl
+
 /**
  * Creates an instance of the [MetaphorFragment] by scope of the [MetaphorFragment.Builder] using kotlin dsl.
  *
@@ -20,10 +20,10 @@ internal annotation class MetaphorFragmentInlineDsl
 @JvmSynthetic
 @MetaphorFragmentInlineDsl
 public inline fun metaphorFragment(
-  fragment: Fragment,
-  crossinline block: MetaphorFragment.Builder.() -> Unit
+    fragment: Fragment,
+    crossinline block: MetaphorFragment.Builder.() -> Unit
 ): MetaphorFragment =
-  MetaphorFragment.Builder(fragment).apply(block).build()
+    MetaphorFragment.Builder(fragment).apply(block).build()
 
 /**
  * MetaphorFragment implements material motion animations.
@@ -33,163 +33,179 @@ public inline fun metaphorFragment(
  * @param builder A [MetaphorFragment.Builder] for creating an instance of the [MetaphorFragment].
  */
 public class MetaphorFragment private constructor(
-  builder: Builder
+    builder: Builder
 ) {
-  /** duration of enter the animations. */
-  public val enterDuration: Long = builder.enterDuration
-  /** duration of reenter the animations. */
-  public val reenterDuration: Long = builder.reenterDuration
-  /** duration of exit the animations. */
-  public val exitDuration: Long = builder.exitDuration
-  /** duration of return the animations. */
-  public val returnDuration: Long = builder.returnDuration
 
-  /** Enter Animation of  fragment. */
-  public val enterAnimation: MetaphorAnimation = builder.enterAnimation
+    /** duration of enter the animations. */
+    public val enterDuration: Long = builder.enterDuration
 
-  /** Exit Animation of  fragment. */
-  public val exitAnimation: MetaphorAnimation = builder.exitAnimation
+    /** duration of reenter the animations. */
+    public val reenterDuration: Long = builder.reenterDuration
 
-  /** Reenter Animation of  fragment. */
-  public val reenterAnimation: MetaphorAnimation = builder.reenterAnimation
+    /** duration of exit the animations. */
+    public val exitDuration: Long = builder.exitDuration
 
-  /** Return Animation of  fragment. */
-  public val returnAnimation: MetaphorAnimation = builder.returnAnimation
+    /** duration of return the animations. */
+    public val returnDuration: Long = builder.returnDuration
 
-  /**   Enter AnimationOverlap of  fragment. */
-  public val enterTransitionOverlap: Boolean = builder.enterTransitionOverlap
+    /** Enter Animation of  fragment. */
+    public val enterAnimation: MetaphorAnimation = builder.enterAnimation
 
-  /**   Return AnimationOverlap of  fragment. */
-  public val returnTransitionOverlap: Boolean = builder.returnTransitionOverlap
+    /** Exit Animation of  fragment. */
+    public val exitAnimation: MetaphorAnimation = builder.exitAnimation
 
-  /** Motion path of on fragment animation */
-  public val motion: PathMotion = builder.motion
+    /** Reenter Animation of  fragment. */
+    public val reenterAnimation: MetaphorAnimation = builder.reenterAnimation
 
-  /** Fragment on which animation will apply */
-  public val fragment: Fragment = builder.fragment
+    /** Return Animation of  fragment. */
+    public val returnAnimation: MetaphorAnimation = builder.returnAnimation
 
-  /** start view to transform into fragment */
-  public val view: View? = builder.view
+    /**   Enter AnimationOverlap of  fragment. */
+    public val enterTransitionOverlap: Boolean = builder.enterTransitionOverlap
 
-  /** transitionName to transform view to another fragment */
-  public val transitionName: String = builder.transitionName
+    /**   Return AnimationOverlap of  fragment. */
+    public val returnTransitionOverlap: Boolean = builder.returnTransitionOverlap
 
-  /** scrimColor while performing animation */
-  public val scrimColor: Int = builder.scrimColor
+    /** Motion path of on fragment animation */
+    public val motion: PathMotion = builder.motion
 
-  /** containerColors while performing animation */
-  public val containerColors: Int = builder.containerColors
+    /** Fragment on which animation will apply */
+    public val fragment: Fragment = builder.fragment
 
-  /** Builder class for [MetaphorFragment]. */
-  @MetaphorViewInlineDsl
-  public class Builder(public val fragment: Fragment) {
+    /** start view to transform into fragment */
+    public val view: View? = builder.view
 
-    @set:JvmSynthetic
-    public var enterDuration: Long = 300
+    /** transitionName to transform view to another fragment */
+    public val transitionName: String = builder.transitionName
 
-    @set:JvmSynthetic
-    public var reenterDuration: Long = 300
+    /** scrimColor while performing animation */
+    public val scrimColor: Int = builder.scrimColor
 
-    @set:JvmSynthetic
-    public var exitDuration: Long = 300
+    /** containerColors while performing animation */
+    public val containerColors: Int = builder.containerColors
 
-    @set:JvmSynthetic
-    public var returnDuration: Long = 300
+    /** Builder class for [MetaphorFragment]. */
+    @MetaphorViewInlineDsl
+    public class Builder(public val fragment: Fragment) {
 
-    @set:JvmSynthetic
-    public var enterAnimation: MetaphorAnimation = MetaphorAnimation.None
+        @set:JvmSynthetic
+        public var enterDuration: Long = 300
 
-    @set:JvmSynthetic
-    public var exitAnimation: MetaphorAnimation = MetaphorAnimation.None
+        @set:JvmSynthetic
+        public var reenterDuration: Long = 300
 
-    @set:JvmSynthetic
-    public var reenterAnimation: MetaphorAnimation = MetaphorAnimation.None
+        @set:JvmSynthetic
+        public var exitDuration: Long = 300
 
-    @set:JvmSynthetic
-    public var returnAnimation: MetaphorAnimation = MetaphorAnimation.None
+        @set:JvmSynthetic
+        public var returnDuration: Long = 300
 
-    @set:JvmSynthetic
-    public var enterTransitionOverlap: Boolean = false
+        @set:JvmSynthetic
+        public var enterAnimation: MetaphorAnimation = MetaphorAnimation.None
 
-    @set:JvmSynthetic
-    public var returnTransitionOverlap: Boolean = false
+        @set:JvmSynthetic
+        public var exitAnimation: MetaphorAnimation = MetaphorAnimation.None
 
-    @set:JvmSynthetic
-    public var motion: PathMotion = ArcMotion()
+        @set:JvmSynthetic
+        public var reenterAnimation: MetaphorAnimation = MetaphorAnimation.None
 
-    @set:JvmSynthetic
-    public var view: View? = null
+        @set:JvmSynthetic
+        public var returnAnimation: MetaphorAnimation = MetaphorAnimation.None
 
-    @set:JvmSynthetic
-    public var transitionName: String = ""
+        @set:JvmSynthetic
+        public var enterTransitionOverlap: Boolean = false
 
-    @set:JvmSynthetic
-    public var scrimColor: Int = Color.TRANSPARENT
+        @set:JvmSynthetic
+        public var returnTransitionOverlap: Boolean = false
 
-    @set:JvmSynthetic
-    public var containerColors: Int = Color.TRANSPARENT
+        @set:JvmSynthetic
+        public var motion: PathMotion = ArcMotion()
 
-    /** sets the duration of the animation. */
-    public fun setEnterDuration(value: Long): Builder = apply { this.enterDuration = value }
+        @set:JvmSynthetic
+        public var view: View? = null
 
-    /** sets the duration of the animation. */
-    public fun setExitDuration(value: Long): Builder = apply { this.exitDuration = value }
+        @set:JvmSynthetic
+        public var transitionName: String = ""
 
-    /** sets the duration of the animation. */
-    public fun setReenterDuration(value: Long): Builder = apply { this.reenterDuration = value }
+        @set:JvmSynthetic
+        public var scrimColor: Int = Color.TRANSPARENT
 
-    /** sets the duration of the animation. */
-    public fun setReturnDuration(value: Long): Builder = apply { this.returnDuration = value }
+        @set:JvmSynthetic
+        public var containerColors: Int = Color.TRANSPARENT
 
-    /** sets enter the animation of the Fragment. */
-    public fun setEnterAnimation(value: MetaphorAnimation): Builder =
-      apply { this.enterAnimation = value }
+        /** sets the duration of the animation. */
+        public fun setEnterDuration(value: Long): Builder = apply { this.enterDuration = value }
 
-    /** sets the exit animation of the Fragment. */
-    public fun setExitAnimation(value: MetaphorAnimation): Builder =
-      apply { this.exitAnimation = value }
+        /** sets the duration of the animation. */
+        public fun setExitDuration(value: Long): Builder = apply { this.exitDuration = value }
 
-    /** sets the return animation of the Fragment. */
-    public fun setReturnAnimation(value: MetaphorAnimation): Builder =
-      apply { this.returnAnimation = value }
+        /** sets the duration of the animation. */
+        public fun setReenterDuration(value: Long): Builder = apply { this.reenterDuration = value }
 
-    /** sets the reenter animation of the Fragment. */
-    public fun setReenterAnimation(value: MetaphorAnimation): Builder =
-      apply { this.reenterAnimation = value }
+        /** sets the duration of the animation. */
+        public fun setReturnDuration(value: Long): Builder = apply { this.returnDuration = value }
 
-    /** sets the SetView of the Fragment. */
-    public fun setView(value: View): Builder =
-      apply { this.view = value }
+        /** sets enter the animation of the Fragment. */
+        public fun setEnterAnimation(value: MetaphorAnimation): Builder =
+            apply { this.enterAnimation = value }
 
-    /** sets the Motion of the animation. */
-    public fun setMotion(value: PathMotion): Builder =
-      apply { this.motion = value }
+        /** sets the exit animation of the Fragment. */
+        public fun setExitAnimation(value: MetaphorAnimation): Builder =
+            apply { this.exitAnimation = value }
 
-    /** sets the TransitionName of the View. */
-    public fun setTransitionName(value: String): Builder =
-      apply { this.transitionName = value }
+        /** sets the return animation of the Fragment. */
+        public fun setReturnAnimation(value: MetaphorAnimation): Builder =
+            apply { this.returnAnimation = value }
 
-    /** sets the enter Overlap of the Fragment. */
-    public fun setEnterOverlap(value: Boolean): Builder =
-      apply { this.enterTransitionOverlap = value }
+        /** sets the reenter animation of the Fragment. */
+        public fun setReenterAnimation(value: MetaphorAnimation): Builder =
+            apply { this.reenterAnimation = value }
 
-    /** sets the return Overlap of the Fragment. */
-    public fun setReturnOverlap(value: Boolean): Builder =
-      apply { this.returnTransitionOverlap = value }
+        /** sets the SetView of the Fragment. */
+        public fun setView(value: View): Builder =
+            apply { this.view = value }
 
-    /** sets the ScrimColor of the Fragment. */
-    public fun setScrimColor(value: Int): Builder =
-      apply { this.scrimColor = value }
+        /** sets the Motion of the animation. */
+        public fun setMotion(value: PathMotion): Builder =
+            apply { this.motion = value }
 
-    /** sets the ScrimColor of the Fragment. */
-    public fun setContainerColor(value: Int): Builder =
-      apply { this.containerColors = value }
+        /** sets the TransitionName of the View. */
+        public fun setTransitionName(value: String): Builder =
+            apply { this.transitionName = value }
 
-    public fun build(): MetaphorFragment = MetaphorFragment(this)
-  }
+        /** sets the enter Overlap of the Fragment. */
+        public fun setEnterOverlap(value: Boolean): Builder =
+            apply { this.enterTransitionOverlap = value }
 
-  /** starts  animation. */
-  public fun animate() {
-    fragment.applyAnimation(this)
-  }
+        /** sets the return Overlap of the Fragment. */
+        public fun setReturnOverlap(value: Boolean): Builder =
+            apply { this.returnTransitionOverlap = value }
+
+        /** sets the ScrimColor of the Fragment. */
+        public fun setScrimColor(value: Int): Builder =
+            apply { this.scrimColor = value }
+
+        /** sets the ScrimColor of the Fragment. */
+        public fun setContainerColor(value: Int): Builder =
+            apply { this.containerColors = value }
+
+        public fun build(): MetaphorFragment = MetaphorFragment(this)
+    }
+
+    /** starts  animation. */
+    public fun animate() {
+        fragment.applyAnimation(this)
+    }
+
+    public abstract class Factory {
+
+        /**
+         * Creates a new instance of [MetaphorFragment].
+         *
+         * @return A new created instance of the [MetaphorFragment].
+         */
+        public abstract fun create(fragment: Fragment): MetaphorFragment
+    }
+
+
 }
