@@ -133,19 +133,33 @@ public class MetaphorFragment private constructor(builder: Builder) {
   @MetaphorFragmentInlineDsl
   public class Builder(public val fragment: Fragment) {
     @set:JvmSynthetic public var enterDuration: Long = 300
+
     @set:JvmSynthetic public var reenterDuration: Long = 300
+
     @set:JvmSynthetic public var exitDuration: Long = 300
+
     @set:JvmSynthetic public var returnDuration: Long = 300
+
     @set:JvmSynthetic public var enterAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var exitAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var reenterAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var returnAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var enterTransitionOverlap: Boolean = false
+
     @set:JvmSynthetic public var returnTransitionOverlap: Boolean = false
+
     @set:JvmSynthetic public var motion: androidx.transition.PathMotion = androidx.transition.ArcMotion()
+
     @set:JvmSynthetic public var view: View? = null
+
     @set:JvmSynthetic public var transitionName: String = ""
+
     @set:JvmSynthetic public var scrimColor: Int = Color.TRANSPARENT
+
     @set:JvmSynthetic public var containerColors: Int = Color.TRANSPARENT
 
     public fun setEnterDuration(value: Long): Builder = apply { enterDuration = value }
@@ -217,18 +231,31 @@ public class MetaphorActivity private constructor(builder: Builder) {
   @MetaphorActivityInlineDsl
   public class Builder(public val activity: ComponentActivity) {
     @set:JvmSynthetic public var enterDuration: Long = 300
+
     @set:JvmSynthetic public var reenterDuration: Long = 300
+
     @set:JvmSynthetic public var exitDuration: Long = 300
+
     @set:JvmSynthetic public var returnDuration: Long = 300
+
     @set:JvmSynthetic public var enterAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var exitAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var reenterAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var returnAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var motion: android.transition.PathMotion = android.transition.ArcMotion()
+
     @set:JvmSynthetic public var view: View? = null
+
     @set:JvmSynthetic public var transitionName: String = ""
+
     @set:JvmSynthetic public var enterTransitionOverlap: Boolean = false
+
     @set:JvmSynthetic public var returnTransitionOverlap: Boolean = false
+
     @set:JvmSynthetic public var startActivity: Boolean = false
 
     public fun setEnterDuration(value: Long): Builder = apply { enterDuration = value }
@@ -288,8 +315,11 @@ public class MetaphorWindow private constructor(builder: Builder) {
   @MetaphorWindowInlineDsl
   public class Builder(public val popupWindow: PopupWindow) {
     @set:JvmSynthetic public var enterDuration: Long = 300
+
     @set:JvmSynthetic public var exitDuration: Long = 300
+
     @set:JvmSynthetic public var enterAnimation: MetaphorAnimation = MetaphorAnimation.None
+
     @set:JvmSynthetic public var exitAnimation: MetaphorAnimation = MetaphorAnimation.None
 
     public fun setEnterDuration(value: Long): Builder = apply { enterDuration = value }
@@ -333,8 +363,11 @@ public class MetaphorView private constructor(builder: Builder) {
   @MetaphorViewInlineDsl
   public class Builder(public val startView: View) {
     @set:JvmSynthetic public var duration: Long = 300
+
     @set:JvmSynthetic public var animation: MetaphorAnimation = MetaphorAnimation.FadeThrough
+
     @set:JvmSynthetic public var endView: View? = null
+
     @set:JvmSynthetic public var motion: androidx.transition.PathMotion = androidx.transition.ArcMotion()
 
     public fun setDuration(value: Long): Builder = apply { duration = value }

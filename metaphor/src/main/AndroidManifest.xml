@@ -24,8 +24,7 @@
   ~
   -->
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.androidpoet.metaphor">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 
 </manifest>

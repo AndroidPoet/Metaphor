@@ -104,6 +104,7 @@ public final class com/androidpoet/metaphor/MetaphorAnimation : java/lang/Enum {
 	public static final field SharedAxisYForward Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisZBackward Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisZForward Lcom/androidpoet/metaphor/MetaphorAnimation;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static fun values ()[Lcom/androidpoet/metaphor/MetaphorAnimation;
 }
@@ -189,6 +190,7 @@ public final class com/androidpoet/metaphor/MetaphorInterpolator : java/lang/Enu
 	public static final field Emphasized Lcom/androidpoet/metaphor/MetaphorInterpolator;
 	public static final field Linear Lcom/androidpoet/metaphor/MetaphorInterpolator;
 	public static final field Standard Lcom/androidpoet/metaphor/MetaphorInterpolator;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/MetaphorInterpolator;
 	public static fun values ()[Lcom/androidpoet/metaphor/MetaphorInterpolator;
 }
@@ -282,6 +284,7 @@ public final class com/androidpoet/metaphor/Motion$ContainerTransform$FadeMode :
 	public static final field In Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
 	public static final field Out Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
 	public static final field Through Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
 	public static fun values ()[Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
 }
@@ -373,6 +376,7 @@ public final class com/androidpoet/metaphor/Motion$SharedAxis$Axis : java/lang/E
 	public static final field X Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
 	public static final field Y Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
 	public static final field Z Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
 	public static fun values ()[Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
 }
@@ -392,6 +396,7 @@ public abstract interface annotation class com/androidpoet/metaphor/MotionDsl : 
 public final class com/androidpoet/metaphor/MotionPath : java/lang/Enum {
 	public static final field Arc Lcom/androidpoet/metaphor/MotionPath;
 	public static final field Linear Lcom/androidpoet/metaphor/MotionPath;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/MotionPath;
 	public static fun values ()[Lcom/androidpoet/metaphor/MotionPath;
 }

@@ -71,7 +71,6 @@ class DashboardFragment : Fragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-
     _binding = FragmentDashboardBinding.inflate(inflater, container, false)
     val root: View = viewBinding.root
 
@@ -88,7 +87,6 @@ class DashboardFragment : Fragment() {
     super.onViewCreated(view, savedInstanceState)
     loadRecyclerView(isGrid)
     viewBinding.reorder.setOnClickListener {
-
       if (isGrid) {
         isGrid = false
 
@@ -102,7 +100,6 @@ class DashboardFragment : Fragment() {
   }
 
   private fun loadRecyclerView(isGrid: Boolean) {
-
     if (isGrid) {
       viewBinding.rcv.apply {
         layoutManager = GridLayoutManager(requireContext(), 2)
@@ -117,7 +114,6 @@ class DashboardFragment : Fragment() {
         layoutManager = LinearLayoutManager(requireContext())
         adapter = artistLinearListAdapter.apply {
           viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-
             submitList(sampleResponse())
           }
         }

@@ -64,11 +64,17 @@ class ArtistDetailFragment : Fragment() {
     )
 
     viewBinding.fabDetail.setOnClickListener {
-      viewBinding.fabDetail.morphInto(viewBinding.controls, Motion.ContainerTransform(duration = 1000))
+      viewBinding.fabDetail.morphInto(
+        viewBinding.controls,
+        Motion.ContainerTransform(duration = 1000)
+      )
     }
 
     viewBinding.controls.setOnClickListener {
-      viewBinding.controls.morphInto(viewBinding.fabDetail, Motion.ContainerTransform(duration = 1000))
+      viewBinding.controls.morphInto(
+        viewBinding.fabDetail,
+        Motion.ContainerTransform(duration = 1000)
+      )
     }
 
     // load image with palette
@@ -97,7 +103,6 @@ class ArtistDetailFragment : Fragment() {
           dataSource: DataSource?,
           isFirstResource: Boolean
         ): Boolean {
-
           return false
         }
       })
@@ -105,7 +110,6 @@ class ArtistDetailFragment : Fragment() {
   }
 
   override fun onDestroyView() {
-
     super.onDestroyView()
   }
 }

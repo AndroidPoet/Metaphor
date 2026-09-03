@@ -36,7 +36,9 @@ class FragmentHostActivty : AppCompatActivity() {
     // menu should be considered as top level destinations.
     val appBarConfiguration = AppBarConfiguration(
       setOf(
-        R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+        R.id.navigation_home,
+        R.id.navigation_dashboard,
+        R.id.navigation_notifications
       )
     )
     navView.setupWithNavController(navController)
@@ -51,7 +53,6 @@ class FragmentHostActivty : AppCompatActivity() {
       }
     }
     if (Build.VERSION.SDK_INT >= 30) {
-
       // Root ViewGroup of my activity
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         val decor: View = window.decorView

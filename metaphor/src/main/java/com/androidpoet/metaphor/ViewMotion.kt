@@ -24,7 +24,10 @@ public inline fun ViewGroup.animateChanges(motion: Motion, changes: () -> Unit) 
 /** Shows or hides this view, animating the change with [motion] inside its parent. */
 @MainThread
 public fun View.animateVisibility(visible: Boolean, motion: Motion = Motion.Fade()) {
-  val parent = parent as? ViewGroup ?: run { isVisible = visible; return }
+  val parent = parent as? ViewGroup ?: run {
+    isVisible = visible
+    return
+  }
   parent.beginTransition(motion, target = this)
   isVisible = visible
 }

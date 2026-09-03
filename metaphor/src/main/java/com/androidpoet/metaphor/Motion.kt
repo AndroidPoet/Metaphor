@@ -36,7 +36,9 @@ public sealed interface Motion {
 
     public companion object {
       @JvmStatic public fun x(forward: Boolean = true, duration: Long = 300L): SharedAxis = SharedAxis(Axis.X, forward, duration)
+
       @JvmStatic public fun y(forward: Boolean = true, duration: Long = 300L): SharedAxis = SharedAxis(Axis.Y, forward, duration)
+
       @JvmStatic public fun z(forward: Boolean = true, duration: Long = 300L): SharedAxis = SharedAxis(Axis.Z, forward, duration)
     }
   }
@@ -48,6 +50,7 @@ public sealed interface Motion {
   ) : Motion {
     public companion object {
       @JvmStatic public fun grow(duration: Long = 300L): ElevationScale = ElevationScale(growing = true, duration = duration)
+
       @JvmStatic public fun shrink(duration: Long = 300L): ElevationScale = ElevationScale(growing = false, duration = duration)
     }
   }
@@ -59,8 +62,8 @@ public sealed interface Motion {
    * Between two sibling views it is applied with [morphInto].
    */
   public data class ContainerTransform(
-    @ColorInt val scrimColor: Int = Color.TRANSPARENT,
-    @ColorInt val containerColor: Int = Color.TRANSPARENT,
+    @param:ColorInt val scrimColor: Int = Color.TRANSPARENT,
+    @param:ColorInt val containerColor: Int = Color.TRANSPARENT,
     val path: MotionPath = MotionPath.Arc,
     val fadeMode: FadeMode = FadeMode.In,
     override val duration: Long = 300L,

@@ -85,7 +85,6 @@ class ArtistListFragment : Fragment() {
 
     loadRecyclerView(isGrid)
     viewBinding.reorder.setOnClickListener {
-
       if (isGrid) {
         isGrid = false
         loadRecyclerView(isGrid)
@@ -98,10 +97,8 @@ class ArtistListFragment : Fragment() {
   }
 
   fun loadRecyclerView(isGrid: Boolean) {
-
     if (isGrid) {
       viewBinding.rcv.apply {
-
         layoutManager = GridLayoutManager(requireContext(), 2)
         adapter = artistGridListAdapter.apply {
           viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -111,7 +108,6 @@ class ArtistListFragment : Fragment() {
       }
     } else {
       viewBinding.rcv.apply {
-
         layoutManager = LinearLayoutManager(requireContext())
         adapter = artistLinearListAdapter.apply {
           viewLifecycleOwner.lifecycleScope.launchWhenStarted {

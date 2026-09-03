@@ -50,7 +50,6 @@ class NotificationsFragment : Fragment() {
     container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View {
-
     _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
 
     return binding.root
