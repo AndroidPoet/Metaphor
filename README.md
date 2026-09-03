@@ -50,352 +50,221 @@ Add the dependency below to your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.androidpoet:metaphor:1.1.6")
+    implementation("io.github.androidpoet:metaphor:2.0.0")
 }
 ```
+
 Metaphor provides support for all four motion patterns
-defined in the Material spec.
+defined in the Material spec, plus elevation scale and hold.
 
 1.  [Container transform](#container-transform)
 2.  [Shared axis](#shared-axis)
 3.  [Fade through](#fade-through)
 4.  [Fade](#fade)
 
+## How it works
 
+Metaphor separates **what** animates from **where** it animates.
+
+- A `Motion` is one Material pattern as plain data: `Motion.Fade()`, `Motion.SharedAxis.x()`,
+  `Motion.ContainerTransform()` and so on. Each carries only its own parameters and defaults
+  to the duration the Material spec recommends.
+- A `MotionSpec` is the set of motions for one screen: `enter`, `exit`, `popEnter`, `popExit`
+  and an optional `sharedElement`. It holds no reference to a Fragment or Activity, so it can
+  be declared once and reused anywhere.
+- `applyMotion(...)` is the only thing a target needs to call. It exists for `Fragment`,
+  `Activity` and `PopupWindow`. Views use `morphInto`, `animateVisibility` and `animateChanges`.
+
+```kotlin
+object Motions {
+  val listOrigin = motionSpec {
+    exit = Motion.ElevationScale.shrink()
+    popEnter = Motion.ElevationScale.grow()
+  }
+  val detail = motionSpec {
+    sharedElement = Motion.ContainerTransform()
+  }
+}
+```
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157047014-2cf69797-090f-41a3-97e9-a1aeda55307a.gif" width="32%"/>
-
 </p>
 
-## Container transform How to use In Fragments
+## Container transform
+
+### Between Fragments
 
 ```kotlin
+// origin fragment, in onCreate
+applyMotion(Motions.listOrigin)
 
-//Start Fragments onclick// 
-val extras = FragmentNavigatorExtras(view to item.pos.toString())
-val action = ArtistListFragmentDirections.navToCharacterDetailFragment(item)
+// origin fragment, in onViewCreated: wait for the list to draw before the return transition runs
+postponeEnterUntilDrawn()
+
+// origin fragment, on click
+val extras = FragmentNavigatorExtras(view to item.id)
 findNavController().navigate(action, extras)
 
-//start fragment 
-// inside on onViewCreated  
-override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    hold() // this is function is really important for the "ContainerTransform" it will hold the currant fragment view
-
-}
-
-
-//destination fragment		
-
-// inside on onViewCreated  
-override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-    super.onViewCreated(view, savedInstanceState)
-    val metaphor = MetaphorFragment.Builder(fragment)
-        .setExitDuration(300)
-        .setView(view)
-        .setTransitionName(args.data.pos.toString())
-        .setExitAnimation(MetaphorAnimation.ContainerTransform)
-        .setMotion(MaterialArcMotion())
-        .build()
-    metaphor.animate()
-}
-
+// destination fragment, in onViewCreated
+applyMotion(Motions.detail, SharedElement.Destination(view, args.id))
 ```
+
+`Motion.ContainerTransform` takes `scrimColor`, `containerColor`, `path` (`MotionPath.Arc` or
+`MotionPath.Linear`), `fadeMode` and `duration`.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157047720-d6dcb0ab-3fe4-4078-84f3-f3be70cbb0f4.gif" width="32%"/>
-
 </p>
 
-## Container transform How to use in views
+### Between views
 
 ```kotlin
-//call this method with startView and add end view set Animation you want to perform
-
-
-viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(viewBinding.fabDetail)
-        .setDuration(300)
-        .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
-        .setMotion(MaterialArcMotion())
-        .build()
-    meta.animate()
+fab.setOnClickListener {
+  fab.morphInto(controls, Motion.ContainerTransform(duration = 300))
 }
-
-
-
+controls.setOnClickListener {
+  controls.morphInto(fab)
+}
 ```
 
+Both views must share the same parent.
 
+### Between Activities
 
+```kotlin
+// launching activity, in onCreate
+applyMotion(SharedElement.Origin) {
+  sharedElement = Motion.ContainerTransform()
+  exit = Motion.Hold()
+}
+
+// launched activity, in onCreate
+applyMotion(SharedElement.Destination(binding.card, "card")) {
+  sharedElement = Motion.ContainerTransform()
+}
+```
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157048740-76908bb0-0937-4a33-9759-894d389a46b1.gif" width="32%"/>
-
 </p>
 
-## Shared axis How to use In Fragments
+## Shared axis
 
+### Between Fragments
 
 ```kotlin
-
-//start fragment 
-
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    // FadeThrough inside fragment
-
-    val metaphor = MetaphorFragment.Builder(fragment)
-        .setEnterDuration(300)
-        .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
-        .build()
-    metaphor.animate()
+// in onCreate of both fragments
+applyMotion {
+  enter = Motion.SharedAxis.x(forward = true)
+  exit = Motion.SharedAxis.x(forward = true)
+  popEnter = Motion.SharedAxis.x(forward = false)
+  popExit = Motion.SharedAxis.x(forward = false)
 }
+```
 
-//destination fragment		
+`Motion.SharedAxis.y()` and `Motion.SharedAxis.z()` work the same way.
 
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    // FadeThrough inside fragment
+### Between views
 
-    val metaphor = MetaphorFragment.Builder(fragment)
-        .setEnterDuration(300)
-        .setEnterAnimation(MetaphorAnimation.SharedAxisXForward)
-        .build()
-    metaphor.animate()
-}
-
-
+```kotlin
+image.toggleVisibility(Motion.SharedAxis.x(forward = true))
 ```
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157049004-82bd3875-f0a6-4853-98f4-ad2d166d1259.gif" width="32%"/>
-
 </p>
 
-## Shared axis How to use in views
+## Fade through
+
+### Between Fragments
 
 ```kotlin
-//call this method with startView and add end view set Animation you want to perform
-
-viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(viewBinding.fabDetail)
-        .setDuration(300)
-        .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.SharedAxisXForward)
-        .build()
-    meta.animate()
+// in onCreate of both fragments
+applyMotion {
+  enter = Motion.FadeThrough()
+  exit = Motion.FadeThrough()
 }
-
-
-
 ```
 
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157048740-76908bb0-0937-4a33-9759-894d389a46b1.gif" width="32%"/>
-
-</p>
-
-## Fade through How to use In Fragments
-
+### Between views
 
 ```kotlin
-
-//start fragment 
-
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    // FadeThrough inside fragment
-
-    val metaphor = MetaphorFragment.Builder(fragment)
-        .setEnterDuration(300)
-        .setEnterAnimation(MetaphorAnimation.FadeThrough)
-        .build()
-    metaphor.animate()
-}
-
-//destination fragment		
-
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    // FadeThrough inside fragment
-
-    val metaphor = MetaphorFragment.Builder(fragment)
-        .setEnterDuration(300)
-        .setEnterAnimation(MetaphorAnimation.FadeThrough)
-        .build()
-    metaphor.animate()
-}
-
-
+image.toggleVisibility(Motion.FadeThrough())
 ```
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157051396-9eaa6437-5c86-4fd8-abba-00b0ebafac55.gif" width="32%"/>
-
 </p>
+## Fade
 
-## Fade through How to use in views
-
+### Between Fragments
 
 ```kotlin
-
-//call this method with startView and add end view set Animation you want to perform
-
-
-viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(viewBinding.fabDetail)
-        .setDuration(300)
-        .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
-        .build()
-    meta.animate()
+applyMotion {
+  enter = Motion.Fade()
+  exit = Motion.Fade()
 }
-
-
 ```
 
-
-
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/13647384/157051144-645ebfed-a388-4c5c-a43d-d7c2f647ffbd.gif" width="32%"/>
-
-</p>
-
-## Fade  How to use In Fragments
-
+### Between views
 
 ```kotlin
+image.animateVisibility(visible = false, motion = Motion.Fade())
+```
 
-//start fragment 
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    // FadeThrough inside fragment
+Any other change to a view hierarchy can be animated with `animateChanges`:
 
-    val metaphor = MetaphorFragment.Builder(fragment)
-        .setEnterDuration(300)
-        .setEnterAnimation(MetaphorAnimation.MaterialFade)
-        .build()
-    metaphor.animate()
+```kotlin
+container.animateChanges(Motion.FadeThrough()) {
+  title.isVisible = false
+  detail.isVisible = true
 }
-
-//destination fragment		
-
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    // FadeThrough inside fragment
-
-    val metaphor = MetaphorFragment.Builder(fragment)
-        .setEnterDuration(300)
-        .setEnterAnimation(MetaphorAnimation.Fade)
-        .build()
-    metaphor.animate()
-}
-
-
 ```
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/13647384/157052869-9e124cef-0b3e-416b-a577-9d515e76d428.gif" width="32%"/>
-
 </p>
-
-## Fade  How to use in views
-
+## PopupWindow
 
 ```kotlin
-
-//call this method with startView and add end view set Animation you want to perform
-
-viewBinding.fabDetail.setOnClickListener {
-    val meta = MetaphorView.Builder(viewBinding.fabDetail)
-        .setDuration(300)
-        .setEndView(viewBinding.controls)
-        .setMetaphorAnimation(MetaphorAnimation.Fade)
-
-        .build()
-    meta.animate()
+popup.applyMotion {
+  enter = Motion.Fade()
+  exit = Motion.Fade()
 }
-
-
-
 ```
 
-
-
-## Supported Animations
+## Supported motions
 
 ```kotlin
-MetaphorAnimation.None
-MetaphorAnimation.ContainerTransform
-MetaphorAnimation.FadeThrough
-MetaphorAnimation.Fade
-MetaphorAnimation.SharedAxisXForward
-MetaphorAnimation.SharedAxisYForward
-MetaphorAnimation.SharedAxisZForward
-MetaphorAnimation.SharedAxisXBackward
-MetaphorAnimation.SharedAxisYBackward
-MetaphorAnimation.SharedAxisZBackward
-MetaphorAnimation.ElevationScaleGrow
-MetaphorAnimation.ElevationScale
-
+Motion.Fade(duration = 150)
+Motion.FadeThrough(duration = 300)
+Motion.SharedAxis(axis = Axis.X, forward = true, duration = 300)   // also SharedAxis.x() / .y() / .z()
+Motion.ElevationScale(growing = true, duration = 300)              // also ElevationScale.grow() / .shrink()
+Motion.ContainerTransform(scrimColor, containerColor, path, fadeMode, duration = 300)
+Motion.Hold(duration = 300)
 ```
 
+## Migrating from 1.x
+
+The 1.x builders (`MetaphorFragment`, `MetaphorActivity`, `MetaphorView`, `MetaphorWindow`) and
+the `MetaphorAnimation` enum still compile and delegate to the new API, but are deprecated and
+will be removed in 3.0. `hold()` is now `postponeEnterUntilDrawn()`. The `Factory` and lazy
+`metaphorFragment<T>()` helpers were removed; declare a `MotionSpec` in an object and apply it
+instead. `BottomNavigationView.show()` / `hide()` moved to the `com.androidpoet.metaphor.widgets`
+package.
+
+| 1.x | 2.0 |
+| --- | --- |
+| `MetaphorFragment.Builder(this).setEnterAnimation(FadeThrough).build().animate()` | `applyMotion { enter = Motion.FadeThrough() }` |
+| `.setExitAnimation(ContainerTransform).setView(view).setTransitionName(name)` | `applyMotion(spec, SharedElement.Destination(view, name))` |
+| `MetaphorView.Builder(a).setEndView(b).setMetaphorAnimation(ContainerTransform)` | `a.morphInto(b)` |
+| `MetaphorView.Builder(v).setEndView(v).setMetaphorAnimation(Fade)` | `v.toggleVisibility(Motion.Fade())` |
+| `SharedAxisXBackward` | `Motion.SharedAxis.x(forward = false)` |
+| `ElevationScaleGrow` / `ElevationScale` | `Motion.ElevationScale.grow()` / `.shrink()` |
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Create Metaphor Fragment with Kotlin DSL
-We can also create an instance of the MetaphorFragment with the Kotlin DSL.
-
-
-
-```kotlin
-  val meta = metaphorFragment(this) {
-    setEnterAnimation(MetaphorAnimation.Fade)
-    setView(view)
-    build()
-}
-meta.animate()
-
-```
-
-### Create Metaphor View with Kotlin DSL
-We can also create an instance of the MetaphorView with the Kotlin DSL.
-
-
-
-```kotlin
-val meta = metaphorView(it) {
-    setDuration(300)
-    setEndView(viewBinding.controls)
-    setMetaphorAnimation(MetaphorAnimation.Fade)
-    setMotion(MaterialArcMotion())
-    build()
-}
-
-meta.animate()
-
-```
-
-
-
-images credit:https://unsplash.com/
+images credit: https://picsum.photos/ (Unsplash photos)
 
 
 ## Find this repository useful? :heart:

@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import com.androidpoet.metaphor.MetaphorAnimation
-import com.androidpoet.metaphor.MetaphorFragment
-import com.androidpoet.metaphor.MetaphorView
+import com.androidpoet.metaphor.Motion
+import com.androidpoet.metaphor.applyMotion
+import com.androidpoet.metaphor.toggleVisibility
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentNotificationsBinding
 import com.bumptech.glide.Glide
@@ -39,12 +39,10 @@ class NotificationsFragment : Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    // FadeThrough inside fragment
-    val meta = MetaphorFragment.Builder(this)
-      .setEnterAnimation(MetaphorAnimation.ElevationScale)
-      .setExitAnimation(MetaphorAnimation.ElevationScaleGrow)
-      .build()
-    meta.animate()
+    applyMotion {
+      enter = Motion.ElevationScale.shrink()
+      exit = Motion.ElevationScale.grow()
+    }
   }
 
   override fun onCreateView(
@@ -67,53 +65,24 @@ class NotificationsFragment : Fragment() {
     Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img3)
 
     binding.SharedX.setOnClickListener {
-
-      val meta = MetaphorView.Builder(binding.img)
-        .setDuration(1000)
-        .setEndView(binding.img)
-        .setMetaphorAnimation(MetaphorAnimation.Fade)
-        .build()
-      meta.animate()
+      binding.img.toggleVisibility(Motion.SharedAxis.x(forward = true, duration = 1000))
     }
 
     binding.SharedY.setOnClickListener {
-
-      val meta = MetaphorView.Builder(binding.img)
-        .setDuration(1000)
-        .setEndView(binding.img)
-        .setMetaphorAnimation(MetaphorAnimation.Fade)
-        .build()
-      meta.animate()
+      binding.img.toggleVisibility(Motion.SharedAxis.y(forward = true, duration = 1000))
     }
-    binding.SharedZ.setOnClickListener {
 
-      val meta = MetaphorView.Builder(binding.img)
-        .setDuration(1000)
-        .setEndView(binding.img)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
-        .build()
-      meta.animate()
+    binding.SharedZ.setOnClickListener {
+      binding.img.toggleVisibility(Motion.SharedAxis.z(forward = true, duration = 1000))
     }
 
     binding.materialFadeThrough.setOnClickListener {
-
-      val meta = MetaphorView.Builder(binding.img2)
-        .setDuration(1000)
-        .setEndView(binding.img2)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
-        .build()
-      meta.animate()
+      binding.img2.toggleVisibility(Motion.FadeThrough(duration = 1000))
     }
 
     binding.materialFade.setOnClickListener {
-
       Glide.with(requireContext()).load(getRandomItem(images)).into(binding.img3)
-      val meta = MetaphorView.Builder(binding.img3)
-        .setDuration(1000)
-        .setEndView(binding.img3)
-        .setMetaphorAnimation(MetaphorAnimation.FadeThrough)
-        .build()
-      meta.animate()
+      binding.img3.toggleVisibility(Motion.Fade(duration = 1000))
     }
   }
 

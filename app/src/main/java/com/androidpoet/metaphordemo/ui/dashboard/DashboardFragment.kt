@@ -13,10 +13,10 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.androidpoet.metaphor.metaphorFragment
+import com.androidpoet.metaphor.applyMotion
+import com.androidpoet.metaphordemo.Motions
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentDashboardBinding
-import com.androidpoet.metaphordemo.factory.MetaphorFragmentFactory
 import com.androidpoet.metaphordemo.ui.home.ArtistGridListAdapter
 import com.androidpoet.metaphordemo.ui.home.ArtistLinearListAdapter
 import com.androidpoet.metaphordemo.ui.home.SampleResponse
@@ -35,10 +35,9 @@ class DashboardFragment : Fragment() {
   private lateinit var artistLinearListAdapter: ArtistLinearListAdapter
 
   private var isGrid: Boolean = true
-  private val metaphorFragment by metaphorFragment<MetaphorFragmentFactory>()
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    metaphorFragment.animate()
+    applyMotion(Motions.tab)
 
     artistGridListAdapter = ArtistGridListAdapter(requireContext(), Glide.with(requireContext()))
     artistLinearListAdapter =

@@ -11,10 +11,11 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.androidpoet.metaphor.MetaphorAnimation
-import com.androidpoet.metaphor.MetaphorFragment
-import com.androidpoet.metaphor.MetaphorView
-import com.androidpoet.metaphor.metaphorView
+import com.androidpoet.metaphor.Motion
+import com.androidpoet.metaphor.SharedElement
+import com.androidpoet.metaphor.applyMotion
+import com.androidpoet.metaphor.morphInto
+import com.androidpoet.metaphordemo.Motions
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.FragmentArtistDetailBinding
 import com.bumptech.glide.Glide
@@ -23,7 +24,6 @@ import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
-import com.google.android.material.transition.MaterialArcMotion
 
 class ArtistDetailFragment : Fragment() {
 
@@ -50,18 +50,10 @@ class ArtistDetailFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    /** This is the method to perform MaterialContainerTransform which we need to call inside onViewCreated
-     * it is important to call this method inside onViewCreated */
-    // metaphorDestinationFragmentMaterialContainerTransform(view, args.data.pos.toString())
-
-    val metaphor = MetaphorFragment.Builder(this)
-      .setEnterDuration(1000)
-      .setView(view)
-      .setTransitionName(args.data.pos.toString())
-      .setExitAnimation(MetaphorAnimation.ContainerTransform)
-      .setMotion(MaterialArcMotion())
-      .build()
-    metaphor.animate()
+    applyMotion(
+      Motions.detailDestination(duration = 1000),
+      SharedElement.Destination(view, args.data.pos.toString())
+    )
 
     viewBinding.toolBar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24); // your drawable
     viewBinding.toolBar.setNavigationOnClickListener(
@@ -72,28 +64,11 @@ class ArtistDetailFragment : Fragment() {
     )
 
     viewBinding.fabDetail.setOnClickListener {
-
-      val meta = metaphorView(viewBinding.fabDetail) {
-        setDuration(1000)
-        setEndView(viewBinding.controls)
-        setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
-        setMotion(MaterialArcMotion())
-        build()
-      }
-
-      meta.animate()
+      viewBinding.fabDetail.morphInto(viewBinding.controls, Motion.ContainerTransform(duration = 1000))
     }
 
     viewBinding.controls.setOnClickListener {
-      // it is reference for the currant view
-      // params[endView]you need to pass end view for the transformation
-      val meta = MetaphorView.Builder(it)
-        .setDuration(1000)
-        .setEndView(viewBinding.fabDetail)
-        .setMetaphorAnimation(MetaphorAnimation.ContainerTransform)
-        .setMotion(MaterialArcMotion())
-        .build()
-      meta.animate()
+      viewBinding.controls.morphInto(viewBinding.fabDetail, Motion.ContainerTransform(duration = 1000))
     }
 
     // load image with palette

@@ -13,8 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.androidpoet.metaphor.hide
-import com.androidpoet.metaphor.show
+import com.androidpoet.metaphor.widgets.hide
+import com.androidpoet.metaphor.widgets.show
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.ActivityHostActivtyBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
