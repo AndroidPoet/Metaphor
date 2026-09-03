@@ -26,12 +26,10 @@ apply plugin: 'binary-compatibility-validator'
 apply from: "$rootDir/dependencies.gradle"
 
 android {
-    compileSdkVersion versions.compileSdk
+    namespace 'com.androidpoet.metaphor'
+    compileSdk versions.compileSdk
     defaultConfig {
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.compileSdk
-        versionCode versions.versionCode
-        versionName versions.versionName
+        minSdk versions.minSdk
     }
 
     resourcePrefix 'metaphor'
@@ -42,21 +40,20 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-
-    lintOptions {
+    lint {
         abortOnError false
     }
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions.freeCompilerArgs += ["-Xexplicit-api=strict"]
+kotlin {
+    explicitApi()
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+    }
 }
 
 apiValidation {
@@ -85,13 +82,11 @@ dokkaHtml.configure {
 }
 
 
-allprojects {
-    plugins.withId("com.vanniktech.maven.publish") {
-        mavenPublish {
-            sonatypeHost = "S01"
-        }
-    }
-}
-
 apply plugin: "com.vanniktech.maven.publish"
+
+mavenPublishing {
+    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL, true)
+    signAllPublications()
+    configure(new com.vanniktech.maven.publish.AndroidSingleVariantLibrary("release", true, true))
+}
 apply from: "$rootDir/spotless.gradle"

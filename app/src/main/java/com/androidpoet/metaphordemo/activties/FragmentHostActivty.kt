@@ -13,8 +13,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.androidpoet.metaphor.hide
-import com.androidpoet.metaphor.show
+import com.androidpoet.metaphor.widgets.hide
+import com.androidpoet.metaphor.widgets.show
 import com.androidpoet.metaphordemo.R
 import com.androidpoet.metaphordemo.databinding.ActivityHostActivtyBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -36,7 +36,9 @@ class FragmentHostActivty : AppCompatActivity() {
     // menu should be considered as top level destinations.
     val appBarConfiguration = AppBarConfiguration(
       setOf(
-        R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
+        R.id.navigation_home,
+        R.id.navigation_dashboard,
+        R.id.navigation_notifications
       )
     )
     navView.setupWithNavController(navController)
@@ -51,7 +53,6 @@ class FragmentHostActivty : AppCompatActivity() {
       }
     }
     if (Build.VERSION.SDK_INT >= 30) {
-
       // Root ViewGroup of my activity
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         val decor: View = window.decorView

@@ -18,19 +18,20 @@ class ArtistGridListAdapter(
   private val requestManager: RequestManager
 ) : ListAdapter<SampleResponse, ArtistViewHolder>(object : DiffUtil
   .ItemCallback<SampleResponse>() {
-    override fun areItemsTheSame(oldItem: SampleResponse, newItem: SampleResponse): Boolean {
-      return oldItem.blur == newItem.blur
-    }
+  override fun areItemsTheSame(oldItem: SampleResponse, newItem: SampleResponse): Boolean {
+    return oldItem.blur == newItem.blur
+  }
 
-    override fun areContentsTheSame(oldItem: SampleResponse, newItem: SampleResponse): Boolean {
-      return oldItem == newItem
-    }
-  }) {
+  override fun areContentsTheSame(oldItem: SampleResponse, newItem: SampleResponse): Boolean {
+    return oldItem == newItem
+  }
+}) {
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistViewHolder {
     return ArtistViewHolder(
       ItemArtistBinding.inflate(
         LayoutInflater.from(parent.context),
-        parent, false
+        parent,
+        false
       )
     ).apply {
       binding.root.setOnClickListener {

@@ -24,7 +24,13 @@ apply from: "$rootDir/dependencies.gradle"
 spotless {
   kotlin {
     target "**/*.kt"
-    ktlint("$versions.ktlintGradle").userData(['indent_size': '2', 'continuation_indent_size': '2'])
+    ktlint("$versions.ktlintGradle").editorConfigOverride([
+      'indent_size': '2',
+      'continuation_indent_size': '2',
+      'ktlint_standard_trailing-comma-on-call-site': 'disabled',
+      'ktlint_standard_trailing-comma-on-declaration-site': 'disabled',
+      'ktlint_standard_max-line-length': 'disabled',
+    ])
     licenseHeaderFile "$rootDir/spotless.license.kt"
     trimTrailingWhitespace()
     endWithNewline()

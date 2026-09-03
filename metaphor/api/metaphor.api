@@ -1,9 +1,26 @@
-public final class com/androidpoet/metaphor/AnimationsExtenstionsKt {
+public final class com/androidpoet/metaphor/ActivityMotionKt {
+	public static final fun applyMotion (Landroid/app/Activity;Lcom/androidpoet/metaphor/MotionSpec;Lcom/androidpoet/metaphor/SharedElement;)V
+	public static final fun applyMotion (Landroid/app/Activity;Lcom/androidpoet/metaphor/SharedElement;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun applyMotion$default (Landroid/app/Activity;Lcom/androidpoet/metaphor/MotionSpec;Lcom/androidpoet/metaphor/SharedElement;ILjava/lang/Object;)V
+	public static synthetic fun applyMotion$default (Landroid/app/Activity;Lcom/androidpoet/metaphor/SharedElement;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
 }
 
-public final class com/androidpoet/metaphor/FragmentExtensionsKt {
-	public static final fun activity (Landroid/content/Context;)Landroid/app/Activity;
+public final class com/androidpoet/metaphor/FragmentMotionKt {
+	public static final fun applyMotion (Landroidx/fragment/app/Fragment;Lcom/androidpoet/metaphor/MotionSpec;Lcom/androidpoet/metaphor/SharedElement;)V
+	public static final fun applyMotion (Landroidx/fragment/app/Fragment;Lcom/androidpoet/metaphor/SharedElement;Lkotlin/jvm/functions/Function1;)V
+	public static synthetic fun applyMotion$default (Landroidx/fragment/app/Fragment;Lcom/androidpoet/metaphor/MotionSpec;Lcom/androidpoet/metaphor/SharedElement;ILjava/lang/Object;)V
+	public static synthetic fun applyMotion$default (Landroidx/fragment/app/Fragment;Lcom/androidpoet/metaphor/SharedElement;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)V
+	public static final fun postponeEnterUntilDrawn (Landroidx/fragment/app/Fragment;)V
+}
+
+public final class com/androidpoet/metaphor/LegacyKt {
 	public static final synthetic fun hold (Landroidx/fragment/app/Fragment;)V
+	public static final synthetic fun metaphorActivity (Landroidx/activity/ComponentActivity;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorActivity;
+	public static final synthetic fun metaphorFragment (Landroidx/fragment/app/Fragment;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorFragment;
+	public static final synthetic fun metaphorView (Landroid/view/View;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorView;
+	public static final synthetic fun metaphorWindow (Landroid/widget/PopupWindow;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorWindow;
+	public static final fun toMotion (Lcom/androidpoet/metaphor/MetaphorAnimation;JLcom/androidpoet/metaphor/MotionPath;II)Lcom/androidpoet/metaphor/Motion;
+	public static synthetic fun toMotion$default (Lcom/androidpoet/metaphor/MetaphorAnimation;JLcom/androidpoet/metaphor/MotionPath;IIILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion;
 }
 
 public final class com/androidpoet/metaphor/MetaphorActivity {
@@ -74,15 +91,6 @@ public final class com/androidpoet/metaphor/MetaphorActivity$Builder {
 	public final synthetic fun setView (Landroid/view/View;)V
 }
 
-public abstract class com/androidpoet/metaphor/MetaphorActivity$Factory {
-	public fun <init> ()V
-	public abstract fun create (Landroidx/appcompat/app/AppCompatActivity;)Lcom/androidpoet/metaphor/MetaphorActivity;
-}
-
-public final class com/androidpoet/metaphor/MetaphorActivityKt {
-	public static final synthetic fun metaphorActivity (Landroidx/activity/ComponentActivity;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorActivity;
-}
-
 public final class com/androidpoet/metaphor/MetaphorAnimation : java/lang/Enum {
 	public static final field ContainerTransform Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field ElevationScale Lcom/androidpoet/metaphor/MetaphorAnimation;
@@ -96,7 +104,7 @@ public final class com/androidpoet/metaphor/MetaphorAnimation : java/lang/Enum {
 	public static final field SharedAxisYForward Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisZBackward Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static final field SharedAxisZForward Lcom/androidpoet/metaphor/MetaphorAnimation;
-	public final fun getValue ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public static fun values ()[Lcom/androidpoet/metaphor/MetaphorAnimation;
 }
@@ -173,16 +181,7 @@ public final class com/androidpoet/metaphor/MetaphorFragment$Builder {
 	public final synthetic fun setView (Landroid/view/View;)V
 }
 
-public abstract class com/androidpoet/metaphor/MetaphorFragment$Factory {
-	public fun <init> ()V
-	public abstract fun create (Landroidx/fragment/app/Fragment;)Lcom/androidpoet/metaphor/MetaphorFragment;
-}
-
 public abstract interface annotation class com/androidpoet/metaphor/MetaphorFragmentInlineDsl : java/lang/annotation/Annotation {
-}
-
-public final class com/androidpoet/metaphor/MetaphorFragmentKt {
-	public static final synthetic fun metaphorFragment (Landroidx/fragment/app/Fragment;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorFragment;
 }
 
 public final class com/androidpoet/metaphor/MetaphorInterpolator : java/lang/Enum {
@@ -191,9 +190,13 @@ public final class com/androidpoet/metaphor/MetaphorInterpolator : java/lang/Enu
 	public static final field Emphasized Lcom/androidpoet/metaphor/MetaphorInterpolator;
 	public static final field Linear Lcom/androidpoet/metaphor/MetaphorInterpolator;
 	public static final field Standard Lcom/androidpoet/metaphor/MetaphorInterpolator;
-	public final fun getValue ()I
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
 	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/MetaphorInterpolator;
 	public static fun values ()[Lcom/androidpoet/metaphor/MetaphorInterpolator;
+}
+
+public final class com/androidpoet/metaphor/MetaphorInterpolatorKt {
+	public static final fun toInterpolator (Lcom/androidpoet/metaphor/MetaphorInterpolator;)Landroid/view/animation/Interpolator;
 }
 
 public final class com/androidpoet/metaphor/MetaphorView {
@@ -223,28 +226,14 @@ public final class com/androidpoet/metaphor/MetaphorView$Builder {
 	public final synthetic fun setMotion (Landroidx/transition/PathMotion;)V
 }
 
-public abstract class com/androidpoet/metaphor/MetaphorView$Factory {
-	public fun <init> ()V
-	public abstract fun create (Landroid/view/View;)Lcom/androidpoet/metaphor/MetaphorView;
-}
-
-public final class com/androidpoet/metaphor/MetaphorViewKt {
-	public static final synthetic fun metaphorView (Landroid/view/View;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorView;
-}
-
 public final class com/androidpoet/metaphor/MetaphorWindow {
 	public synthetic fun <init> (Lcom/androidpoet/metaphor/MetaphorWindow$Builder;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
 	public final fun animate ()V
 	public final fun getEnterAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public final fun getEnterDuration ()J
-	public final fun getEnterTransitionOverlap ()Z
 	public final fun getExitAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public final fun getExitDuration ()J
-	public final fun getMotion ()Landroid/transition/PathMotion;
-	public final fun getReturnTransitionOverlap ()Z
 	public final fun getWindow ()Landroid/widget/PopupWindow;
-	public final fun setEnterAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
-	public final fun setExitAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
 }
 
 public final class com/androidpoet/metaphor/MetaphorWindow$Builder {
@@ -252,46 +241,251 @@ public final class com/androidpoet/metaphor/MetaphorWindow$Builder {
 	public final fun build ()Lcom/androidpoet/metaphor/MetaphorWindow;
 	public final fun getEnterAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public final fun getEnterDuration ()J
-	public final fun getEnterTransitionOverlap ()Z
 	public final fun getExitAnimation ()Lcom/androidpoet/metaphor/MetaphorAnimation;
 	public final fun getExitDuration ()J
-	public final fun getMotion ()Landroid/transition/PathMotion;
 	public final fun getPopupWindow ()Landroid/widget/PopupWindow;
-	public final fun getReenterDuration ()J
-	public final fun getReturnDuration ()J
-	public final fun getReturnTransitionOverlap ()Z
-	public final fun getTransitionName ()Ljava/lang/String;
-	public final fun getView ()Landroid/view/View;
 	public final fun setEnterAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
 	public final synthetic fun setEnterAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
 	public final fun setEnterDuration (J)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
 	public final synthetic fun setEnterDuration (J)V
-	public final fun setEnterOverlap (Z)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
-	public final synthetic fun setEnterTransitionOverlap (Z)V
 	public final fun setExitAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
 	public final synthetic fun setExitAnimation (Lcom/androidpoet/metaphor/MetaphorAnimation;)V
 	public final fun setExitDuration (J)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
 	public final synthetic fun setExitDuration (J)V
-	public final fun setMotion (Landroid/transition/PathMotion;)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
-	public final synthetic fun setMotion (Landroid/transition/PathMotion;)V
-	public final synthetic fun setReenterDuration (J)V
-	public final synthetic fun setReturnDuration (J)V
-	public final fun setReturnOverlap (Z)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
-	public final synthetic fun setReturnTransitionOverlap (Z)V
-	public final fun setTransitionName (Ljava/lang/String;)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
-	public final synthetic fun setTransitionName (Ljava/lang/String;)V
-	public final fun setView (Landroid/view/View;)Lcom/androidpoet/metaphor/MetaphorWindow$Builder;
-	public final synthetic fun setView (Landroid/view/View;)V
 }
 
-public final class com/androidpoet/metaphor/MetaphorWindowKt {
-	public static final synthetic fun metaphorWindow (Landroid/widget/PopupWindow;Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MetaphorWindow;
+public abstract interface class com/androidpoet/metaphor/Motion {
+	public abstract fun getDuration ()J
 }
 
-public final class com/androidpoet/metaphor/ViewExtensionsKt {
-	public static final synthetic fun drawToBitmap (Landroid/view/View;I)Landroid/graphics/Bitmap;
+public final class com/androidpoet/metaphor/Motion$ContainerTransform : com/androidpoet/metaphor/Motion {
+	public fun <init> ()V
+	public fun <init> (IILcom/androidpoet/metaphor/MotionPath;Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;J)V
+	public synthetic fun <init> (IILcom/androidpoet/metaphor/MotionPath;Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()Lcom/androidpoet/metaphor/MotionPath;
+	public final fun component4 ()Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public final fun component5 ()J
+	public final fun copy (IILcom/androidpoet/metaphor/MotionPath;Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;J)Lcom/androidpoet/metaphor/Motion$ContainerTransform;
+	public static synthetic fun copy$default (Lcom/androidpoet/metaphor/Motion$ContainerTransform;IILcom/androidpoet/metaphor/MotionPath;Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;JILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$ContainerTransform;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContainerColor ()I
+	public fun getDuration ()J
+	public final fun getFadeMode ()Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public final fun getPath ()Lcom/androidpoet/metaphor/MotionPath;
+	public final fun getScrimColor ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/androidpoet/metaphor/Motion$ContainerTransform$FadeMode : java/lang/Enum {
+	public static final field Cross Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public static final field In Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public static final field Out Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public static final field Through Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+	public static fun values ()[Lcom/androidpoet/metaphor/Motion$ContainerTransform$FadeMode;
+}
+
+public final class com/androidpoet/metaphor/Motion$ElevationScale : com/androidpoet/metaphor/Motion {
+	public static final field Companion Lcom/androidpoet/metaphor/Motion$ElevationScale$Companion;
+	public fun <init> (ZJ)V
+	public synthetic fun <init> (ZJILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Z
+	public final fun component2 ()J
+	public final fun copy (ZJ)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+	public static synthetic fun copy$default (Lcom/androidpoet/metaphor/Motion$ElevationScale;ZJILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDuration ()J
+	public final fun getGrowing ()Z
+	public static final fun grow (J)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+	public fun hashCode ()I
+	public static final fun shrink (J)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/androidpoet/metaphor/Motion$ElevationScale$Companion {
+	public final fun grow (J)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+	public static synthetic fun grow$default (Lcom/androidpoet/metaphor/Motion$ElevationScale$Companion;JILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+	public final fun shrink (J)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+	public static synthetic fun shrink$default (Lcom/androidpoet/metaphor/Motion$ElevationScale$Companion;JILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$ElevationScale;
+}
+
+public final class com/androidpoet/metaphor/Motion$Fade : com/androidpoet/metaphor/Motion {
+	public fun <init> ()V
+	public fun <init> (J)V
+	public synthetic fun <init> (JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun copy (J)Lcom/androidpoet/metaphor/Motion$Fade;
+	public static synthetic fun copy$default (Lcom/androidpoet/metaphor/Motion$Fade;JILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$Fade;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDuration ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/androidpoet/metaphor/Motion$FadeThrough : com/androidpoet/metaphor/Motion {
+	public fun <init> ()V
+	public fun <init> (J)V
+	public synthetic fun <init> (JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun copy (J)Lcom/androidpoet/metaphor/Motion$FadeThrough;
+	public static synthetic fun copy$default (Lcom/androidpoet/metaphor/Motion$FadeThrough;JILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$FadeThrough;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDuration ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/androidpoet/metaphor/Motion$Hold : com/androidpoet/metaphor/Motion {
+	public fun <init> ()V
+	public fun <init> (J)V
+	public synthetic fun <init> (JILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()J
+	public final fun copy (J)Lcom/androidpoet/metaphor/Motion$Hold;
+	public static synthetic fun copy$default (Lcom/androidpoet/metaphor/Motion$Hold;JILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$Hold;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getDuration ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/androidpoet/metaphor/Motion$SharedAxis : com/androidpoet/metaphor/Motion {
+	public static final field Companion Lcom/androidpoet/metaphor/Motion$SharedAxis$Companion;
+	public fun <init> (Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;ZJ)V
+	public synthetic fun <init> (Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;ZJILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+	public final fun component2 ()Z
+	public final fun component3 ()J
+	public final fun copy (Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;ZJ)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public static synthetic fun copy$default (Lcom/androidpoet/metaphor/Motion$SharedAxis;Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;ZJILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAxis ()Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+	public fun getDuration ()J
+	public final fun getForward ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+	public static final fun x (ZJ)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public static final fun y (ZJ)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public static final fun z (ZJ)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+}
+
+public final class com/androidpoet/metaphor/Motion$SharedAxis$Axis : java/lang/Enum {
+	public static final field X Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+	public static final field Y Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+	public static final field Z Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+	public static fun values ()[Lcom/androidpoet/metaphor/Motion$SharedAxis$Axis;
+}
+
+public final class com/androidpoet/metaphor/Motion$SharedAxis$Companion {
+	public final fun x (ZJ)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public static synthetic fun x$default (Lcom/androidpoet/metaphor/Motion$SharedAxis$Companion;ZJILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public final fun y (ZJ)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public static synthetic fun y$default (Lcom/androidpoet/metaphor/Motion$SharedAxis$Companion;ZJILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public final fun z (ZJ)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+	public static synthetic fun z$default (Lcom/androidpoet/metaphor/Motion$SharedAxis$Companion;ZJILjava/lang/Object;)Lcom/androidpoet/metaphor/Motion$SharedAxis;
+}
+
+public abstract interface annotation class com/androidpoet/metaphor/MotionDsl : java/lang/annotation/Annotation {
+}
+
+public final class com/androidpoet/metaphor/MotionPath : java/lang/Enum {
+	public static final field Arc Lcom/androidpoet/metaphor/MotionPath;
+	public static final field Linear Lcom/androidpoet/metaphor/MotionPath;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/androidpoet/metaphor/MotionPath;
+	public static fun values ()[Lcom/androidpoet/metaphor/MotionPath;
+}
+
+public final class com/androidpoet/metaphor/MotionSpec {
+	public static final field Companion Lcom/androidpoet/metaphor/MotionSpec$Companion;
+	public static final field None Lcom/androidpoet/metaphor/MotionSpec;
+	public fun <init> ()V
+	public fun <init> (Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion$ContainerTransform;ZZ)V
+	public synthetic fun <init> (Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion$ContainerTransform;ZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/androidpoet/metaphor/Motion;
+	public final fun component2 ()Lcom/androidpoet/metaphor/Motion;
+	public final fun component3 ()Lcom/androidpoet/metaphor/Motion;
+	public final fun component4 ()Lcom/androidpoet/metaphor/Motion;
+	public final fun component5 ()Lcom/androidpoet/metaphor/Motion$ContainerTransform;
+	public final fun component6 ()Z
+	public final fun component7 ()Z
+	public final fun copy (Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion$ContainerTransform;ZZ)Lcom/androidpoet/metaphor/MotionSpec;
+	public static synthetic fun copy$default (Lcom/androidpoet/metaphor/MotionSpec;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion;Lcom/androidpoet/metaphor/Motion$ContainerTransform;ZZILjava/lang/Object;)Lcom/androidpoet/metaphor/MotionSpec;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAllowEnterOverlap ()Z
+	public final fun getAllowReturnOverlap ()Z
+	public final fun getEnter ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getExit ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getPopEnter ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getPopExit ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getSharedElement ()Lcom/androidpoet/metaphor/Motion$ContainerTransform;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/androidpoet/metaphor/MotionSpec$Companion {
+}
+
+public final class com/androidpoet/metaphor/MotionSpecBuilder {
+	public fun <init> ()V
+	public final fun build ()Lcom/androidpoet/metaphor/MotionSpec;
+	public final fun getAllowEnterOverlap ()Z
+	public final fun getAllowReturnOverlap ()Z
+	public final fun getEnter ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getExit ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getPopEnter ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getPopExit ()Lcom/androidpoet/metaphor/Motion;
+	public final fun getSharedElement ()Lcom/androidpoet/metaphor/Motion$ContainerTransform;
+	public final fun setAllowEnterOverlap (Z)V
+	public final fun setAllowReturnOverlap (Z)V
+	public final fun setEnter (Lcom/androidpoet/metaphor/Motion;)V
+	public final fun setExit (Lcom/androidpoet/metaphor/Motion;)V
+	public final fun setPopEnter (Lcom/androidpoet/metaphor/Motion;)V
+	public final fun setPopExit (Lcom/androidpoet/metaphor/Motion;)V
+	public final fun setSharedElement (Lcom/androidpoet/metaphor/Motion$ContainerTransform;)V
+}
+
+public final class com/androidpoet/metaphor/MotionSpecKt {
+	public static final fun motionSpec (Lkotlin/jvm/functions/Function1;)Lcom/androidpoet/metaphor/MotionSpec;
+}
+
+public final class com/androidpoet/metaphor/PopupWindowMotionKt {
+	public static final fun applyMotion (Landroid/widget/PopupWindow;Lcom/androidpoet/metaphor/MotionSpec;)V
+	public static final fun applyMotion (Landroid/widget/PopupWindow;Lkotlin/jvm/functions/Function1;)V
+}
+
+public abstract interface class com/androidpoet/metaphor/SharedElement {
+}
+
+public final class com/androidpoet/metaphor/SharedElement$Destination : com/androidpoet/metaphor/SharedElement {
+	public fun <init> (Landroid/view/View;Ljava/lang/String;)V
+	public final fun getTransitionName ()Ljava/lang/String;
+	public final fun getView ()Landroid/view/View;
+}
+
+public final class com/androidpoet/metaphor/SharedElement$Origin : com/androidpoet/metaphor/SharedElement {
+	public static final field INSTANCE Lcom/androidpoet/metaphor/SharedElement$Origin;
+}
+
+public final class com/androidpoet/metaphor/ViewMotionKt {
+	public static final fun animateChanges (Landroid/view/ViewGroup;Lcom/androidpoet/metaphor/Motion;Lkotlin/jvm/functions/Function0;)V
+	public static final fun animateVisibility (Landroid/view/View;ZLcom/androidpoet/metaphor/Motion;)V
+	public static synthetic fun animateVisibility$default (Landroid/view/View;ZLcom/androidpoet/metaphor/Motion;ILjava/lang/Object;)V
+	public static final fun morphInto (Landroid/view/View;Landroid/view/View;Lcom/androidpoet/metaphor/Motion$ContainerTransform;)V
+	public static synthetic fun morphInto$default (Landroid/view/View;Landroid/view/View;Lcom/androidpoet/metaphor/Motion$ContainerTransform;ILjava/lang/Object;)V
+	public static final fun toggleVisibility (Landroid/view/View;Lcom/androidpoet/metaphor/Motion;)V
+	public static synthetic fun toggleVisibility$default (Landroid/view/View;Lcom/androidpoet/metaphor/Motion;ILjava/lang/Object;)V
+}
+
+public final class com/androidpoet/metaphor/widgets/BottomNavigationViewMotionKt {
+	public static final fun drawToBitmap (Landroid/view/View;I)Landroid/graphics/Bitmap;
 	public static synthetic fun drawToBitmap$default (Landroid/view/View;IILjava/lang/Object;)Landroid/graphics/Bitmap;
-	public static final synthetic fun hide (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
-	public static final synthetic fun show (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
+	public static final fun hide (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
+	public static final fun show (Lcom/google/android/material/bottomnavigation/BottomNavigationView;)V
 }
 
